@@ -1,0 +1,15 @@
+{
+    "name": "root/ktur",
+    "description": "User can find his/her desired home based on his/her budget!",
+    "require": {
+        "nikic/fast-route": "^1.3",
+        "twig/twig": "^2.0",
+        "guzzlehttp/psr7":"^1.4"
+    },
+    "authors": [
+        {
+            "name": "Garnik Gasparyan",
+            "email": "gasp.garnik@gmail.com"
+        }
+    ]
+}
