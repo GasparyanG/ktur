@@ -16,7 +16,6 @@ class Dispatcher
 
         foreach($this->dirs as $dir) {
             $fullPath = $dir . "\\" . $className;
-            echo $fullPath;
 
             if (class_exists($fullPath)) {
                 $placeholders = $routeInfo[2];
