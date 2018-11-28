@@ -7,6 +7,7 @@ use Psr\Http\Message\ServerRequestInterface;
 use Prs\Http\Server\RequestHandlerInterface as RequestHandlerInterface;
 use FastRoute;
 use BusinessLogic\Dispatcher as Dispatcher;
+use Response\Response as Response;
 
 class Router implements MiddlewareInterface
 {
@@ -15,13 +16,14 @@ class Router implements MiddlewareInterface
     public function __construct()
     {
         $this->uri = ServerRequest::getUriFromGlobals();
+        $this->response = new Response();
     }
 
     public function process(ServerRequestInterface $request, $handler)
     {
         $dispatcher = FastRoute\simpleDispatcher(function(FastRoute\RouteCollector $r)
         {
-            $r->addRoute("GET", "/users/{id: \d+}/picks/{pickId: \d+}", "Home, getHome");
+            $r->addRoute("GET", "/sign-up", "SignUp, getPage");
         });
 
         $httpMethod = $request->getMethod();
@@ -41,6 +43,6 @@ class Router implements MiddlewareInterface
     public function accessBusinessLogic($request, $routeInfo)
     {
         $dispatcher = new Dispatcher();
-        $dispatcher->dispatchToHandler($request, $routeInfo);
+        $dispatcher->dispatchToHandler($request, $this->response, $routeInfo);
     }
 }

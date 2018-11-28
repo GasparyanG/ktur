@@ -10,7 +10,7 @@ class Dispatcher
         ];
     }
 
-    public function dispatchToHandler($request, $routeInfo)
+    public function dispatchToHandler($request, $response, $routeInfo)
     {
         list($className, $methodName) = $this->getHandlerAsList($routeInfo);
 
@@ -21,7 +21,7 @@ class Dispatcher
                 $placeholders = $routeInfo[2];
 
                 $obj = new $fullPath();
-                $obj->$methodName($request, $placeholders);
+                $obj->$methodName($request, $response, $placeholders);
                 break;
             }
         }

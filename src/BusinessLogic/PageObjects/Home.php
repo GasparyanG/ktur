@@ -19,14 +19,12 @@ class Home
 
         $configFetcher = new ConfigFetcher();
 
-        $value = $configFetcher->fetchConf('DATABASE_CONFIG', ['DB1','username']);
+        $value = $configFetcher->fetchConf('DATABASE_CONFIG', ['DB1','userName']);
 
         if (!$value) {
             echo "false";
         }
 
         echo $value;
-
-
     }
 }
