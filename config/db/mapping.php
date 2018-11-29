@@ -7,8 +7,8 @@ $DATABASE_CONFIG = [
     // first db of 'ktur'
     "DB1" => [
         "userName"   => "root",
-        "password"   => "gg1122!!@@",
-        "dbName"     => "socialNetworkDB",
+        "password"   => "blah balh blah",
+        "dbName"     => "KturStorage",
         "serverName" => "localhost"
     ],
 ];

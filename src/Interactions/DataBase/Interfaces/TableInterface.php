@@ -9,5 +9,7 @@ interface TableInterface
      *      column_name constraints (INT, AUTO_INCREMENT, etc.)
      * )
      */
-    public static function getTableDef();
+    public function getTableDef();
+
+    public function getTableName();
 }

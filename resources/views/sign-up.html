@@ -5,6 +5,37 @@
     <title>{{title}}</title>
 </head>
 <body>
-    <p>Hello World</p>
+    <form action="" method="POST">
+        <div>
+            <label for="first_name">First Name</label>
+            <input id = "first_name" type="input" name = "first_name" placeholder = "Write your first name" required 
+            value = {{ parsedBody.first_name in parsedBody ? parsedBody.first_name : '' }}>
+        </div>
+        <div>
+            <label for = "last_name">Last Name</label>
+            <input id = "last_name" type = "input" name = "last_name" placeholder = "Write your last name" required
+            value = {{ parsedBody.last_name in parsedBody ? parsedBody.last_name : '' }}>
+        </div>
+        <div>
+            <lable for = "username">Username</lable>
+            <input id = "username" type = "input" name = "username" placeholder = "Create username" required
+            value = {{ parsedBody.username ? parsedBody.username : '' }}>
+        </div>
+        <div>
+            <lable for = "passowrd">Password</lable>
+            <input id = "password" type = "password" name = "password" placeholder = "Create password" required>
+        </div>
+        <div>
+            <input type="submit" value = "Sign Up">
+        </div>
+    </form>
+
+    {% if errorMessages %}
+        {% for errorMessage in errorMessages %}
+            <div>
+                {{errorMessage}}
+            </div>
+        {% endfor %}
+    {% endif %}
 </body>
 </html>

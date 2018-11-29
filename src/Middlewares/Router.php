@@ -24,6 +24,8 @@ class Router implements MiddlewareInterface
         $dispatcher = FastRoute\simpleDispatcher(function(FastRoute\RouteCollector $r)
         {
             $r->addRoute("GET", "/sign-up", "SignUp, getPage");
+            $r->addRoute("POST", "/sign-up", "SignUp, createAccount");
+            $r->addRoute("GET", "/{user-name}", "User, getUser");
         });
 
         $httpMethod = $request->getMethod();
