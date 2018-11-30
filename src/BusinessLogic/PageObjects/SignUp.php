@@ -10,6 +10,8 @@ use Cookie\Cookie as Cookie;
 
 class SignUp
 {
+    protected static $usernameExistsErrorMessaage = "Username already exists, please choose other!";
+
     public function getPage($req, $res, $routeInfo)
     {
         $this->renderSignUpPage($res, $parsedBody = null, $errorMessages = null);
@@ -46,15 +48,35 @@ class SignUp
         // return clollected error messages if any
         $errorMessages = $validator->getErrorMessages();
 
+         /**
+          * Sanitization of input fealds
+          * 
+          * @see Validation\Sanitizer
+          */
+          $username = $sanitizer->spaceTrim($username);
+          $firstName = $sanitizer->spaceTrim($firstName);
+          $lastName = $sanitizer->spaceTrim($lastName);
+          $password = $sanitizer->spaceTrim($password);
+        
         /**
-         * Sanitization of input fealds
+         * Check whether usersname exists or not 
+         * importance of this validation is very high, because almost whole app is relaying on username's uniquness!
          * 
-         * @see Validation\Sanitizer
+         * DBManipulator can also be injected with getter!  
          */
-        $username = $sanitizer->spaceTrim($username);
-        $firstName = $sanitizer->spaceTrim($firstName);
-        $lastName = $sanitizer->spaceTrim($lastName);
-        $password = $sanitizer->spaceTrim($password);
+        $usernameState = $this->isUnique($dbmanipulator, $username);
+
+        /**
+         * if (false)
+         *  add error message to $errorMessages array
+         * elseif(true)
+         *  continue defind execution: create new row by injecting new credentials
+         * elseif(null)
+         *  continue defined execution: create new table, create new row by injecting new credentials
+         */
+        if ($usernameState === false) {
+            $errorMessages[] = self::$usernameExistsErrorMessaage;
+        }
     
         if (!empty($errorMessages)) {
             $this->renderSignupPage($res, $parsedBody, $errorMessages);
@@ -74,7 +96,7 @@ class SignUp
 
     private function createAndInjectUserIntoTable($dbmanipulator, $firstName, $lastName, $username, $hashedPassword, $salt)
     {
-        $usersTableCreationDefinition = new Users();
+        $usersTableCreationDefinition = $this->getUsersTableDef();
         $usersTableName = $usersTableCreationDefinition->getTableName();
 
         $statement = $usersTableCreationDefinition->getTableDef();
@@ -99,5 +121,35 @@ class SignUp
         // 'R' => Row
         // query result can be either null or last insert id
         $dbmanipulator->create($insertionStatement, "R");
+    }
+
+    private function isUnique($dbmanipulator, $username)
+    {
+        $usersTableCreationDefinition = $this->getUsersTableDef();
+        $usersTableName = $usersTableCreationDefinition->getTableName();
+
+        try
+        {
+            $statement = "SELECT username FROM $usersTableName WHERE username = \"$username\" LIMIT 1";
+            $queryResult = $dbmanipulator->read($statement, "O");
+
+            if (empty($queryResult)) {
+                // unique!
+                return true;
+            }
+
+            // not unique!
+            return false;
+        }
+        catch(PDOException $exception)
+        {
+            // table don't exists!
+            return null;
+        }
+    }
+
+    private function getUsersTableDef()
+    {
+        return new Users();
     }
 }
