@@ -1,0 +1,14 @@
+@import url("/public/style/config/element-config/form-input.css");
+
+:root
+{
+    --primary-button: #2cb94c;
+    --primary-button-active: #279f43;
+    --primary-button-text-color: #ffffff; 
+    --secondary-button: #edf1f5;
+    --button-border-radius: 0.2rem;
+    --button-border: none;
+    --button-height: var(--input-box-height);
+    --button-padding: var(--input-padding);
+    --button-min-width: 100px;
+}

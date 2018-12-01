@@ -1,0 +1,17 @@
+@import url("/public/style/config/colors/main-colors.css");
+
+#authentication
+{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -200px;
+    margin-left: -235px;
+    width: 500px;
+    height: 400px;
+    background-color: var(--search-area-color);
+    opacity: 0.8;
+    border-radius: 0.5rem;
+    display: flex;
+    flex-direction: column;
+}

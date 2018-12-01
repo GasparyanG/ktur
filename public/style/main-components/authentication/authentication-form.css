@@ -1,0 +1,48 @@
+@import url("/public/style/config/element-config/form-input.css");
+@import url("/public/style/config/ready-elements/button.css");
+
+.authentication-form
+{
+    /*width of parent box*/
+    width: 100%
+}
+
+.authentication-form
+{
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+}
+
+.authentication-form > .actual-form 
+{
+    width: 70%;
+}
+
+.authentication-form > .actual-form > div
+{
+    margin: 0.5rem;
+}
+
+.authentication-form > .actual-form > div > input
+{
+    background-color: var(--input-background-color);
+    color: var(--input-color);
+    border: var(--input-border);
+    height: var(--input-box-height);
+    font-size: var(--input-font-size);
+    width: 100%;
+    border-radius: var(--input-box-radius);
+    padding: var(--input-padding);
+    opacity: 0.7;
+}
+
+/*.authentication-form > .actual-form > div > button
+{
+   // ment for button adjustment!
+}*/
+
+.authentication-form > .actual-form > div > input:focus
+{
+    background-color: var(--input-background-color-focus);
+}

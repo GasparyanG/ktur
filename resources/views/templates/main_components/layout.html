@@ -2,7 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    {# CDN #}
     <script src = "https://ajax.googleapis.com/ajax/libs/angularjs/1.7.5/angular.min.js"></script>
+    {# $interpolateProvider dependency of angularJS #}
     <script src = "/public/js/angular_config/interpolateProvider.js"></script>
     <link href ="/public/style/main-components/layout.css" rel = "stylesheet">
 </head>
@@ -13,6 +15,8 @@
     
     <div class = "main-content">
         <div class = "resource">
+            {# this stylesheet is ment for this block extenders #}
+            <link rel = "stylesheet" href = "/public/style/main-components/layout/main-content.css">
             {% block resource %}
                 {# 
                     this will be extended by child template,

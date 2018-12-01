@@ -1,0 +1,34 @@
+<link rel="stylesheet" href="/public/style/main-components/authentication/authentication-form.css">
+<div class = "authentication-form">
+    <form action="" method="POST" class = "actual-form">
+        <div>
+            <input id = "first_name" type="input" name = "first_name" placeholder = "Write your first name"
+            value = {{ parsedBody.first_name in parsedBody ? parsedBody.first_name : '' }}>
+        </div>
+        <div>
+            <input id = "last_name" type = "input" name = "last_name" placeholder = "Write your last name" required
+            value = {{ parsedBody.last_name in parsedBody ? parsedBody.last_name : '' }}>
+        </div>
+        <div>
+            <input id = "username" type = "input" name = "username" placeholder = "Create username" required
+            value = {{ parsedBody.username ? parsedBody.username : '' }}>
+        </div>
+        <div>
+            <input id = "password" type = "password" name = "password" placeholder = "Create password" required>
+        </div>
+        <div>
+            <button type="submit" class = "primary-btn">
+                Sign Up
+            </button>
+        </div>
+    </form>
+</div>
+<div>
+    {% if errorMessages %}
+    {% for errorMessage in errorMessages %}
+    <div>
+        {{errorMessage}}
+    </div>
+    {% endfor %}
+    {% endif %}
+</div>

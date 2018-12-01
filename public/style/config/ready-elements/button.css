@@ -1,0 +1,17 @@
+@import url("/public/style/config/element-config/button.css");
+
+.primary-btn 
+{
+    background-color: var(--primary-button);
+    border-radius: var(--button-border-radius);
+    border: var(--button-border);
+    height: var(--button-height);
+    color: var(--primary-button-text-color);
+    padding: var(--button-padding);
+    width: var(--button-min-width);
+}
+
+.primary-btn:active
+{
+    background-color: var(--primary-button-active);
+}

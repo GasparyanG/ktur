@@ -1,0 +1,13 @@
+@import url("/public/style/config/layout/nav-bar.css");
+
+:root
+{
+    --input-background-color: var(--search-area-hover-color);
+    --input-border: none;
+    --input-background-color-focus: var(--search-area-color); 
+    --input-color: rgba(255,255,255,1);
+    --input-box-height: 25px;
+    --input-font-size: 1rem;
+    --input-box-radius: 0.2rem;
+    --input-padding: 5px;
+}
