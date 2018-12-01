@@ -1,0 +1,8 @@
+@import url("/public/style/config/colors/main-colors.css");
+@import url("/public/style/main-components/layout/nav-bar/searcher.css");
+
+.ktur-footer
+{
+    background-color: var(--nav-bar-color);
+    min-height: var(--nav-bar-height);
+}

@@ -1,0 +1,26 @@
+@import url("/public/style/config/colors/main-colors.css");
+
+.prompt
+{
+    display: flex;
+    margin-bottom: 1.2rem;
+    margin-top: 1.2rem;
+    text-align: center;
+    flex-direction: column;
+}
+
+.prompt > div
+{
+    margin: 2px;
+}
+
+.ktur-connection
+{
+    color: var(--text-color-over-dark);
+    font-size: 1.2rem;
+}
+
+.authentication-font-aw
+{
+    color: var(--text-color-over-dark);
+}

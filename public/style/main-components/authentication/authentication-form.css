@@ -27,7 +27,7 @@
 .authentication-form > .actual-form > div > input
 {
     background-color: var(--input-background-color);
-    color: var(--input-color);
+    color: var(--input-color-over-light);
     border: var(--input-border);
     height: var(--input-box-height);
     font-size: var(--input-font-size);
@@ -45,4 +45,5 @@
 .authentication-form > .actual-form > div > input:focus
 {
     background-color: var(--input-background-color-focus);
+    color: var(--input-color);
 }

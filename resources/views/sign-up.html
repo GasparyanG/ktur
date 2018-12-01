@@ -9,7 +9,12 @@
     </div>
     
     <div id = "authentication">
-        {% include "/templates/authentication/sign-up-form.html" %}
+        <div class = "authentication-prompt">
+            {% include "/templates/authentication/authentication-prompt.html" %}
+        </div>
+        <div>
+            {% include "/templates/authentication/sign-up-form.html" %}
+        </div>
     </div>
     
     <div class = "about-ktur">

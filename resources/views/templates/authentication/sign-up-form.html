@@ -6,11 +6,11 @@
             value = {{ parsedBody.first_name in parsedBody ? parsedBody.first_name : '' }}>
         </div>
         <div>
-            <input id = "last_name" type = "input" name = "last_name" placeholder = "Write your last name" required
+            <input id = "last_name" type = "input" name = "last_name" placeholder = "Write your last name"
             value = {{ parsedBody.last_name in parsedBody ? parsedBody.last_name : '' }}>
         </div>
         <div>
-            <input id = "username" type = "input" name = "username" placeholder = "Create username" required
+            <input id = "username" type = "input" name = "username" placeholder = "Create username"
             value = {{ parsedBody.username ? parsedBody.username : '' }}>
         </div>
         <div>
@@ -23,10 +23,10 @@
         </div>
     </form>
 </div>
-<div>
+<div class = "errorMessages">
     {% if errorMessages %}
     {% for errorMessage in errorMessages %}
-    <div>
+    <div class = "errorMessage">
         {{errorMessage}}
     </div>
     {% endfor %}

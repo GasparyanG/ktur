@@ -4,4 +4,6 @@
     --nav-bar-color: #263238;
     --search-area-color: #3f4448;
     --search-area-hover-color: #fff;
+    --text-color-over-dark: #ffffff;
+    --text-color: rgba(0,0,0,0.7);
 }

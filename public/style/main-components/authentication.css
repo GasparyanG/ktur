@@ -10,7 +10,7 @@
     width: 500px;
     height: 400px;
     background-color: var(--search-area-color);
-    opacity: 0.8;
+    opacity: 0.95;
     border-radius: 0.5rem;
     display: flex;
     flex-direction: column;
