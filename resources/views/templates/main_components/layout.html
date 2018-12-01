@@ -2,11 +2,29 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>{{title}}</title>
+    <script src = "https://ajax.googleapis.com/ajax/libs/angularjs/1.7.5/angular.min.js"></script>
+    <script src = "/public/js/angular_config/interpolateProvider.js"></script>
+    <link href ="/public/style/main-components/layout.css" rel = "stylesheet">
 </head>
-<body>
-    <div>
-        
+<body ng-app = "ktur">
+    <header>
+        {% include "/templates/main_components/layout/nav-bar.html" %}
+    </header>
+    
+    <div class = "main-content">
+        <div class = "resource">
+            {% block resource %}
+                {# 
+                    this will be extended by child template,
+                    which need to use 'block' keyword with corresponding name
+                    and have to use extend keyword with corresponding path
+                #}
+            {% endblock %}
+        </div>
     </div>
+    
+    <footer>
+        &copy; 2018 Gasp inc.
+    </footer>
 </body>
 </html>

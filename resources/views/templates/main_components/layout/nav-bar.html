@@ -1,0 +1,54 @@
+<link rel = "stylesheet" href = "/public/style/main-components/layout/nav-bar.css">
+<div class = "nav-bar">
+    <div class = "home">
+        <a href = "#">Home</a>
+    </div>
+    <div class = "researcher">
+        <a href = "#">Research</a>
+    </div>
+    <div class = "searcher">
+        {#{% block searcher %}
+        {% endblock %}#}
+        {% include "/templates/main_components/layout/nav-bar/searcher.html" %}
+    </div>
+    <div class = "notification">
+        <a href = "#">Notifications</a>
+    </div>
+    <div class = "authentication">
+        {% if user_name %}
+            <div class = "authenticated-user">
+                {# 
+                    this portion will need also to render:
+                    - hyperlink to authenticated user page
+                    - image of user
+
+                    HATEOAS constrain of RESTful API will be used:
+                    - JSON format: e.g.
+                        {
+                            "user": {
+                                [
+                                "rel" : "self",
+                                "href" : "path/to/user/page"
+                                ],
+
+                                [
+                                "rel" : "image",
+                                "href" :  "path/to/image"
+                                ]
+                            }
+                        }
+                     #}
+                {{user_name}}
+            </div>
+        {% else %}
+            <div class = "unsigned-user">
+                <div class = "sign-up">
+                    <a href = "#">Sign Up</a>
+                </div>
+                <div class = "sign-in">
+                    <a href = "#">Sign In</a>
+                </div>
+            </div>
+        {% endif %}
+    </div>
+</div>

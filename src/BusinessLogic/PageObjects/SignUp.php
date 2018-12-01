@@ -80,6 +80,8 @@ class SignUp
     
         if (!empty($errorMessages)) {
             $this->renderSignupPage($res, $parsedBody, $errorMessages);
+            // to interupt further implementation programm need to exit!
+            exit;
         }
 
         list($hashedPassword, $salt) = $hasher->hashPassword($password);

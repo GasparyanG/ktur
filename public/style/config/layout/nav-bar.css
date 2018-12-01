@@ -1,0 +1,8 @@
+:root
+{
+    --nav-bar-height: 60px;
+    --nav-bar-background-color: #263238;
+    --font-size-for-nav-bar: 1.2rem;
+    --search-area-color: #3f4448;
+    --search-area-hover-color: #fff;
+}

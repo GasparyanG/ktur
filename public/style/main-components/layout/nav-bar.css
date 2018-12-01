@@ -1,0 +1,48 @@
+@import url("/public/style/config/layout/nav-bar.css");
+
+.nav-bar 
+{
+    font-size: var(--font-size-for-nav-bar);
+    height: var(--nav-bar-height);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--nav-bar-background-color);
+}
+
+.nav-bar > div
+{
+    text-align: center;
+}
+
+.nav-bar > .home
+{
+    padding-left: 0.5rem;
+    text-align: left;
+    flex-grow: 0.5;
+}
+
+.nav-bar > .researcher
+{
+    text-align: left;
+    flex-grow: 1;
+}
+
+.nav-bar > .searcher
+{
+
+    flex-grow: 5;
+}
+
+.nav-bar > .notification
+{
+    text-align: right;
+    flex-grow: 1;
+}
+
+.nav-bar > .authentication
+{
+    padding-right: 0.5rem;
+    text-align: right;
+    flex-grow: 0.5;
+}

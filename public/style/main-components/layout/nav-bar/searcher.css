@@ -1,0 +1,23 @@
+@import url("/public/style/config/layout/nav-bar.css");
+
+.input-for-searcher {
+    width: 100%;
+}
+
+.input-area-for-search
+{
+    font-size: var(--font-size-for-nav-bar);
+    width: 100%;
+    height: 30px;
+    padding: 5px;
+    background-color: var(--search-area-color);
+    border: none;
+    color: rgba(0,0,0,0.5);
+    border-radius: 0.1em;
+}
+
+.input-area-for-search:focus
+{
+    background-color: var(--search-area-hover-color);
+    transition: 0.3s;
+}

@@ -1,0 +1,8 @@
+@import url("/public/style/config/layout/body.css");
+
+body
+{
+    background-color: var(--main-background-color);
+    font-family: var(--main-font-family);
+    margin: var(--main-margin);
+}
