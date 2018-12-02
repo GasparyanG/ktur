@@ -8,10 +8,15 @@
     margin-top: -200px;
     margin-left: -235px;
     width: 500px;
-    height: 400px;
+    max-height: 700px;
     background-color: var(--search-area-color);
     opacity: 0.95;
     border-radius: 0.5rem;
     display: flex;
     flex-direction: column;
+}
+
+.authentication-portion-composer
+{
+    padding: 1em;
 }

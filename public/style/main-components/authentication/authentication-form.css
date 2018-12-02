@@ -1,8 +1,10 @@
 @import url("/public/style/config/element-config/form-input.css");
 @import url("/public/style/config/ready-elements/button.css");
+@import url("/public/style/config/element-config/error.css");
 
 .authentication-form
 {
+    /*position: absolute;*/
     /*width of parent box*/
     width: 100%
 }

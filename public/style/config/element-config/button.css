@@ -11,4 +11,5 @@
     --button-height: var(--input-box-height);
     --button-padding: var(--input-padding);
     --button-min-width: 100px;
+    --disabled-color: #34d857;
 }

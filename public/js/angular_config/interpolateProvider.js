@@ -1,5 +1,5 @@
-var appModule = angular.module("ktur", []);
+var ktur = angular.module("ktur", []);
 
-appModule.config(function($interpolateProvider){
+ktur.config(function($interpolateProvider){
     $interpolateProvider.startSymbol("//").endSymbol("//");
 });

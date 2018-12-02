@@ -1,0 +1,11 @@
+@import url("/public/style/config/colors/main-colors.css");
+@import url("/public/style/config/sizes/main-sizes.css");
+
+.error-highlighting 
+{
+    background-color: var(--error-color);
+    color: var(--text-color-over-dark);
+    min-height: var(--authentication-input-box-height);
+    margin: 5px;
+    padding: 2px;
+}

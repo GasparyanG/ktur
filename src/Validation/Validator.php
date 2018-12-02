@@ -7,6 +7,10 @@ class Validator
     {
         /**
          * unmatched values will be appended to this array
+         * 
+         * @property string[] assoc array:
+         *      key => error risen input feald name
+         *      value => error message
          */
         $this->errorMessages = [];
 
@@ -17,20 +21,27 @@ class Validator
     }
 
     /**
-     * @param string $parsedBodyValue value which need to be valdated
+     * @param string[] assoc array $fealdNameValuePair value which need to be valdated
      * @param int[] $options assoc array which will tell what kind of operations need to be done:
      *      e.g. lenght need to be less than or geater than specified value
      * @param string|null $errorMessage if validation is false then add errMessage will be appended to 
      *      $this->errorMessages!
      */
-    public function isLength(string $parsedBodyValue, array $options, string $errorMessage)
+    public function isLength(array $fealdNameValuePair, array $options, string $errorMessage)
     {
         list($option, $value) = $this->fetchKeyValue($options);
 
+        /**
+         * assoc array's feald name is needed to know what feald is triggered error
+         * error message is needed to know what kind of error is triggered
+         */
+        $fealdNameValuePair = $this->convertToRegularArray($fealdNameValuePair);
+        list($fealdName, $fealdValue) = $fealdNameValuePair;
+
         $methodName = $this->getMethodName($option);
 
-        if (!$this->$methodName($parsedBodyValue, $value)) {
-            $this->errorMessages[] = $errorMessage;
+        if (!$this->$methodName($fealdValue, $value)) {
+            $this->errorMessages[$fealdName] = $errorMessage;
         }
     }
 
@@ -60,18 +71,18 @@ class Validator
         return $this->lengthOptions[$option];
     }
 
-    private function greaterOrEqualThan(string $parsedBodyValue, int $value): bool
+    private function greaterOrEqualThan(string $fealdValue, int $value): bool
     {
-        if (strlen($parsedBodyValue) >= $value) {
+        if (strlen($fealdValue) >= $value) {
             return true;
         }
 
         return false;
     }
 
-    private function lessOrEqualThan(string $parsedBodyValue, int $value): bool
+    private function lessOrEqualThan(string $fealdValue, int $value): bool
     {
-        if (strlen($parsedBodyValue) <= $value) {
+        if (strlen($fealdValue) <= $value) {
             return true;
         }
 
@@ -81,5 +92,16 @@ class Validator
     public function getErrorMessages()
     {
         return $this->errorMessages;
+    }
+
+    private function convertToRegularArray($fealdNameValuePair)
+    {
+        $regularArray = [];
+        foreach($fealdNameValuePair as $fealdName => $errorMessage) {
+            $regularArray[] = $fealdName;
+            $regularArray[] = $errorMessage;
+        }
+
+        return $regularArray;
     }
 }

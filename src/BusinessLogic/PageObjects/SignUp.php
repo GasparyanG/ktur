@@ -7,6 +7,7 @@ use DataBase\Implementations\DBManipulator as DBManipulator;
 use DataBase\Tables\Users as Users;
 use Security\Password\Hasher as Hasher;
 use Cookie\Cookie as Cookie;
+use Augmention\Convertion\JsonConverter as JsonConverter;
 
 class SignUp
 {
@@ -27,22 +28,26 @@ class SignUp
         $sanitizer = new Sanitizer();
         $hasher = new Hasher();
         $manipulatorOfCookie = new Cookie();
+        $jsonConverter = new JsonConverter();
 
-        $parsedBody = $req->getParsedBody();
+        $parsedBodyFromAjaxCall = $req->getParsedBody();
 
-        $username = $parsedBody['username'];
-        $firstName = $parsedBody['first_name'];
-        $lastName = $parsedBody['last_name'];
-        $password = $parsedBody['password'];
+        $parsedBody = $this->convertToAssocArray($parsedBodyFromAjaxCall);
+
+        // if therer is no such value for given key then return empty string
+        $username = $this->getKeyValuePair('username', $parsedBody);
+        $password = $this->getKeyValuePair('password', $parsedBody);
+        $firstName = $this->getKeyValuePair('first_name', $parsedBody);
+        $lastName = $this->getKeyValuePair('last_name', $parsedBody);
 
         /**
          * validation of input fealds
          * 
          * @see Validation\Validator
          */
+        $validator->isLength($username, ["min" => 1], "Username need to be at least 1 character");
         $validator->isLength($firstName, ["min" => 1], "First name need to be at least 1 character");
         $validator->isLength($lastName, ["min" => 1], "Last name need to be at least 1 character");
-        $validator->isLength($username, ["min" => 1], "Username need to be at least 1 character");
         $validator->isLength($password, ["min" => 1], "Password need to be at least 1 character");
 
         // return clollected error messages if any
@@ -53,10 +58,10 @@ class SignUp
           * 
           * @see Validation\Sanitizer
           */
-          $username = $sanitizer->spaceTrim($username);
-          $firstName = $sanitizer->spaceTrim($firstName);
-          $lastName = $sanitizer->spaceTrim($lastName);
-          $password = $sanitizer->spaceTrim($password);
+          $username = $sanitizer->spaceTrim($username['username']);
+          $firstName = $sanitizer->spaceTrim($firstName['first_name']);
+          $lastName = $sanitizer->spaceTrim($lastName['last_name']);
+          $password = $sanitizer->spaceTrim($password['password']);
         
         /**
          * Check whether usersname exists or not 
@@ -74,13 +79,16 @@ class SignUp
          * elseif(null)
          *  continue defined execution: create new table, create new row by injecting new credentials
          */
-        if ($usernameState === false) {
-            $errorMessages[] = self::$usernameExistsErrorMessaage;
+        if ($usernameState === false and empty($errorMessages)) {
+            $errorMessages["username"] = self::$usernameExistsErrorMessaage;
         }
     
         if (!empty($errorMessages)) {
-            $this->renderSignupPage($res, $parsedBody, $errorMessages);
-            // to interupt further implementation programm need to exit!
+            // XHR request will be done
+            // $jsonParsedBody = json_encode($parsedBody);
+            //echo $jsonParsedBody;
+            $jsonErrorMessages = json_encode($errorMessages);
+            echo $jsonErrorMessages;
             exit;
         }
 
@@ -153,5 +161,36 @@ class SignUp
     private function getUsersTableDef()
     {
         return new Users();
+    }
+
+    private function getKeyValuePair(string $key, array $array): array
+    {
+        $desiredArray = [];
+
+        $value = isset($array[$key]) ? $array[$key] : "";
+        
+        $desiredArray[$key] = $value;
+        return $desiredArray;
+    }
+
+    private function convertToAssocArray($parsedBodyFromAjaxCall)
+    {
+        /**
+         * form body will be stored in key of assoc array forwarded from clent with ajax call:
+         * array in its turn will store json format data
+         * 
+         * To interact with json stored data it will be decoded (converted) to assoc array
+         * with help of php built in json_decode fucntion, which takes following agruments:
+         * 
+         * 1) required argument is of json format
+         * 2) optional but required in this api is boolean, based on which json will be converted to assoc array!
+         * 
+         */
+        foreach($parsedBodyFromAjaxCall as $key => $value) {
+            // blah blah blah            
+        }
+        $parsedBody = json_decode($key, true);
+
+        return $parsedBody;
     }
 }
