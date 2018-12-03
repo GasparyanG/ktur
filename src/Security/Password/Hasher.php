@@ -1,9 +1,17 @@
 <?php
 namespace Security\Password;
 
+use Interactions\Config\ConfigFetcher as ConfigFetcher;
+
 class Hasher
 {
     private $algorithm = "sha1";
+
+    public function __construct()
+    {
+        $this->configFetcher = new ConfigFetcher();
+        $this->algorithm = $this->configFetcher->fetchConf('HASH_CONFIG', ['password', 'algorithm']);
+    }
 
     public function hashPassword(string $password): array
     {

@@ -10,7 +10,7 @@ ktur.controller("AuthenticationController", ['$scope', '$http', 'ErrorHighlighte
          */
         if (FormValidator.validateInput($scope)) {
             $http({
-                method: "POST",
+            method: "POST",
             url: "/sign-up",
             data: {
                 'first_name' : $scope.first_name,

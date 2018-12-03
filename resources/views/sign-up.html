@@ -14,7 +14,11 @@
                 {% include "/templates/authentication/authentication-prompt.html" %}
             </div>
             <div>
-                {% include "/templates/authentication/sign-up-form.html" %}
+                {% block signUpForm %}
+                {% endblock %}
+
+                {% block logInForm %}
+                {% endblock %}
             </div>
         </div>
     </div>

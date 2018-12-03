@@ -9,6 +9,9 @@ $DATABASE_CONFIG = [
         "userName"   => "root",
         "password"   => "gg1122!!@@",
         "dbName"     => "KturStorage",
-        "serverName" => "localhost"
+        "serverName" => "localhost",
+        "tables"     => [
+            'users' => 'users',
+        ],
     ],
 ];

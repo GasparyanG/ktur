@@ -1,0 +1,23 @@
+{% extends "sign-up.html" %}
+
+{% block logInForm %}
+<link rel="stylesheet" href="/public/style/main-components/authentication/authentication-form.css">
+<script src = "/public/js/services/authentication/ErrorHighlighter.js"></script>
+<script src = "/public/js/services/authentication/FormValidation.js"></script>
+<script src = "/public/js/controllers/authentication/log-in-controller.js"></script>
+<div class = "authentication-form" ng-controller = "LogInController">
+    <form class = "actual-form">
+        <div id = "username_section">
+            <input type="input" name = "username" placeholder = "Write your username" required ng-model = 'username'>
+        </div>
+        <div class = "password_section">
+            <input type="password" name = "password" placeholder ="Write your password" required ng-model = 'password'>
+        </div>
+        <div>
+            <button class = "primary-btn" ng-click = 'logIn()'>
+                Log In
+            </button>
+        </div>
+    </form>
+</div>
+{% endblock %}

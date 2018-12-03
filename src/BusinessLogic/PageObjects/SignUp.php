@@ -32,7 +32,7 @@ class SignUp
 
         $parsedBodyFromAjaxCall = $req->getParsedBody();
 
-        $parsedBody = $this->convertToAssocArray($parsedBodyFromAjaxCall);
+        $parsedBody = $jsonConverter->parsedBodyKeyConvertToAssocArray($parsedBodyFromAjaxCall);
 
         // if therer is no such value for given key then return empty string
         $username = $this->getKeyValuePair('username', $parsedBody);
@@ -101,7 +101,7 @@ class SignUp
 
     private function renderSignUpPage($res, $parsedBody, $errorMessages)
     {
-        $res->render('sign-up.html', ['title' => 'Sign Up', 'parsedBody' => $parsedBody, 'errorMessages' => $errorMessages]);
+        $res->render('/templates/authentication/sign-up-form.html', ['title' => 'Sign Up', 'parsedBody' => $parsedBody, 'errorMessages' => $errorMessages]);
     }
 
     private function createAndInjectUserIntoTable($dbmanipulator, $firstName, $lastName, $username, $hashedPassword, $salt)
@@ -171,26 +171,5 @@ class SignUp
         
         $desiredArray[$key] = $value;
         return $desiredArray;
-    }
-
-    private function convertToAssocArray($parsedBodyFromAjaxCall)
-    {
-        /**
-         * form body will be stored in key of assoc array forwarded from clent with ajax call:
-         * array in its turn will store json format data
-         * 
-         * To interact with json stored data it will be decoded (converted) to assoc array
-         * with help of php built in json_decode fucntion, which takes following agruments:
-         * 
-         * 1) required argument is of json format
-         * 2) optional but required in this api is boolean, based on which json will be converted to assoc array!
-         * 
-         */
-        foreach($parsedBodyFromAjaxCall as $key => $value) {
-            // blah blah blah            
-        }
-        $parsedBody = json_decode($key, true);
-
-        return $parsedBody;
     }
 }

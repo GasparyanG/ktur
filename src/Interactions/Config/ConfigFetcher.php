@@ -15,8 +15,9 @@ class ConfigFetcher
          *      maped with it's path!
          */
         $this->appConf = [
-            "DATABASE_CONFIG" => "/db/mapping.php",
-            "COOKIE_CONFIG"   => "/cookie/mapping.php",
+            "DATABASE_CONFIG"   => "/db/mapping.php",
+            "COOKIE_CONFIG"     => "/cookie/mapping.php",
+            "HASH_CONFIG"       => "/hashing/mapping.php"
         ];
     }
 

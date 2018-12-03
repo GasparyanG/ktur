@@ -1,3 +1,6 @@
+{% extends "sign-up.html" %}
+
+{% block signUpForm %}
 <link rel="stylesheet" href="/public/style/main-components/authentication/authentication-form.css">
 <script src = "/public/js/services/authentication/ErrorHighlighter.js"></script>
 <script src = "/public/js/services/authentication/FormValidation.js"></script>
@@ -20,7 +23,7 @@
             <input id = "password" type = "password" name = "password" placeholder = "Create password", ng-model = "password" required>
         </div>
         <div>
-            <button id = "sign-up" class = "primary-btn" ng-click = "signUp()">
+            <button id = "sign-up" class = "primary-btn" ng-click = "signUp('log-in')">
                 Sign Up
             </button>
         </div>
@@ -35,3 +38,4 @@
 {#    {% endfor %}#}
 {#    {% endif %}#}
 {#</div>#}
+{% endblock %}
