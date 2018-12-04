@@ -4,6 +4,7 @@ namespace BusinessLogic\LogIn;
 use Augmention\Convertion\JsonConverter as JsonConverter;
 use Validation\SpecificValidators\Authentication\AuthenticationValidator as AuthenticationValidator;
 use Interactions\Config\ConfigFetcher as ConfigFetcher;
+use Cookie\Cookie as Cookie;
 
 class LogIn
 {
@@ -34,6 +35,7 @@ class LogIn
          */
         $jsonConverter = new JsonConverter();
         $configFetcher = new ConfigFetcher();
+        $cookieManipulator = new Cookie();
         
         $parsedBodyFromAjaxCall = $req->getParsedBody();
         $parsedBody = $jsonConverter->parsedBodyKeyConvertToAssocArray($parsedBodyFromAjaxCall);
@@ -46,11 +48,23 @@ class LogIn
 
         $isAuthenticated = $authValid->authenticate();
 
-        if (!$isAuthenticated) {
-            echo 'false';
-            exit;
-        }
+        if ($isAuthenticated === true) {
+            // set cookie
+            $userResourceName = $configFetcher->fetchConf('COOKIE_CONFIG', ['cookie_names', 'user_resource']);
+            $cookieManipulator->setCookie($userResourceName, $username);
+            
+            // redirect to user page;
+            $clientRedirection = $configFetcher->fetchConf('URI_CONFIG', ['redirection', 'client_redirection']);
+            $redirectionAssocArray = [$clientRedirection => "/$username"];
+            $rediractionConvertewdToJson = $jsonConverter->convertArrayToJson($redirectionAssocArray);
 
-        echo "true";
+            echo $rediractionConvertewdToJson;
+        }
+        else {
+            $assocArrayToConvert = ['username' => $isAuthenticated, 'password' => $isAuthenticated];
+            $convertedToJson = $jsonConverter->convertArrayToJson($assocArrayToConvert);
+            
+            echo $convertedToJson;
+        }
     }
 }

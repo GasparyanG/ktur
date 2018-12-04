@@ -8,6 +8,7 @@ use DataBase\Tables\Users as Users;
 use Security\Password\Hasher as Hasher;
 use Cookie\Cookie as Cookie;
 use Augmention\Convertion\JsonConverter as JsonConverter;
+use Interactions\Config\ConfigFetcher as ConfigFetcher;
 
 class SignUp
 {
@@ -29,6 +30,7 @@ class SignUp
         $hasher = new Hasher();
         $manipulatorOfCookie = new Cookie();
         $jsonConverter = new JsonConverter();
+        $configFetcher = new ConfigFetcher();
 
         $parsedBodyFromAjaxCall = $req->getParsedBody();
 
@@ -96,7 +98,13 @@ class SignUp
         $this->createAndInjectUserIntoTable($dbmanipulator, $firstName, $lastName, $username, $hashedPassword, $salt);
 
         $manipulatorOfCookie->setCookie("user_name", $username);
-        $res->redirect("/$username");
+        
+        // redirect
+        $clientRedirection = $configFetcher->fetchConf('URI_CONFIG', ['redirection', 'client_redirection']);
+        $redirectionAssocArray = [$clientRedirection => "/" . $username];
+        $rediractionConvertewdToJson = $jsonConverter->convertArrayToJson($redirectionAssocArray);
+
+        echo $rediractionConvertewdToJson;
     }
 
     private function renderSignUpPage($res, $parsedBody, $errorMessages)

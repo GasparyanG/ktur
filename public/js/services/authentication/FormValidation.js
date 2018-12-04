@@ -4,4 +4,10 @@ ktur.service('FormValidator', [function() {
             return true;
         }
     }
+
+    this.validateLogIn = function(scope) {
+        if (scope.username && scope.password) {
+            return true;
+        }
+    }
 }])

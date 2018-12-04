@@ -10,6 +10,10 @@ class AuthenticationValidator
     protected $usernameFromForm;
     protected $tableName;
 
+    protected $errorMessages = [
+        "regular" => "Username or password is wrong try again",
+    ];
+
     /**
      * @param string $passwordFromForm
      * @param string $usernameFromForm
@@ -40,7 +44,7 @@ class AuthenticationValidator
         $credentialsFromDatabase = $this->fetchCredentialsFromDataBase($selectCredentialsStatement);
 
         if (!$credentialsFromDatabase) {
-            return false;
+            return $this->errorMessages['regular'];;
         }
 
         $isValid = $this->checkPassword($credentialsFromDatabase);
@@ -77,7 +81,7 @@ class AuthenticationValidator
         $hashedKeyAndPassword = $this->hashPasswordWithSalt($salt);
 
         if ($databaseHashedPassword !== $hashedKeyAndPassword) {
-            return false;
+            return $this->errorMessages['regular'];
         }
 
         return true;

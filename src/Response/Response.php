@@ -26,7 +26,7 @@ class Response
 
     public function redirect($path)
     {
-        // path need to be full!
+        // path MUST be full!
         header("Location: $path");
     }
 }

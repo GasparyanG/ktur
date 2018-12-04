@@ -14,4 +14,8 @@ $COOKIE_CONFIG = [
         // root: i.e. whole app can be traversed by this cookie
         'path'      => "/",
     ],
+
+    'cookie_names' => [
+        'user_resource' => "username",
+    ],
 ];

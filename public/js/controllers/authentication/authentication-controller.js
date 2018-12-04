@@ -1,5 +1,5 @@
-ktur.controller("AuthenticationController", ['$scope', '$http', 'ErrorHighlighter', 'FormValidator', 
-    function($scope, $http, ErrorHighlighter, FormValidator) {
+ktur.controller("AuthenticationController", ['$scope', '$http', 'ErrorHighlighter', 'FormValidator', 'Redirector',
+    function($scope, $http, ErrorHighlighter, FormValidator, Redirector) {
     $scope.signUp =  function() {
         /**
          * this will check to see whether all fealds of input is filled:
@@ -28,8 +28,14 @@ ktur.controller("AuthenticationController", ['$scope', '$http', 'ErrorHighlighte
                 "username" : $scope.username,
                 "password" : $scope.password
             }
-            
-            ErrorHighlighter.heighlightErrors(response.data);
+
+            var pathToResource = Redirector.isRedirectable(response.data);
+            if (!pathToResource){
+                ErrorHighlighter.heighlightErrors(response.data);
+            }
+            else {
+                Redirector.redirect(pathToResource);
+            }
             
         }, function errorCallback(response) {
             console.log('error');
