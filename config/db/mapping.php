@@ -12,6 +12,7 @@ $DATABASE_CONFIG = [
         "serverName" => "localhost",
         "tables"     => [
             'users' => 'users',
+            'user_components' => 'user_components',
         ],
     ],
 ];

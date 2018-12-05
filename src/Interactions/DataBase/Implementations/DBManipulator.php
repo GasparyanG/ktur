@@ -24,6 +24,7 @@ class DBManipulator implements DBManipulatorInterface
         $this->Reader = $this->partOfNamespace . "\Reader";
         $this->Updater = $this->partOfNamespace . "\Updater";
         $this->Deleter = $this->partOfNamespace . "\Deleter";
+        $this->TableManipulator = $this->partOfNamespace . "\TableManipulator";
     }
 
     public function __destruct()
@@ -62,5 +63,13 @@ class DBManipulator implements DBManipulatorInterface
 
         $queryResult = $deleter->delete($statement, $flag);
         return $queryResult;
+    }
+
+    public function createTable(string $keyForStatement)
+    {
+        $tableManipulator = new $this->TableManipulator($this->conn);
+        $tableName = $tableManipulator->create($keyForStatement);
+        
+        return $tableName;
     }
 }

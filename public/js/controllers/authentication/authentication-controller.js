@@ -28,7 +28,7 @@ ktur.controller("AuthenticationController", ['$scope', '$http', 'ErrorHighlighte
                 "username" : $scope.username,
                 "password" : $scope.password
             }
-
+            
             var pathToResource = Redirector.isRedirectable(response.data);
             if (!pathToResource){
                 ErrorHighlighter.heighlightErrors(response.data);

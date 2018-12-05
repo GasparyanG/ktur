@@ -9,6 +9,7 @@ use Security\Password\Hasher as Hasher;
 use Cookie\Cookie as Cookie;
 use Augmention\Convertion\JsonConverter as JsonConverter;
 use Interactions\Config\ConfigFetcher as ConfigFetcher;
+use Interactions\ImageHandling\DefaultImages\DefaultImageManipulator as DefaultImageManipulator;
 
 class SignUp
 {
@@ -31,6 +32,7 @@ class SignUp
         $manipulatorOfCookie = new Cookie();
         $jsonConverter = new JsonConverter();
         $configFetcher = new ConfigFetcher();
+        $defaultImageManipulator = new DefaultImageManipulator();
 
         $parsedBodyFromAjaxCall = $req->getParsedBody();
 
@@ -97,7 +99,11 @@ class SignUp
         list($hashedPassword, $salt) = $hasher->hashPassword($password);
         $this->createAndInjectUserIntoTable($dbmanipulator, $firstName, $lastName, $username, $hashedPassword, $salt);
 
-        $manipulatorOfCookie->setCookie("user_name", $username);
+        $cookieForUsername = $configFetcher->fetchConf('URI_CONFIG', ['cookie_names','user_resource']);
+        $manipulatorOfCookie->setCookie($cookieForUsername, $username);
+
+        // image including
+        $defaultImageManipulator->setUserDefaultImage($username);
         
         // redirect
         $clientRedirection = $configFetcher->fetchConf('URI_CONFIG', ['redirection', 'client_redirection']);
