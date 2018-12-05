@@ -3,6 +3,13 @@
 
 .ktur-footer
 {
-    background-color: var(--nav-bar-color);
+    background-color: var(--main-background-color);
     min-height: var(--nav-bar-height);
+}
+
+.separater
+{
+    margin-left: 10rem;
+    margin-right: 10rem;
+    margin-top: 2rem;
 }

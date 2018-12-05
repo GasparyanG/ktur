@@ -34,6 +34,6 @@ class TableManipulator
             }
         }
 
-        throw InvalidArgumentException('Passed in ' . $keyForStatement . ' is not being supported');
+        throw new InvalidArgumentException('Passed in ' . $keyForStatement . ' is not being supported');
     }
 }

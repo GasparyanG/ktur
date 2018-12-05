@@ -28,6 +28,7 @@ class Router implements MiddlewareInterface
             $r->addRoute("GET", "/log-in", "LogIn, getPage");
             $r->addRoute("POST", "/log-in", "LogIn, accessToAccout");
             $r->addRoute("GET", "/{user-name}", "User, getUser");
+            $r->addRoute("GET", "/{user-name}/resources", "User, populateUser");
         });
 
         $httpMethod = $request->getMethod();

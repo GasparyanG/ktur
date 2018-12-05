@@ -8,6 +8,7 @@ class Dispatcher
         $this->dirs = [
             'BusinessLogic\PageObjects',
             'BusinessLogic\LogIn',
+            'BusinessLogic\User',
         ];
     }
 
