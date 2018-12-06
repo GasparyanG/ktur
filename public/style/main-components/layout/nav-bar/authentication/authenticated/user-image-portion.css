@@ -1,0 +1,6 @@
+@import url("/public/style/config/sizes/nav-bar.css");
+
+#nav-bar-user-image > img
+{
+    max-width: var(--nav-bar-user-img-width);
+}

@@ -10,4 +10,9 @@ $URI_CONFIG = [
             "default" => "/public/photos/app-supporting-photos/user-default-photos/",
         ],
     ],
+
+    "uri_pathes" => [
+        "sign-up" => "/sign-up",
+        "log-in"  => "/log-in",
+    ],
 ];

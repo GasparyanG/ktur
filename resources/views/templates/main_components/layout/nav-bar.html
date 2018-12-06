@@ -1,5 +1,18 @@
 <link rel = "stylesheet" href = "/public/style/main-components/layout/nav-bar.css">
-<div class = "nav-bar">
+{# factory products #}
+{# authenticated #}
+<script src = "/public/js/controllers/nav-bar/nav-bar-creation-products/authenticated-case/nav-bar-user-image-injector.js"></script>
+
+{# un_authenticated #}
+<script src = "/public/js/controllers/nav-bar/nav-bar-creation-products/un-authenticated-case/log-in.js"></script>
+<script src = "/public/js/controllers/nav-bar/nav-bar-creation-products/un-authenticated-case/sign-up.js"></script>
+
+{# factory #}
+<script src = "/public/js/controllers/nav-bar/factory/factory.js"></script>
+
+{# controller #}
+<script src = "/public/js/controllers/nav-bar/nav-bar-controller.js"></script>
+<div class = "nav-bar" ng-controller = "NavBarController">
     <div class = "home">
         <a href = "#">Home</a>
     </div>
@@ -11,12 +24,18 @@
         {% endblock %}#}
         {% include "/templates/main_components/layout/nav-bar/searcher.html" %}
     </div>
-    <div class = "notification">
-        <a href = "#">Notifications</a>
+    <div id = "user-notification">
+        {# this will be included if user is authenticated #}
     </div>
     <div class = "authentication">
-        {% if user_name %}
             <div class = "authenticated-user">
+                <div id = "nav-bar-user-image">
+                    <link rel="stylesheet" href="/public/style/main-components/layout/nav-bar/authentication/authenticated/user-image-portion.css">
+                    {# 
+                        if element is empty then that will not be rendered: will be included in hierarchy but 
+                        will not be considered as element
+                    #}
+                </div>
                 {# 
                     this portion will need also to render:
                     - hyperlink to authenticated user page
@@ -38,17 +57,12 @@
                             }
                         }
                      #}
-                {{user_name}}
             </div>
-        {% else %}
             <div class = "unsigned-user">
-                <div class = "sign-up">
-                    <a href = "#">Sign Up</a>
+                <div id = "sign-up">
                 </div>
-                <div class = "sign-in">
-                    <a href = "#">Sign In</a>
+                <div id = "log-in">
                 </div>
             </div>
-        {% endif %}
     </div>
 </div>

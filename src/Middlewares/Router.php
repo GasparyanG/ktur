@@ -27,8 +27,10 @@ class Router implements MiddlewareInterface
             $r->addRoute("POST", "/sign-up", "SignUp, createAccount");
             $r->addRoute("GET", "/log-in", "LogIn, getPage");
             $r->addRoute("POST", "/log-in", "LogIn, accessToAccout");
+            $r->addRoute('GET', "/nav-bar", "NavBar, populateNavBar");
             $r->addRoute("GET", "/{user-name}", "User, getUser");
             $r->addRoute("GET", "/{user-name}/resources", "User, populateUser");
+            // this aprouach may rise error try to erase navbar from calss namespace and include to Dispatcher!
         });
 
         $httpMethod = $request->getMethod();

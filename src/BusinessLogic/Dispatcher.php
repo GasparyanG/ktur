@@ -9,6 +9,7 @@ class Dispatcher
             'BusinessLogic\PageObjects',
             'BusinessLogic\LogIn',
             'BusinessLogic\User',
+            'BusinessLogic\NavBar',
         ];
     }
 
