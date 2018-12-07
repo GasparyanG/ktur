@@ -1,0 +1,54 @@
+@import url(/public/style/config/sizes/main-sizes.css);
+@import url(/public/style/config/sizes/images.css);
+
+.user-pice-of-art
+{
+    margin-left: var(--content-box-right-padding);
+    margin-right: var(--content-box-left-padding);
+    display: flex;
+    flex-direction: column;
+    margin-top: var(--content-box-margin-top);
+    margin-bottom: var(--content-box-margin-bottom);
+}
+
+.user-pice-of-art > section
+{
+    margin-bottom: 1rem;
+}
+
+.user-pice-of-art > .user-state
+{
+    display: flex;
+    flex-direction: row;
+}
+
+.user-pice-of-art > .user-content-management
+{
+    /*{#}*/
+    display: flex;
+    flex-direction: row;
+}
+
+.user-state > div:nth-of-type(1) 
+{
+    flex: 1;
+}
+
+.user-state > div:nth-of-type(2)
+{
+    margin-left: var(--user-components-margin);
+    flex: 3;
+}
+
+.user-content-management > div:nth-of-type(1)
+{
+    /*to be equal to user image: its desired to define this rule portion in {#} marked position*/
+    max-width: var(--user-page-user-image);
+    flex: 1;
+}
+
+.user-content-management > div:nth-of-type(2)
+{
+    margin-left: var(--user-components-margin);
+    flex: 3;
+}

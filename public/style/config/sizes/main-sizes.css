@@ -1,4 +1,10 @@
 :root
 {
     --authentication-input-box-height: 25px;
+    --content-box-right-padding: 24%;
+    --content-box-left-padding: 7%;
+    --content-box-margin-top: 2rem;
+    --content-box-margin-bottom: 2rem;
+    --user-components-margin: 0.5rem;
+    --actions-font-weight: 700;
 }

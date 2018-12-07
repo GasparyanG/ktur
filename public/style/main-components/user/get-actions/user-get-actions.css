@@ -1,0 +1,33 @@
+@import url(/public/style/config/sizes/images.css);
+@import url(/public/style/config/colors/main-colors.css);
+@import url(/public/style/config/sizes/main-sizes.css);
+
+.user-get-actions
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    border: solid 1px var(--border-color);
+    height: calc(var(--user-page-user-image)/2);
+}
+
+.user-get-actions > div
+{
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+.user-get-actions > div > a
+{
+    color: var(--user-actions-link-color);
+    font-weight: var(--actions-font-weight);
+    text-decoration: none;
+}
+
+.user-get-actions > .currently-used
+{
+    border-top: solid 3px var(--active-element-border-color);
+    border-bottom: solid 3px var(--active-element-border-color);
+}

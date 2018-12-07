@@ -1,0 +1,25 @@
+@import url(/public/style/config/colors/main-colors.css);
+@import url(/public/style/config/sizes/main-sizes.css);
+
+.user-post-actions
+{
+    display: flex;
+    flex-direction: column;
+    border: solid 1px var(--border-color);
+    min-height: 150px;
+    width: 50%;
+    text-align: center;
+}
+
+.user-post-actions > div > a
+{
+    color: var(--user-actions-link-color);
+    text-decoration: none;
+    font-weight: var(--actions-font-weight);
+}
+
+.user-post-actions > .curretly-used 
+{
+    border-left: solid 3px lime;
+    border-right: solid 3px lime;
+}

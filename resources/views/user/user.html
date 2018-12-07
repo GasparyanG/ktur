@@ -1,35 +1,41 @@
-{% extends '/templates/main_components/layout.html' %}
+ {% extends '/templates/main_components/layout.html' %}
 
 {% block resource %}
+<script src = "/public/js/services/validators/url-validator.js"></script>
 <script src = "/public/js/controllers/user/user-page-creation-products/user-image-injector.js"></script>
 <script src = "/public/js/controllers/user/factory/factory.js"></script>
 <script src = "/public/js/controllers/user/user-page-controller.js"></script>
+{# create css file and include it #}
+<link rel="stylesheet" href="/public/style/main-components/user/main-layout-of-user.css">
 
     <div class = "user-pice-of-art" ng-controller = "UserPageController">
-        {# user image, connectin date, etc. #}
-        <div class = "user-representation">
-            {% include "/user/user-components/user-representation.html" %}
-        </div>
-        
-        {# add sth to database, change profile, etc. #}
-        <div class = "post-actions">
-            {% block postActions %}
-            {% endblock %}
-        </div>
-        
-        {# see statements, see stars, see basket, etc. #}
-        <div class = "get-actions">
-            {% block getActions %}
-            {% endblock %}
-        </div>
-        
-        {# 
-            render statement input form, render user activites: 
-            this all need to be done in SPA manner with  help of AngularJS 
-        #}
-        <div class = "main-action-section">
-            {% block mainActionSection %}
-            {% endblock %}
-        </div>
+        <section class = "user-state">
+            {# user image, connectin date, etc. #}
+            <div class = "user-representation">
+                {% include "/user/user-components/user-representation.html" %}
+            </div>
+            
+            {# see statements, see stars, see basket, etc. #}
+            <div class = "get-actions">
+                {% include "/user/user-components/user-get-actions.html" %}
+            </div>
+        </section>
+
+        <section class = "user-content-management">
+            {# add sth to database, change profile, etc. #}
+            <div class = "post-actions">
+                {% include "/user/user-components/user-post-actions.html" %}
+            </div>
+            
+            {# 
+                render statement input form, render user activites: 
+                this all need to be done in SPA manner with  help of AngularJS 
+            #}
+            <div class = "main-action-section">
+                main action section
+                {% block mainActionSection %}
+                {% endblock %}
+            </div>
+        </section>
     </div>
 {% endblock %}

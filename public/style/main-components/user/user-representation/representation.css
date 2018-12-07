@@ -1,0 +1,6 @@
+@import url("/public/style/config/sizes/images.css");
+
+#user_image > img
+{
+    width: var(--user-page-user-image);
+}

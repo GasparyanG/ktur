@@ -7,4 +7,7 @@
     --text-color-over-dark: #ffffff;
     --text-color: rgba(0,0,0,0.7);
     --error-color: red;
+    --border-color: aqua;
+    --active-element-border-color: lime;
+    --user-actions-link-color: rgb(0, 0, 102);
 }
