@@ -1,15 +1,24 @@
 <link rel="stylesheet" href="/public/style/main-components/user/get-actions/user-get-actions.css">
 {# ng-controller = "GetActionsController" #}
 <div class = "user-get-actions">
-    <div class = "statement">
-        <a href="#statements">Statements</a>
+    <div class = "statements" id = "statements">
+        <a href="#statements" ng-click = "heighlight('statements')">
+            Statements
+            <i class="fas fa-file-alt"></i>
+        </a>
     </div>
 
-    <div class = "basket">
-        <a href="#basket">Basket</a>
+    <div class = "basket" id = "basket">
+        <a href="#basket" ng-click = "heighlight('basket')">
+            Basket
+            <i class="fas fa-shopping-basket"></i>
+        </a>
     </div>
 
-    <div class = "stars">
-        <a href="#stars">Stars</a>
+    <div class = "stars" id = "stars">
+        <a href="#stars" ng-click = "heighlight('stars')">
+            Stars
+            <i class="fas fa-star"></i>
+        </a>
     </div>
 </div>

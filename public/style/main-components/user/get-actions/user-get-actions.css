@@ -9,7 +9,7 @@
     justify-content: space-around;
     align-items: center;
     border: solid 1px var(--border-color);
-    height: calc(var(--user-page-user-image)/2);
+    height: calc(var(--user-page-user-image)/4);
 }
 
 .user-get-actions > div
