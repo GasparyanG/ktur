@@ -4,21 +4,24 @@
     <div class = "statements" id = "statements">
         <a href="#statements" ng-click = "heighlight('statements')">
             Statements
-            <i class="fas fa-file-alt"></i>
+            {# icon #}
+            {% include "/icons/actions/statement/watche-statements.html" %}
         </a>
     </div>
 
     <div class = "basket" id = "basket">
         <a href="#basket" ng-click = "heighlight('basket')">
             Basket
-            <i class="fas fa-shopping-basket"></i>
+            {# icon #}
+            {% include "/icons/actions/basket.html" %}
         </a>
     </div>
 
     <div class = "stars" id = "stars">
         <a href="#stars" ng-click = "heighlight('stars')">
             Stars
-            <i class="fas fa-star"></i>
+            {# icon #}
+            {% include "/icons/actions/star.html" %}
         </a>
     </div>
 </div>
