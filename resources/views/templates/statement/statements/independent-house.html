@@ -1,0 +1,17 @@
+{# ng-controller = "IndHouseCtrl" #}
+<div class = "independent-house" ng-controller = "IndHouseCtrl">
+    <form>
+        {# dropdown location input #}
+        {% include "/templates/statement/inputs/drop-down-lists/location.html" %}
+        {# regular input for building area #}
+        {% include "/templates/statement/inputs/regular-inputs/area-of-building.html" %}
+        {# regular input for building floors #}
+        {% include "/templates/statement/inputs/regular-inputs/floor-amount.html" %}
+        {# dropdown list for choosing between rent and sell #}
+        {% include "/templates/statement/inputs/drop-down-lists/rent-sell.html" %}
+        {# populate this area #}
+        {# button for submission#}
+        {% include "/templates/statement/buttons/ng-click-button.html" %}
+    </form>
+</div>
+

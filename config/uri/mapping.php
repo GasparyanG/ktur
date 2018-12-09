@@ -15,4 +15,16 @@ $URI_CONFIG = [
         "sign-up" => "/sign-up",
         "log-in"  => "/log-in",
     ],
+
+    "actions"   => [
+        "get-actions" => [
+            "statements" => "statements/",
+            "basket"    => "basket/",
+            "stars"     => "stars/",
+        ],
+
+        "post-actions"  => [
+            "add-statement" => "statement-addition/",
+        ],
+    ],
 ];

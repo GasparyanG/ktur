@@ -47,9 +47,12 @@ class User
         $userImageFileName = $userDataFetcher->fetchImageFileName($username);
         
         $defaultUserImageServingPath = $hateSupporter->combinePathSegments(['photos', 'user', 'default'], $userImageFileName['user_image']);
-
         $jsonPreparedHrefAndRel = $jsonPrepareness->makeHrefRestfull($defaultUserImageServingPath, "user_image");
-        $dataToSendToClient['user'] = [$jsonPreparedHrefAndRel];
+        $dataToSendToClient['user'][] = [$jsonPreparedHrefAndRel];
+
+        $statementAdditionPath = $hateSupporter->combinePathSegments(['actions', 'post-actions', 'add-statement'], $username, true);
+        $jsonPreparedStatement = $jsonPrepareness->makeHrefRestfull($statementAdditionPath, "add-statement");
+        $dataToSendToClient['user'][] = [$jsonPreparedStatement];
 
         echo $jsonConverter->convertArrayToJson($dataToSendToClient);
     }
