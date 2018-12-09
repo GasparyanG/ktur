@@ -10,6 +10,7 @@ class Dispatcher
             'BusinessLogic\LogIn',
             'BusinessLogic\User',
             'BusinessLogic\NavBar',
+            'BusinessLogic\PostActions',
         ];
     }
 

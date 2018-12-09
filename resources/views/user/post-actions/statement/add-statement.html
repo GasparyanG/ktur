@@ -1,4 +1,12 @@
+{% extends  "/user/user.html" %}
+
+{% block mainActionSection %}
+{# post-actions controllers #}
+<script src = "/public/js/controllers/user/post-action-controllers/add-statement/ind-house/ind-house-ctrl.js"></script>
+<script src = "/public/js/controllers/user/post-action-controllers/add-statement/apartment/apartment-ctrl.js"></script>
 <div class = "add-statement">
     {% include "/templates/statement/statements/independent-house.html" %}
+    {% include "/templates/statement/statements/apartment.html" %}
     {# include template for statement #}
 </div>
+{% endblock %}
