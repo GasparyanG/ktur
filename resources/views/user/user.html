@@ -1,6 +1,7 @@
  {% extends '/templates/main_components/layout.html' %}
 
 {% block resource %}
+<script src = "/public/js/angular_config/route-config.js"></script>
 <script src = "/public/js/services/actions-over-elements/element-activater.js"></script>
 <script src = "/public/js/services/validators/url-validator.js"></script>
 <script src = "/public/js/controllers/user/user-page-creation-products/user-image-injector.js"></script>
@@ -33,9 +34,7 @@
                 this all need to be done in SPA manner with  help of AngularJS 
             #}
             <div class = "main-action-section">
-                main action section
-                {% block mainActionSection %}
-                {% endblock %}
+                {% include "/user/user-components/main-action-section.html" %}
             </div>
         </section>
     </div>
