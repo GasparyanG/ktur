@@ -2,6 +2,11 @@
 
 {% block resource %}
 {#<script src = "/public/js/angular_config/route-config.js"></script>#}
+{# main action controller #}
+<script src = "/public/js/controllers/user/main-action-controllers/main-action-controller.js"></script>
+{# main actoin section's servieces #}
+<script src = "/public/js/controllers/user/main-action-controllers/services/post-actions/add-statement/temlate-resources.js"></script>
+
 <script src = "/public/js/controllers/user/user-page-creation-products/common/anchor-creation.js"></script>
 <script src= "/public/js/controllers/user/user-page-creation-products/add-statement-href.js"></script>
 <script src = "/public/js/services/actions-over-elements/element-activater.js"></script>
@@ -35,8 +40,9 @@
                 render statement input form, render user activites: 
                 this all need to be done in SPA manner with  help of AngularJS 
             #}
-            <div class = "main-action-section">
+            <div class = "main-action-section" ng-controller = "MainActionCtrl">
                 {% block mainActionSection %}
+                
                 {% endblock %}
             </div>
         </section>

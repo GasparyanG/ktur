@@ -19,6 +19,7 @@ class ConfigFetcher
             "COOKIE_CONFIG"     => "/cookie/mapping.php",
             "HASH_CONFIG"       => "/hashing/mapping.php",
             "URI_CONFIG"        => "/uri/mapping.php",
+            "OPTIONS_CONFIG"    => "/options/mapping.php",
         ];
     }
 

@@ -31,6 +31,8 @@ class Router implements MiddlewareInterface
             $r->addRoute("GET", "/{user-name}", "User, getUser");
             $r->addRoute("GET", "/{user-name}/resources", "User, populateUser");
             $r->addRoute("GET", "/{user-name}/statement-addition", "PostActions, getStatementAddition");
+            // get template creation important information
+            $r->addRoute("GET", "/{user-name}/statement-addition/resources", "PostActions, fetchStatementAdditionInfo");
             // this aprouach may rise error try to erase navbar from calss namespace and include to Dispatcher!
         });
 
