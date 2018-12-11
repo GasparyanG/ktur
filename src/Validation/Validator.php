@@ -1,10 +1,14 @@
 <?php 
 namespace Validation;
 
+use Validation\DefaultErrorMessageSupporter as DefaultErrorMessageSupporter;
+
 class Validator
 {
     public function __construct()
     {
+
+        $this->defaultErrorMessageSupporter = new DefaultErrorMessageSupporter();
         /**
          * unmatched values will be appended to this array
          * 
@@ -16,7 +20,13 @@ class Validator
 
         $this->lengthOptions = [
             "MIN" => "greaterOrEqualThan",
-            "MAX" => "lessOrEqualThan(",
+            "MAX" => "lessOrEqualThan",
+        ];
+
+        $this->keysForDefaultErrorMessages = [
+            "length" => "length",
+            "numeric" => "numeric",
+            "alphanumeric" => "alphanumeric"
         ];
     }
 
@@ -27,7 +37,7 @@ class Validator
      * @param string|null $errorMessage if validation is false then add errMessage will be appended to 
      *      $this->errorMessages!
      */
-    public function isLength(array $fealdNameValuePair, array $options, string $errorMessage)
+    public function isLength(array $fealdNameValuePair, array $options, string $errorMessage = null)
     {
         list($option, $value) = $this->fetchKeyValue($options);
 
@@ -36,13 +46,24 @@ class Validator
          * error message is needed to know what kind of error is triggered
          */
         $fealdNameValuePair = $this->convertToRegularArray($fealdNameValuePair);
-        list($fealdName, $fealdValue) = $fealdNameValuePair;
+        list($fieldName, $fealdValue) = $fealdNameValuePair;
 
         $methodName = $this->getMethodName($option);
 
         if (!$this->$methodName($fealdValue, $value)) {
-            $this->errorMessages[$fealdName] = $errorMessage;
+            if ($errorMessage === null) {
+                $errorMessage = $this->defaultErrorMessageSupporter->getDefaultErrorMessage($this->keysForDefaultErrorMessages['length'],
+                $fieldName, $options);
+            }
+
+            $this->errorMessages[$fieldName] = $errorMessage;
         }
+    }
+
+    // error messages is need to be default
+    public function isNumeric($fieldName, $fealdValue)
+    {
+
     }
 
     private function fetchKeyValue(array $options)

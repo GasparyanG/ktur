@@ -3,6 +3,7 @@ namespace BusinessLogic\PostActions;
 
 use Interactions\Config\ConfigFetcher as ConfigFetcher;
 use Augmention\Convertion\JsonConverter as JsonConverter;
+use Validation\Validator as Validator;
 
 class PostActions
 {
@@ -47,5 +48,22 @@ class PostActions
         $templatePopulatorInJson = $this->jsonConverter->convertArrayToJson($assocArrayToPopulateTemplates);
 
         echo $templatePopulatorInJson;
+    }
+
+    public function postAction($req, $res, $routeInfo)
+    {
+        // objects to rely on
+        $validator = new Validator();
+
+        $parsedBodyInJsonFormat = $req->getParsedBody();
+        
+        //asoc array converted from json
+        $parsedBody = $this->jsonConverter->parsedBodyKeyConvertToAssocArray($parsedBodyInJsonFormat);
+
+        foreach($parsedBody as $statementType => $formBody) {
+            // one way to fetch key and value from assoc array
+        }
+
+        // at the end validator object will contain desired info abour error messages        
     }
 }

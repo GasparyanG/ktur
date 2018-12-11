@@ -49,10 +49,10 @@ class SignUp
          * 
          * @see Validation\Validator
          */
-        $validator->isLength($username, ["min" => 1], "Username need to be at least 1 character");
-        $validator->isLength($firstName, ["min" => 1], "First name need to be at least 1 character");
-        $validator->isLength($lastName, ["min" => 1], "Last name need to be at least 1 character");
-        $validator->isLength($password, ["min" => 1], "Password need to be at least 1 character");
+        $validator->isLength($username, ["min" => 1]);
+        $validator->isLength($firstName, ["min" => 1]);
+        $validator->isLength($lastName, ["min" => 1]);
+        $validator->isLength($password, ["min" => 1]);
 
         // return clollected error messages if any
         $errorMessages = $validator->getErrorMessages();

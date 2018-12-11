@@ -21,7 +21,7 @@ ktur.controller("AuthenticationController", ['$scope', '$http', 'ErrorHighlighte
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
             }
-        }).then(function successsCallback(response) {
+        }).then(function successCallback(response) {
             var inputFealds = {
                 'first_name' : $scope.first_name,
                 "last_name" : $scope.last_name,
