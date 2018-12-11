@@ -4,6 +4,7 @@ namespace BusinessLogic\PostActions;
 use Interactions\Config\ConfigFetcher as ConfigFetcher;
 use Augmention\Convertion\JsonConverter as JsonConverter;
 use Validation\Validator as Validator;
+use BusinessLogic\PostActions\ValidationProductFactory\Factory as Factory;
 
 class PostActions
 {
@@ -15,6 +16,7 @@ class PostActions
 
         $this->configFetcher = new ConfigFetcher();
         $this->jsonConverter = new JsonConverter();
+        $this->factory = new Factory();
     }
 
     public function getStatementAddition($req, $res, $routeInfo)
@@ -64,6 +66,12 @@ class PostActions
             // one way to fetch key and value from assoc array
         }
 
-        // at the end validator object will contain desired info abour error messages        
+        foreach($formBody as $fieldName => $fieldValue) {
+            // $validator will store all error messages:
+            // $validator->getErrorMessages();
+            $this->factory->validate($fieldName, $fieldValue, $validator);
+        }
+
+        var_dump($validator->getErrorMessages());
     }
 }

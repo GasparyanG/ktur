@@ -5,15 +5,24 @@ class Factory
 {
     public function __construct()
     {
-        // services that serves validation specific calls
-        $this->products = [
+        $this->validationProductsNamespace = "BusinessLogic\PostActions\ValidationProducts\\";
 
+        // services that serves validation specific calls
+        $this->productsNames = [
+            'AreaOfBuilding',
+            'ForRentSell',
+            'AmountOfFloors',
+            'AreaOfYard',
+            'Price',
         ];
     }
 
-    public function create($fieldName, $fieldValue, $validator)
+    public function validate($fieldName, $fieldValue, $validator)
     {
-        foreach($this->products as $product) {
+        foreach($this->productsNames as $productName) {
+            $productFullyQualifiedNamespace = $this->validationProductsNamespace . $productName;
+            $product = new $productFullyQualifiedNamespace();
+
             if ($product->isValid($fieldName)) {
                 $product->execute($fieldName, $fieldValue, $validator);
                 break;

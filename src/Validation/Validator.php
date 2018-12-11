@@ -61,9 +61,24 @@ class Validator
     }
 
     // error messages is need to be default
-    public function isNumeric($fieldName, $fealdValue)
+    public function isNumeric($fieldName, $fieldValue)
     {
+        if (!is_numeric($fieldValue)) {
+            $defaultErrorMessage = $this->defaultErrorMessageSupporter->getDefaultErrorMessage($this->keysForDefaultErrorMessages['numeric'],
+            $fieldName);
+            
+            $this->errorMessages[$fieldName] = $defaultErrorMessage;
+        }
+    }
 
+    public function isAlphaNumeric($fieldName, $fieldValue)
+    {
+        if (!ctype_alnum($fieldValue)) {
+            $defaultErrorMessage = $this->defaultErrorMessageSupporter->getDefaultErrorMessage($this->keysForDefaultErrorMessages['alphanumeric'],
+            $fieldName);
+
+            $this->errorMessages[$fieldName] = $defaultErrorMessage;   
+        }
     }
 
     private function fetchKeyValue(array $options)

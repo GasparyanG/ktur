@@ -1,12 +1,11 @@
 <?php
 namespace BusinessLogic\PostActions\ValidationProducts;
 
-class AreaOfBuilding
+class AmountOfFloors
 {
-    public function isValid($fealdName)
+    public function isValid($fieldName)
     {
-        // value taken from inputs/regular-inputs/area-of-building.html:ng-model
-        return $fealdName === "buildingArea";
+        return $fieldName === "floorAmount";
     }
 
     public function execute($fieldName, $fieldValue, $validator)
