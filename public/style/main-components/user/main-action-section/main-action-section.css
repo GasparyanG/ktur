@@ -1,0 +1,14 @@
+@import url(/public/style/config/colors/main-colors.css);
+@import url(/public/style/config/sizes/main-sizes.css);
+
+#main-action-section > div
+{
+    width: 100%;
+}
+
+#main-action-section
+{
+    border: 1px solid var(--border-color);
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}

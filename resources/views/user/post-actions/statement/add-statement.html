@@ -4,9 +4,16 @@
 {# post-actions controllers #}
 <script src = "/public/js/controllers/user/post-action-controllers/add-statement/ind-house/ind-house-ctrl.js"></script>
 <script src = "/public/js/controllers/user/post-action-controllers/add-statement/apartment/apartment-ctrl.js"></script>
-<div class = "add-statement">
-    {% include "/templates/statement/statements/independent-house.html" %}
-    {% include "/templates/statement/statements/apartment.html" %}
-    {# include template for statement #}
+<link rel="stylesheet" href="/public/style/main-components/user/post-actions/add-statement/add-statement.css">
+<div id = "add-statement">
+    <section class = "tabs">
+        {% include "/templates/statement/tabs/statement-types.html" %}
+    </section>
+    <section class = "statement-templates">
+        <link rel="stylesheet" href="/public/style/main-components/user/post-actions/add-statement/statement-templates.css">
+        {% include "/templates/statement/statements/independent-house.html" %}
+        {% include "/templates/statement/statements/apartment.html" %}
+        {# include template for statement #}
+    </section>
 </div>
 {% endblock %}

@@ -1,0 +1,27 @@
+@import url(/public/style/config/colors/main-colors.css);
+
+#statement-types 
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+#statement-types > div
+{
+    color: var(--text-color);
+}
+
+#statement-types > div:hover
+{
+    color: var(--used-tab-color);
+    cursor: pointer;
+    transition: 0.9ms;
+    border-bottom: var(--used-tab-border);
+}
+
+#statement-types .used-tab
+{
+    color: var(--used-tab-color);
+    border-bottom: var(--used-tab-border);
+}

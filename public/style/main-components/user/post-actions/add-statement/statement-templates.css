@@ -1,0 +1,72 @@
+@import url(/public/style/config/sizes/statement-templates.css);
+@import url(/public/style/config/colors/main-colors.css);
+@import url(/public/style/config/element-config/form-input.css);
+@import url(/public/style/config/ready-elements/button.css);
+
+.statement-templates
+{
+    min-height: var(--min-height-of-statement-box);
+    position: relative;
+}
+
+.statement-templates > div
+{
+    min-height: var(--min-height-of-statement-box);
+    position: absolute;
+    width: 100%;
+    background-color: var(--main-background-color);
+}
+
+/*{# ng-controller = "IndHouseCtrl" #}
+<div class = "independent-house" ng-controller = "IndHouseCtrl">
+    <form>
+        {# dropdown location input #}
+        {% include "/templates/statement/inputs/drop-down-lists/location.html" %}
+        {# regular input for building area #}
+        {% include "/templates/statement/inputs/regular-inputs/area-of-building.html" %}
+        {# regular input for building floors #}
+        {% include "/templates/statement/inputs/regular-inputs/floor-amount.html" %}
+        {# dropdown list for choosing between rent and sell #}
+        {% include "/templates/statement/inputs/drop-down-lists/rent-sell.html" %}
+        {% include "/templates/statement/inputs/regular-inputs/area-of-yard.html" %}
+        {% include "/templates/statement/inputs/regular-inputs/price.html" %}
+        {# populate this area #}
+        {# button for submission#}
+        {% include "/templates/statement/buttons/ng-click-button.html" %}
+    </form>
+</div>
+
+*/
+
+.used-tab {
+    z-index: 1;
+}
+
+.statement-templates > div
+{
+    display: flex;
+    flex-direction: column;
+}
+
+
+.statement-templates > div > form > div
+{
+    margin-left: 15%;
+    padding-top: 1rem;
+    width: 70%;
+}
+
+.statement-templates > div > form > div > select
+{
+    width: 100%;
+    height: var(--select-input-height);
+    font-size: var(--input-font-size);
+}
+
+.statement-templates > div > form > div > input
+{
+    width: 100%;
+    font-size: var(--input-font-size);
+    height: var(--input-box-height);
+    background-color: var(--input-background-color);
+}

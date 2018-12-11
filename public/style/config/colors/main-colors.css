@@ -5,9 +5,11 @@
     --search-area-color: #3f4448;
     --search-area-hover-color: #fff;
     --text-color-over-dark: #ffffff;
-    --text-color: rgba(0,0,0,0.7);
+    --text-color: rgba(0,0,0,0.5);
     --error-color: red;
     --border-color: aqua;
     --active-element-border-color: lime;
     --user-actions-link-color: rgb(0, 0, 102);
+    --used-tab-color: black;
+    --used-tab-border: 3px solid lime;
 }

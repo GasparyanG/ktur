@@ -43,7 +43,7 @@
 .user-content-management > div:nth-of-type(1)
 {
     /*to be equal to user image: its desired to define this rule portion in {#} marked position*/
-    max-width: var(--user-page-user-image);
+    min-width: var(--user-page-user-image);
     flex: 1;
 }
 
