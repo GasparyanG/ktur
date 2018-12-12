@@ -5,6 +5,7 @@ use Interactions\Config\ConfigFetcher as ConfigFetcher;
 use Augmention\Convertion\JsonConverter as JsonConverter;
 use Validation\Validator as Validator;
 use BusinessLogic\PostActions\ValidationProductFactory\Factory as Factory;
+use Interactions\Container\Container as Container;
 
 class PostActions
 {
@@ -17,6 +18,7 @@ class PostActions
         $this->configFetcher = new ConfigFetcher();
         $this->jsonConverter = new JsonConverter();
         $this->factory = new Factory();
+        $this->container = new Container();
     }
 
     public function getStatementAddition($req, $res, $routeInfo)
@@ -43,9 +45,8 @@ class PostActions
          */
 
         // options to choose from (for rent for sell)
-        $optionsOverHouse = $this->configFetcher->fetchConf('OPTIONS_CONFIG', ['house']);
-
-        $assocArrayToPopulateTemplates['options_over_house'] = $optionsOverHouse;
+        $assocArrayToPopulateTemplates = $this->container->fetchData("houseoptions", $assocArrayToPopulateTemplates);
+        $assocArrayToPopulateTemplates = $this->container->fetchData("locations", $assocArrayToPopulateTemplates);
 
         $templatePopulatorInJson = $this->jsonConverter->convertArrayToJson($assocArrayToPopulateTemplates);
 

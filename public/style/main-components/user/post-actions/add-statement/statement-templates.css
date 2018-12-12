@@ -38,6 +38,13 @@
 
 */
 
+.coming-soon 
+{
+    margin: 100px;
+    font-size: 3rem;
+    text-align: center;
+}
+
 .used-tab {
     z-index: 1;
 }

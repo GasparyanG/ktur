@@ -2,6 +2,8 @@
 
 {% block mainActionSection %}
 {# post-actions controllers #}
+<script src = "/public/js/controllers/user/post-action-controllers/add-statement/hostel/hostel-ctrl.js"></script>
+<script src = "/public/js/controllers/user/post-action-controllers/add-statement/hotel/hotel-ctrl.js"></script>
 <script src = "/public/js/controllers/user/post-action-controllers/add-statement/ind-house/ind-house-ctrl.js"></script>
 <script src = "/public/js/controllers/user/post-action-controllers/add-statement/apartment/apartment-ctrl.js"></script>
 <link rel="stylesheet" href="/public/style/main-components/user/post-actions/add-statement/add-statement.css">
@@ -13,6 +15,8 @@
         <link rel="stylesheet" href="/public/style/main-components/user/post-actions/add-statement/statement-templates.css">
         {% include "/templates/statement/statements/independent-house.html" %}
         {% include "/templates/statement/statements/apartment.html" %}
+        {% include "/templates/statement/statements/hotel.html" %}
+        {% include "/templates/statement/statements/hostel.html" %}
         {# include template for statement #}
     </section>
 </div>
