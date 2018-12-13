@@ -2,19 +2,27 @@
 namespace Security\FileSystem;
 
 use Psr\Http\Message\ServerRequestInterface as ServerRequestInterface;
+use Validation\SpecificValidators\FileUploadValidation\FileUploadValidator as FileUploadValidator;
 
 class FileNames
 {
+    public function __construct()
+    {
+        $this->fileUploadValidator = new FileUploadValidator();
+    }
     
     public function makeStatementImageName(ServerRequestInterface $req, string $inputFieldName)
     {
+        // extension based on MIME tpye
         $extension = $this->getExtension($req, $inputFieldName);
-
+        //user ip
         $userIP = $this->getUserIp($req);
         // portions of file name
         $timeSegment = $this->integrateTime();
+        // composition
+        $composedPortions = $userIP . "-" . $timeSegment . $extension;
 
-        $composedPortions = $userIP . "-" . $timeSegment
+        return $composedPortions;
     }
 
     public function integrateTime()
@@ -40,9 +48,16 @@ class FileNames
 
     private function getExtension(ServerRequestInterface $req, string $inputFieldName)
     {
-        $serverParams = $req->getServerParams();
-        $fileMimeType = $serverParams[$inputFieldName]['type'];
+        $uploadedFiles = $req->getUploadedFiles();
+        // UploadFile object
+        $fileMimeType = $uploadedFiles[$inputFieldName]->getClientMediaType();
 
-        // $this->validator validate mime type
+        $extension = $this->fileUploadValidator->validateMimeType($fileMimeType);
+
+        if (!$extension) {
+            // prompt user about iamge types, which are supported
+        }
+
+        return $extension;
     }
 }

@@ -20,6 +20,7 @@ class ConfigFetcher
             "HASH_CONFIG"       => "/hashing/mapping.php",
             "URI_CONFIG"        => "/uri/mapping.php",
             "OPTIONS_CONFIG"    => "/options/mapping.php",
+            "FORM_CONFIG"       => "/form/mapping.php",
         ];
     }
 

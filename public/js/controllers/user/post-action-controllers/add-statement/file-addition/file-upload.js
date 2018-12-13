@@ -6,7 +6,8 @@ ktur.controller("ImageUpload", ['$scope', '$http', function($scope, $http) {
     $scope.uploadFile = function() {
         var formData = new FormData();
         var fileInput = document.getElementById('imageUpload');
-        formData.append('statementImageInput', fileInput.files[0]);
+        // form/mapper.php
+        formData.append('statementImageUpload', fileInput.files[0]);
         $http({
             method: "POST",
             url: window.location.href + "/add-statement-image",
