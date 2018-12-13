@@ -12,4 +12,12 @@
     --button-padding: var(--input-padding);
     --button-min-width: 100px;
     --disabled-color: #34d857;
+    
+    /*action primary button*/
+    --action-primary-button: rgb(28, 130, 236);
+    --action-border-radius: 4px;
+    --action-text-color: #ffffff;
+    --action-width: 100px;
+    --action-height: 30px;
+    --action-padding: 10px;
 }

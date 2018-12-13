@@ -2,6 +2,7 @@
 
 .primary-btn 
 {
+    cursor: pointer;
     background-color: var(--primary-button);
     border-radius: var(--button-border-radius);
     border: var(--button-border);

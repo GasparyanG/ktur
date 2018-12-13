@@ -1,0 +1,11 @@
+<script src = "/public/js/controllers/user/post-action-controllers/add-statement/file-addition/file-upload.js"></script>
+<link rel="stylesheet" href="/public/style/main-components/user/post-actions/add-statement/image-upload.css">
+<div ng-controller = "ImageUpload" id = "image-upload">
+    <div class = "browse-and-add">
+        <input id = "imageUpload" type="file" ng-model = "imageUpload"
+        onchange="angular.element(this).scope().uploadFile()">
+        <div ng-click = "triggerFileUploader()">
+            Add Image
+        </div>
+    </div>
+</div>

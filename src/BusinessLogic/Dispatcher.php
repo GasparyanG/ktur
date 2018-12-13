@@ -11,6 +11,7 @@ class Dispatcher
             'BusinessLogic\User',
             'BusinessLogic\NavBar',
             'BusinessLogic\PostActions',
+            'BusinessLogic\FileSystemManipulation',
         ];
     }
 

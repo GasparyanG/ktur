@@ -1,0 +1,30 @@
+@import url(/public/style/config/element-config/button.css);
+@import url(/public/style/config/element-config/input.css);
+
+#image-upload
+{
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    margin-top: 1rem;
+    border: var(--default-border);
+    position: relative;
+}
+
+#image-upload > div > input
+{
+    position: absolute;
+    opacity: 0;
+    z-index: -1;
+}
+
+#image-upload > div > div
+{
+    background-color: var(--action-primary-button);
+    padding: var(--action-padding);
+    border-radius: var(--action-border-radius);
+    text-align: center;
+    color: var(--action-text-color);
+    cursor: pointer;
+    max-width: var(--action-width);
+    max-height: var(--action-heigh);
+}
