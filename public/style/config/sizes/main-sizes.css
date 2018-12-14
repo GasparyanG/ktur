@@ -8,4 +8,7 @@
     --user-components-margin: 0.5rem;
     --actions-font-weight: 700;
     --border-size: 1px;
+    /*statement section*/
+    --statement-image-max-width: 100px;
+    --elements-left-margin: 1rem;
 }

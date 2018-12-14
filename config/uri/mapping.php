@@ -9,6 +9,10 @@ $URI_CONFIG = [
         "user" => [
             "default" => "/public/photos/app-supporting-photos/user-default-photos/",
         ],
+
+        "statement_photos" => [
+            "directory" => "/public/photos/business-logic-photos/statement-photos/",
+        ],
     ],
 
     "uri_pathes" => [

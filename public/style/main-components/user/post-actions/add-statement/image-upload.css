@@ -1,13 +1,31 @@
 @import url(/public/style/config/element-config/button.css);
 @import url(/public/style/config/element-config/input.css);
+@import url(/public/style/config/sizes/main-sizes.css);
 
 #image-upload
 {
+    /*flex config*/
+    display: flex;
+    justify-content: start;
+    flex-direction: row;
+    flex-wrap: wrap;
+    
+    /*casual config*/
     padding-top: 1rem;
     padding-bottom: 1rem;
     margin-top: 1rem;
     border: var(--default-border);
     position: relative;
+}
+
+#image-upload > div > img 
+{
+    max-width: var(--statement-image-max-width);
+}
+
+#image-upload > div 
+{
+    margin: var(--elements-left-margin); 
 }
 
 #image-upload > div > input
