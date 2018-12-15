@@ -1,7 +1,7 @@
 ktur.service("SelectHandler", [function() {
     this.selectElements = {
-        "select-location" : "select-location",
-        "rent-sell" : "rent-sell"
+        "select-location" : "location",
+        "rent-sell" : "rentSell"
     }
 
     this.setLocationOptionAsSelected = function() {

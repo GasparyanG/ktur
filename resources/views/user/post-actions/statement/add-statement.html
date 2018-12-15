@@ -1,12 +1,15 @@
 {% extends  "/user/user.html" %}
 
 {% block mainActionSection %}
+{# error highlighter #}
+<script src = "/public/js/services/user/add-statement/errorHighlighting/statement-error-highlighter.js"></script>
 {# post-actions controllers #}
 <script src = "/public/js/controllers/user/post-action-controllers/add-statement/hostel/hostel-ctrl.js"></script>
 <script src = "/public/js/controllers/user/post-action-controllers/add-statement/hotel/hotel-ctrl.js"></script>
 <script src = "/public/js/controllers/user/post-action-controllers/add-statement/ind-house/ind-house-ctrl.js"></script>
 <script src = "/public/js/controllers/user/post-action-controllers/add-statement/apartment/apartment-ctrl.js"></script>
 <link rel="stylesheet" href="/public/style/main-components/user/post-actions/add-statement/add-statement.css">
+<link rel="stylesheet" href="/public/style/config/element-config/error.css">
 <div id = "add-statement">
     <section class = "tabs">
         {% include "/templates/statement/tabs/statement-types.html" %}

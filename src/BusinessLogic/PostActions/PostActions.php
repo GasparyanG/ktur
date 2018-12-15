@@ -73,6 +73,10 @@ class PostActions
             $this->factory->validate($fieldName, $fieldValue, $validator);
         }
 
-        var_dump($validator->getErrorMessages());
+        $errorMessages = $validator->getErrorMessages();
+
+        if ($errorMessages) {
+            echo $this->jsonConverter->convertArrayToJson($errorMessages);
+        }
     }
 }

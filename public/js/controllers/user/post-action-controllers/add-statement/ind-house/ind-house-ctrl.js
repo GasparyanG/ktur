@@ -1,4 +1,5 @@
-ktur.controller("IndHouseCtrl", ['$scope', '$http','SelectHandler', function($scope, $http, SelectHandler) {
+ktur.controller("IndHouseCtrl", ['$scope', '$http','SelectHandler', 'StatementErrorHighlighter',
+function($scope, $http, SelectHandler, StatementErrorHighlighter) {
     // change select tag's default option's value and textcontent
     SelectHandler.setLocationOptionAsSelected();
     SelectHandler.setRentSellOptionAsSelected();
@@ -26,6 +27,7 @@ ktur.controller("IndHouseCtrl", ['$scope', '$http','SelectHandler', function($sc
                 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
             }
         }).then(function successCallback(response) {
+            StatementErrorHighlighter.highlightErrors(response.data);
             // show this errors to users
             console.log(response.data);
         }, function errorCallback(response) {
