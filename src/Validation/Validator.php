@@ -54,9 +54,8 @@ class Validator
             if ($errorMessage === null) {
                 $errorMessage = $this->defaultErrorMessageSupporter->getDefaultErrorMessage($this->keysForDefaultErrorMessages['length'],
                 $fieldName, $options);
+                $this->errorMessages[$fieldName] = $errorMessage;
             }
-
-            $this->errorMessages[$fieldName] = $errorMessage;
         }
     }
 

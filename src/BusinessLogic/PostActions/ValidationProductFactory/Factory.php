@@ -14,6 +14,7 @@ class Factory
             'AmountOfFloors',
             'AreaOfYard',
             'Price',
+            'StatementTextArea',
         ];
     }
 

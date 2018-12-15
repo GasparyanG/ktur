@@ -7,8 +7,8 @@ class DefaultErrorMessageSupporter
     {
         $this->defaultMessages = [
             "length" => [
-                "min" => "%s need to have at least %d character",
-                "max" => "%s need to have not more than %d character",
+                "min" => "%s need to have at least %d characters",
+                "max" => "%s need to have not more than %d characters",
             ],
             "numeric" => "%s need to be only numbers",
             "alphanumeric" => "%s nned to have only alpabetic or numeric characters",
@@ -48,6 +48,7 @@ class DefaultErrorMessageSupporter
     private function getErrorMessageBasedOnOption(string $keyForDefaultMessage ,string $fieldName, array $arrayOfOptions): string
     {
         foreach($arrayOfOptions as $option => $value) {
+            $option = strtolower($option);
             // if this point is reached then field existance in assco array is true!
             if (isset($this->defaultMessages[$keyForDefaultMessage][$option])) {
                 $errorMessageFormatted = sprintf($this->defaultMessages[$keyForDefaultMessage][$option], $fieldName, $value);
