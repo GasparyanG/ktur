@@ -18,8 +18,8 @@ ktur.controller("IndHouseCtrl", ['$scope', '$http','SelectHandler', function($sc
                     'price' : $scope.price,
                     'yardArea' : $scope.yardArea,
                     'statementTextArea' : $scope.statementTextArea,
-                    'rentSell' : $scope.rentSell,
-                    'location' : $scope.location
+                    'rentSell' : $scope.rentSell ? $scope.rentSell : 0,
+                    'location' : $scope.location ? $scope.location : 0,
                 }
             },
             headers: {

@@ -15,7 +15,7 @@ ktur.service("SelectHandler", [function() {
     this.changeSelectDefault = function(elementId) {
         window.addEventListener('load', function() {
             var optionElements = document.getElementById(elementId).getElementsByTagName('option');
-            optionElements[0].value = 0;    
+            optionElements[0].value = "hello World";    
             optionElements[0].textContent = "Select"
         });
     }

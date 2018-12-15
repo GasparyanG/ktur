@@ -11,12 +11,16 @@ class DefaultErrorMessageSupporter
                 "max" => "%s need to have not more than %d characters",
             ],
             "numeric" => "%s need to be only numbers",
-            "alphanumeric" => "%s nned to have only alpabetic or numeric characters",
+            "alphanumeric" => "%s need to have only alpabetic or numeric characters",
+            "notzero" => "%s need to be choosed",
         ];
     }
 
     public function getDefaultErrorMessage(string $keyForDefaultMessage, string $fieldName, array $arrayOfOptions = null): string
     {
+        // kys need to be in lowercase
+        $keyForDefaultMessage = strtolower($keyForDefaultMessage);
+
         if (!isset($this->defaultMessages[$keyForDefaultMessage])) {
             throw new \InvalidArgumentException("$keyForDefaultMessage need to have default error message");
         }

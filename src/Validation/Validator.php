@@ -139,4 +139,12 @@ class Validator
 
         return $regularArray;
     }
+
+    public function notZero($fieldName, $fieldValue)
+    {
+        if ($fieldValue === 0) {
+            $defaultErrorMessage = $this->defaultErrorMessageSupporter->getDefaultErrorMessage("notZero", $fieldName);
+            $this->errorMessages[$fieldName] = $defaultErrorMessage;
+        }
+    }
 }

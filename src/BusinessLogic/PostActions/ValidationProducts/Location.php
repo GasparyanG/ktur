@@ -1,16 +1,15 @@
 <?php
 namespace BusinessLogic\PostActions\ValidationProducts;
 
-class ForRentSell
+class Location
 {
     public function isValid($fieldName)
     {
-        return $fieldName === "rentSell";
+        return $fieldName === "location";
     }
 
     public function execute($fieldName, $fieldValue, $validator)
     {
-        $validator->isAlphaNumeric($fieldName, $fieldValue);
         $validator->notZero($fieldName, $fieldValue);
     }
 }
