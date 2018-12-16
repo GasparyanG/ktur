@@ -1,5 +1,5 @@
-ktur.controller("IndHouseCtrl", ['$scope', '$http','SelectHandler', 'StatementErrorHighlighter',
-function($scope, $http, SelectHandler, StatementErrorHighlighter) {
+ktur.controller("IndHouseCtrl", ['$scope', '$http','SelectHandler', 'StatementErrorHighlighter', 'FilesStateManipulator',
+function($scope, $http, SelectHandler, StatementErrorHighlighter, FilesStateManipulator) {
     // change select tag's default option's value and textcontent
     SelectHandler.setLocationOptionAsSelected();
     SelectHandler.setRentSellOptionAsSelected();
