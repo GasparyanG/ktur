@@ -6,6 +6,10 @@ class FileUploadValidator
 
     public function __construct()
     {
+        $this->fileState = [
+            "saveTo" => "saveTo"
+        ];
+
         $this->appAcceptedMimeTypes = [
             // JPEG Image
             ".jpeg" => "image/jpeg",
@@ -24,5 +28,10 @@ class FileUploadValidator
 
         // mime type does not found
         return false;
+    }
+
+    public function haveItemToSave(array $fileState)
+    {
+        return $fileState[$this->fileState['saveTo']] === 0 ? false : true;
     }
 }

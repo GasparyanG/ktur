@@ -13,6 +13,7 @@ class DefaultErrorMessageSupporter
             "numeric" => "%s need to be only numbers",
             "alphanumeric" => "%s need to have only alpabetic or numeric characters",
             "notzero" => "%s need to be choosed",
+            "image-upload" => "%s need to be added"
         ];
     }
 

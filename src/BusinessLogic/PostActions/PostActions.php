@@ -6,6 +6,7 @@ use Augmention\Convertion\JsonConverter as JsonConverter;
 use Validation\Validator as Validator;
 use BusinessLogic\PostActions\ValidationProductFactory\Factory as Factory;
 use Interactions\Container\Container as Container;
+use BusinessLogic\PostActions\TableCreation\Factory as TableCreationFactory;
 
 class PostActions
 {
@@ -19,6 +20,7 @@ class PostActions
         $this->jsonConverter = new JsonConverter();
         $this->factory = new Factory();
         $this->container = new Container();
+        $this->tableCreationFactory = new TableCreationFactory();
     }
 
     public function getStatementAddition($req, $res, $routeInfo)
@@ -59,11 +61,10 @@ class PostActions
         $validator = new Validator();
 
         $parsedBodyInJsonFormat = $req->getParsedBody();
-        
-        //asoc array converted from json
-        $parsedBody = $this->jsonConverter->parsedBodyKeyConvertToAssocArray($parsedBodyInJsonFormat);
 
-        foreach($parsedBody as $statementType => $formBody) {
+        $jsonFromCleintConvertedToArray = $this->jsonConverter->jsonDecodeWithFileGetContents();
+
+        foreach($jsonFromCleintConvertedToArray as $statementType => $formBody) {
             // one way to fetch key and value from assoc array
         }
 
@@ -78,5 +79,8 @@ class PostActions
         if ($errorMessages) {
             echo $this->jsonConverter->convertArrayToJson($errorMessages);
         }
+
+        // create table and make corresponding insertions!
+        $this->tableCreationFactory->makeRecord($statementType, $formBody);
     }
 }

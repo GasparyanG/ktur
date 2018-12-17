@@ -32,6 +32,7 @@ ktur.service("StatementImageAddition", ["FileNameGetter", "$compile", function(F
 
     this.createDivSupportedByNg = function(hReference, parentElement, scope) {
         var fileName = this.getFileName(hReference);
+        
 
         var divElement = "<div class = '" + fileName + "' ng-click = \"removeImage('" + fileName + "')\">Remove</div>"
         angular.element(parentElement).append($compile(divElement)(scope));

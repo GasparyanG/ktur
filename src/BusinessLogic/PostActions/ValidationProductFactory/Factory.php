@@ -15,7 +15,8 @@ class Factory
             'AreaOfYard',
             'Price',
             'StatementTextArea',
-            "Location"
+            "Location",
+            "ImageOfStatement"
         ];
     }
 

@@ -6,6 +6,9 @@ function($scope, $http, SelectHandler, StatementErrorHighlighter, FilesStateMani
 
     // XHR request to server PostAction object
     $scope.submit = function() {
+        var filesState = FilesStateManipulator.getFilesState(false);
+        console.log(filesState);
+
         $http({
             method : "POST",
             // "/{user-name}/statement-addition"
@@ -21,7 +24,8 @@ function($scope, $http, SelectHandler, StatementErrorHighlighter, FilesStateMani
                     'statementTextArea' : $scope.statementTextArea,
                     'rentSell' : $scope.rentSell ? $scope.rentSell : 0,
                     'location' : $scope.location ? $scope.location : 0,
-                }
+                    'image-upload' : filesState
+                },
             },
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'

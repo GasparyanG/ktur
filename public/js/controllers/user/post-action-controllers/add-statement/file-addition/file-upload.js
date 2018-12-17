@@ -4,16 +4,16 @@ ktur.controller("ImageUpload", ['$scope', '$http', 'FilesStateManipulator', func
     }
 
     $scope.uploadFile = function() {
-        var formData = new FormData();
-        var fileInput = document.getElementById('imageUpload');
-        // form/mapper.php
-        formData.append('statementImageUpload', fileInput.files[0]);
-        $http({
-            method: "POST",
-            url: window.location.href + "/add-statement-image",
-            data: formData,
-            headers: {
-                // browser will automatically set required Contetn-Type for us
+         var formData = new FormData();
+         var fileInput = document.getElementById('imageUpload');
+         // form/mapper.php
+         formData.append('statementImageUpload', fileInput.files[0]);
+         $http({
+             method: "POST",
+             url: window.location.href + "/add-statement-image",
+             data: formData,
+             headers: {
+                 // browser will automatically set required Contetn-Type for us
                 'Content-Type': undefined
             }
         }).then(function successCallback(response) {
@@ -25,6 +25,7 @@ ktur.controller("ImageUpload", ['$scope', '$http', 'FilesStateManipulator', func
     }
 
     $scope.removeImage = function(fileName) {
-        FilesStateManipulator.removeImage(fileName)
-    } 
+        console.log(fileName);
+        FilesStateManipulator.removeImage(fileName);
+    }
 }]);

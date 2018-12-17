@@ -2,11 +2,13 @@
 namespace Validation;
 
 use Validation\DefaultErrorMessageSupporter as DefaultErrorMessageSupporter;
+use Validation\SpecificValidators\FileUploadValidation\FileUploadValidator as FileUploadValidator;
 
 class Validator
 {
     public function __construct()
     {
+        $this->fileUploadValidator = new FileUploadValidator();
 
         $this->defaultErrorMessageSupporter = new DefaultErrorMessageSupporter();
         /**
@@ -145,6 +147,15 @@ class Validator
         if ($fieldValue === 0) {
             $defaultErrorMessage = $this->defaultErrorMessageSupporter->getDefaultErrorMessage("notZero", $fieldName);
             $this->errorMessages[$fieldName] = $defaultErrorMessage;
+        }
+    }
+
+    public function vaildateFileState($fieldName, $fieldValue)
+    {
+        if (!$this->fileUploadValidator->haveItemToSave($fieldValue)) {
+            $defaultErrorMessageForFile = $this->defaultErrorMessageSupporter->getDefaultErrorMessage($fieldName, "image-upload`");
+
+            $this->errorMessages[$fieldName] = $defaultErrorMessageForFile;
         }
     }
 }

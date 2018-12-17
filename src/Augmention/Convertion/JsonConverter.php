@@ -32,8 +32,14 @@ class JsonConverter
         foreach($parsedBodyFromAjaxCall as $key => $value) {
             // blah blah blah            
         }
-        $parsedBody = json_decode($key, true);
+        $parsedBody = json_decode($key);
 
         return $parsedBody;
+    }
+
+    public function jsonDecodeWithFileGetContents()
+    {
+        $data = json_decode(file_get_contents('php://input'), true);
+        return $data;
     }
 }
