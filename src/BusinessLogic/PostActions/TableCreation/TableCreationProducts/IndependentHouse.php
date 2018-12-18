@@ -26,12 +26,12 @@ class IndependentHouse
         // TABLE CREATION
         // Independent house statement
         $indHouseStatement = $this->configFetcher->fetchConf("DATABASE_CONFIG", ["DB1", "tables", "ind_house_statements"]);
-        $indHouseTable = $tableDefCont->getTable($indHouseStatement);
+        $indHouseTable = $this->tableDefCont->getTable($indHouseStatement);
         $indHouseTableStatement = $indHouseTable->getTableDef();
         $this->dbmanipulator->create($indHouseTableStatement, "T");
         // Independent house photos
         $indHousePhotos = $this->configFetcher->fetchConf("DATABASE_CONFIG", ["DB1", "tables", "Independent_house_photos"]);
-        $indHousePhotosTable = $tableDefCont->getTable($indHousePhotos);
+        $indHousePhotosTable = $this->tableDefCont->getTable($indHousePhotos);
         $indHousePhotosTableStatement = $indHousePhotosTable->getTableDef();
         $this->dbmanipulator->create($indHousePhotosTableStatement, "T");
 
@@ -44,7 +44,7 @@ class IndependentHouse
         // insert photos to corresponding table!
         $saveTo = $this->clientSideImageGuru->getSaveToArray($statementFormData);
         foreach($saveTo as $fileName) {
-            $photoTableStatement = $this->getPhotoTableStatement($fileName, $lastInsertedId, $indHousePhotos->getTableName());
+            $photoTableStatement = $this->getPhotoTableStatement($fileName, $lastInsertedId, $indHousePhotosTable->getTableName());
             $this->dbmanipulator->create($photoTableStatement, "R");
         }
     }
@@ -72,16 +72,19 @@ class IndependentHouse
         $location = $statementFormData["location"];
         $statementDate = $this->getDateInSqlFormat();
         $title = $statementFormData["title"];
+        $statementTime = time();
 
         // ind_house_id will be generated automatically
-        $statement = "INSERT INTO TABLE $tableName(username, building_area, yard_area, 
-        location, option, description, price, amount_of_floors, statement_date, title)
+        $statement = "INSERT INTO $tableName(username, building_area, yard_area, 
+        location, option_over, statement_description, price, amount_of_floors, statement_date, title, statement_time)
         VALUES
         (\"$username\", \"$buildingArea\", 
         \"$yardArea\", \"$location\", 
         \"$option\", \"$description\", 
         \"$price\", \"$floorAmount\",
-        \"$statementDate\", \"$title\")";
+        \"$statementDate\", \"$title\", \"$statementTime\")";
+
+        return $statement;
     }
 
     private function getDateInSqlFormat()
@@ -91,7 +94,7 @@ class IndependentHouse
 
     private function getPhotoTableStatement(string $fileName, int $lastInsertedId, string $tableName)
     {
-        $statement = "INSERT INTO TABLE $tableName(statement_id, file_name)
+        $statement = "INSERT INTO $tableName(ind_house_id, file_name)
                     VALUES
                     (\"$lastInsertedId\", \"$fileName\")";
 

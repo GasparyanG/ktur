@@ -6,11 +6,11 @@ use Interactions\Config\ConfigFetcher as ConfigFetcher;
 
 class IndependentHousePhotos implements TableInterface
 {
-    public function __consturct()
+    public function __construct()
     {
         $this->configFetcher = new ConfigFetcher();
 
-        $this->tableName = "Independent_house_photos";
+        $this->tableName = "independent_house_photos";
     }
 
     public function getTableDef()
@@ -19,11 +19,13 @@ class IndependentHousePhotos implements TableInterface
 
         $statement = "CREATE TABLE IF NOT EXISTS $this->tableName(
             file_name       VARCHAR(255) NOT NULL,
-            statement_id    INT NOT NULL,
-            FOREIGN KEY (statement_id)
-                REFERENCES $indHouseTableName (statement_id)
+            ind_house_id    INT NOT NULL,
+            FOREIGN KEY (ind_house_id)
+                REFERENCES $indHouseTableName (ind_house_id)
                 ON DELETE CASCADE
         )";
+
+        return $statement;
     }
 
     public function getTableName()

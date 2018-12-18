@@ -18,13 +18,16 @@ class IndHouseStatement implements TableInterface
             building_area       INT NOT NULL,
             yard_area           INT NOT NULL,
             location            VARCHAR(255) NOT NULL,
-            option              VARCHAR(255) NOT NULL,
-            description         NOT NULL,
+            option_over              VARCHAR(255) NOT NULL,
+            statement_description       TEXT NOT NULL,
             price               INT NOT NULL,
             amount_of_floors    INT NOT NULL,
             statement_date      DATE NOT NULL,
-            title               VARCHAR(255) NOT NULL
+            title               VARCHAR(255) NOT NULL,
+            statement_time      INT NOT NULL
         )";
+
+        return $statement;
     }
 
     public function getTableName()

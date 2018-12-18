@@ -32,7 +32,7 @@ function($scope, $http, SelectHandler, StatementErrorHighlighter, FilesStateMani
                 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
             }
         }).then(function successCallback(response) {
-            StatementErrorHighlighter.highlightErrors(response.data);
+            /*StatementErrorHighlighter.highlightErrors(response.data);*/
             // show this errors to users
             console.log(response.data);
         }, function errorCallback(response) {
