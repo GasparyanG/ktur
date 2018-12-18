@@ -24,6 +24,7 @@ function($scope, $http, SelectHandler, StatementErrorHighlighter, FilesStateMani
                     'statementTextArea' : $scope.statementTextArea,
                     'rentSell' : $scope.rentSell ? $scope.rentSell : 0,
                     'location' : $scope.location ? $scope.location : 0,
+                    'title' : $scope.title,
                     'image-upload' : filesState
                 },
             },

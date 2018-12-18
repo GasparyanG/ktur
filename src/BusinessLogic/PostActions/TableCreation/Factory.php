@@ -11,14 +11,14 @@ class Factory
         ];   
     }
 
-    public function makeRecord(string $statementType, array $statementFormData)
+    public function makeRecord(string $statementType, array $statementFormData, $routeInfo)
     {
         foreach($this->productsNames as $productName) {
             $fullyQualifiedNamespace = $this->fullyQualifiedNamespacePrefix . $productName;
             $product = new $fullyQualifiedNamespace();
 
             if ($product->isUsed($statementType)) {
-                $product->execute($statementFormData);
+                $product->execute($statementFormData, $routeInfo);
             }
         }
     }

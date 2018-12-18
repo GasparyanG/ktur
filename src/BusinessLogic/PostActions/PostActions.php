@@ -78,9 +78,10 @@ class PostActions
 
         if ($errorMessages) {
             echo $this->jsonConverter->convertArrayToJson($errorMessages);
+            exit;
         }
 
         // create table and make corresponding insertions!
-        $this->tableCreationFactory->makeRecord($statementType, $formBody);
+        $this->tableCreationFactory->makeRecord($statementType, $formBody, $routeInfo);
     }
 }

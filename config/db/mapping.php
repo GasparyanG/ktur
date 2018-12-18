@@ -13,6 +13,8 @@ $DATABASE_CONFIG = [
         "tables"     => [
             'users' => 'users',
             'user_components' => 'user_components',
+            'ind_house_statements' => 'ind_house_statements',
+            'Independent_house_photos' => 'Independent_house_photos',
         ],
     ],
 ];

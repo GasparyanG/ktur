@@ -16,7 +16,8 @@ class Factory
             'Price',
             'StatementTextArea',
             "Location",
-            "ImageOfStatement"
+            "ImageOfStatement",
+            "Title"
         ];
     }
 
