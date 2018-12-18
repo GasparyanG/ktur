@@ -40,6 +40,8 @@ class Router implements MiddlewareInterface
             // statements
             // independent houses
             $r->addRoute("GET", "/statements/ind-houses/{ind-house-id}", "IndependentHouse, getStatement");
+            // resources for page rendering XHR request
+            $r->addRoute("GET", "/statements/ind-houses/{ind-house-id}/resources", "IndependentHouse, sendRequiredResourcesToClient");
         });
 
         $httpMethod = $request->getMethod();

@@ -32,4 +32,12 @@ class IndependentHousePhotos implements TableInterface
     {
         return $this->tableName;
     }
+
+    public function getFileNamesFetchingStatement($foreignKey): string
+    {
+        $statement = "SELECT file_name FROM $this->tableName 
+        WHERE ind_house_id = \"$foreignKey\"";
+
+        return $statement;
+    }
 }
