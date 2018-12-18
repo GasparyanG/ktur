@@ -82,6 +82,12 @@ class PostActions
         }
 
         // create table and make corresponding insertions!
-        $this->tableCreationFactory->makeRecord($statementType, $formBody, $routeInfo);
+        $indHouseId = $this->tableCreationFactory->makeRecord($statementType, $formBody, $routeInfo);
+        
+        $clientRedirection = $this->configFetcher->fetchConf('URI_CONFIG', ['redirection', 'client_redirection']);
+        $indHouseStatementUri = $this->configFetcher->fetchConf("URI_CONFIG", ['uri_pathes', 'ind-house-statement']);
+        $keyValueForRedirection = [$clientRedirection => $indHouseStatementUri . "/" . $indHouseId];
+
+        echo $this->jsonConverter->convertArrayToJson($keyValueForRedirection);
     }
 }

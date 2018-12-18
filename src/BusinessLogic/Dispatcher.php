@@ -12,6 +12,7 @@ class Dispatcher
             'BusinessLogic\NavBar',
             'BusinessLogic\PostActions',
             'BusinessLogic\FileSystemManipulation',
+            'BusinessLogic\IndependentHouseHandler',
         ];
     }
 

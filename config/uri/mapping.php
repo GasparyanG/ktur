@@ -18,6 +18,7 @@ $URI_CONFIG = [
     "uri_pathes" => [
         "sign-up" => "/sign-up",
         "log-in"  => "/log-in",
+        "ind-house-statement" => "/statements/ind-houses",
     ],
 
     "actions"   => [

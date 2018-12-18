@@ -6,6 +6,7 @@ use Interactions\Config\ConfigFetcher as ConfigFetcher;
 use BusinessLogic\FileSystemManipulation\ManipulatorComponents\FileAdder as FileAdder;
 use RESTfull\HATEOSA\JsonPrepareness as JsonPrepareness;
 use Augmention\Convertion\JsonConverter as JsonConverter;
+use BusinessLogic\FileSystemManipulation\ManipulatorComponents\FileRemover as FileRemover;
 
 class FileSystemManipulation
 {
@@ -16,6 +17,7 @@ class FileSystemManipulation
         $this->fileAdder = new FileAdder();
         $this->fileNames = new FileNames();
         $this->configFetcher = new ConfigFetcher();
+        $this->fileRemover = new FileRemover();
     }
 
     public function addStatementImage($req, $res, $routeInfo) 

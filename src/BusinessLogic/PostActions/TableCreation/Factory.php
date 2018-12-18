@@ -19,6 +19,7 @@ class Factory
 
             if ($product->isUsed($statementType)) {
                 $product->execute($statementFormData, $routeInfo);
+                return $product->getInsertedId();
             }
         }
     }

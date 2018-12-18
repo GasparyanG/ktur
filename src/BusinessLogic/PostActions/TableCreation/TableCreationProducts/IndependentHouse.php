@@ -14,6 +14,8 @@ class IndependentHouse
         $this->tableDefCont = new TableDefinitionsContainer();
         $this->configFetcher = new ConfigFetcher();
         $this->clientSideImageGuru = new ClientSideImageGuru();
+
+        $this->lastInsertedId = null;
     }
 
     public function isUsed(string $statementType): bool
@@ -39,12 +41,12 @@ class IndependentHouse
         $indHouseRowInsertionStatement = $this->getIndHouseRowInsertionStatement($statementFormData, 
             $indHouseTable->getTableName(), $routeInfo);
         // dbmanipulator returns last inserted id if new row is inserted!
-        $lastInsertedId = $this->dbmanipulator->create($indHouseRowInsertionStatement, "R");
+        $this->lastInsertedId = $this->dbmanipulator->create($indHouseRowInsertionStatement, "R");
         
         // insert photos to corresponding table!
         $saveTo = $this->clientSideImageGuru->getSaveToArray($statementFormData);
         foreach($saveTo as $fileName) {
-            $photoTableStatement = $this->getPhotoTableStatement($fileName, $lastInsertedId, $indHousePhotosTable->getTableName());
+            $photoTableStatement = $this->getPhotoTableStatement($fileName, $this->lastInsertedId, $indHousePhotosTable->getTableName());
             $this->dbmanipulator->create($photoTableStatement, "R");
         }
     }
@@ -99,5 +101,10 @@ class IndependentHouse
                     (\"$lastInsertedId\", \"$fileName\")";
 
         return $statement;
+    }
+
+    public function getInsertedId()
+    {
+        return $this->lastInsertedId;
     }
 }

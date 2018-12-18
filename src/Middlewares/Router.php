@@ -36,6 +36,10 @@ class Router implements MiddlewareInterface
             // get template creation important information
             $r->addRoute("GET", "/{user-name}/statement-addition/resources", "PostActions, fetchStatementAdditionInfo");
             // this aprouach may rise error try to erase navbar from calss namespace and include to Dispatcher!
+
+            // statements
+            // independent houses
+            $r->addRoute("GET", "/statements/ind-houses/{ind-house-id}", "IndependentHouse, getStatement");
         });
 
         $httpMethod = $request->getMethod();
