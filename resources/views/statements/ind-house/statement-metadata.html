@@ -1,0 +1,55 @@
+{# 
+array(12) {
+  ["ind_house_id"]=>
+  string(1) "5"
+  ["username"]=>
+  string(9) "Gasparyan"
+  ["building_area"]=>
+  string(3) "100"
+  ["yard_area"]=>
+  string(3) "120"
+  ["location"]=>
+  string(14) "Kanaker-Zeytun"
+  ["option_over"]=>
+  string(4) "rent"
+  ["statement_description"]=>
+  string(20) "Great place to live!"
+  ["price"]=>
+  string(6) "500000"
+  ["amount_of_floors"]=>
+  string(1) "2"
+  ["statement_date"]=>
+  string(10) "2018-12-18"
+  ["title"]=>
+  string(26) "Independent house for rent"
+  ["statement_time"]=>
+  string(10) "1545159279"
+} 
+#}
+<link rel="stylesheet" href="/public/style/main-components/statement/ind-house-statement/statement-metadata.css">
+<section id = "statement-metadata">
+    <div>
+        <span>Location:</span>
+        {{resources.location}}
+    </div>
+    <div>
+        <span>Building Area:</span>
+        {{resources.building_area}} <span>m<sup>2</sup></span>
+    </div>
+    <div>
+        <span>Yard Area:</span>
+        {{resources.yard_area}} <span>m<sup>2</sup></span>
+    </div>
+    <div>
+        <span>Amount of Floors:</span>
+        {{resources.amount_of_floors}}
+    </div>
+    <div>
+        <span>For:</span>
+        {{resources.option_over}}
+    </div>
+    <div>
+        <span>Date:</span>
+        {{resources.statement_date}}
+    </div>
+</section>

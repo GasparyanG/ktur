@@ -12,4 +12,6 @@
     --user-actions-link-color: rgb(0, 0, 102);
     --used-tab-color: black;
     --used-tab-border: 3px solid lime;
+    /*text color after hover*/
+    --text-color-hover: rgba(0,0,0,0.9);
 }

@@ -1,0 +1,42 @@
+{# 
+array(12) {
+  ["ind_house_id"]=>
+  string(1) "5"
+  ["username"]=>
+  string(9) "Gasparyan"
+  ["building_area"]=>
+  string(3) "100"
+  ["yard_area"]=>
+  string(3) "120"
+  ["location"]=>
+  string(14) "Kanaker-Zeytun"
+  ["option_over"]=>
+  string(4) "rent"
+  ["statement_description"]=>
+  string(20) "Great place to live!"
+  ["price"]=>
+  string(6) "500000"
+  ["amount_of_floors"]=>
+  string(1) "2"
+  ["statement_date"]=>
+  string(10) "2018-12-18"
+  ["title"]=>
+  string(26) "Independent house for rent"
+  ["statement_time"]=>
+  string(10) "1545159279"
+} 
+#}
+<link rel="stylesheet" href="/public/style/common/statements/actions-over-statement.css">
+<section id = "actions-over-statement">
+    <div>
+        <div ng-click = "star({{resources.ind_house_id}})" title = "Star this statement">
+            {% include "/icons/actions/star/medium-star.html" %}
+        </div>
+        <div ng-click = "basket({{resources.ind_house_id}})" title = "Add to basket">
+            {% include "/icons/actions/basket/medium-basket.html" %}
+        </div>
+        <div ng-click = "comment({{resources.ind_house_id}})" title = "Comment on this statement">
+            {% include "/icons/actions/comment/medium-comment.html" %}
+        </div>
+    </div>
+</section>

@@ -4,4 +4,7 @@
     /*margin*/
     --description-left-margin: 15%;
     --description-box-width: 70%;
+    /*metadata box width*/
+    --metadata-box-width: 80%;
+    --padding-from-main-box: 2rem;
 }

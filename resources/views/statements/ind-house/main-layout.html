@@ -32,12 +32,8 @@ array(12) {
 <script src = "/public/js/controllers/statements/ind-house/ind-house-statement-ctrl.js"></script>
 <link rel="stylesheet" href="/public/style/main-components/statement/ind-house-statement/main-layout.css">
     <div ng-controller = "IndHouseStatementCtrl" id = "ind-house-statement">
-        <section id = "actions-over-statement">
-            comming soon
-        </section>
+        {% include "/statements/ind-house/action-over-statement.html" %}
         {% include "/statements/ind-house/main-representation-section.html" %}
-        <section id = "statement-metadata">
-            comming soon
-        </section>
+        {% include "/statements/ind-house/statement-metadata.html" %}
     </div>
 {% endblock %}

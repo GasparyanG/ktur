@@ -1,0 +1,21 @@
+@import url(/public/style/config/colors/main-colors.css);
+@import url(/public/style/config/statement/sizes.css);
+
+#actions-over-statement > div
+{
+    margin-right: var(--padding-from-main-box);
+}
+
+#actions-over-statement > div > div
+{
+    text-align: center;
+    margin-top: 1rem;
+    cursor: pointer;
+    color: var(--text-color)
+}
+
+#actions-over-statement > div > div:hover
+{
+    color: var(--text-color-hover);
+    transition: 0.2s;
+}

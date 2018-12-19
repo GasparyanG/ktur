@@ -8,12 +8,15 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
     {# $interpolateProvider dependency of angularJS #}
     <script src = "/public/js/angular_config/interpolateProvider.js"></script>
+    {# Star #}
+    <script src = "/public/js/services/super-services/star.js"></script>
+    <script src = "/public/js/controllers/super-controller/super-controller.js"></script>
     <link href ="/public/style/main-components/layout.css" rel = "stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" 
     integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
     <title>{{title}}</title>
 </head>
-<body ng-app = "ktur">
+<body ng-app = "ktur" ng-controller = "SuperController">
     <header>
         {% include "/templates/main_components/layout/nav-bar.html" %}
     </header>
