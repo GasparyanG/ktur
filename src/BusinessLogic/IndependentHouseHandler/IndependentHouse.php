@@ -2,6 +2,7 @@
 namespace BusinessLogic\IndependentHouseHandler;
 
 use DataBase\DBSpecificRequests\Statements\ImageFetcher\ImageFetcher as ImageFetcher;
+use DataBase\DBSpecificRequests\Statements\StatementFetcher\StatementFetcher as StatementFetcher;
 use Interactions\Config\ConfigFetcher as ConfigFetcher;
 use RESTfull\HATEOSA\JsonPrepareness as JsonPrepareness;
 use Augmention\Convertion\JsonConverter as JsonConverter;
@@ -18,11 +19,19 @@ class IndependentHouse
         $this->imageFetcher = new ImageFetcher();
         $this->configFetcher = new ConfigFetcher();
         $this->jsonConverter = new JsonConverter();
+        $this->statementFetcher = new StatementFetcher();
     }
 
     public function getStatement($req, $res, $routeInfo)
     {
-        $res->render("/statements/ind-house/main-layout.html", ["title" => $this->clientSideData["title"]]);
+        $indHouseId = $routeInfo['ind-house-id'];
+        $IndHouseStatementTableName = $this->configFetcher->fetchConf("DATABASE_CONFIG", ['DB1', 'tables', 'ind_house_statements']);
+        // because one row is required its obvious that it will be in placed in 0 index (thats why 0 is used at the end of below line)
+        $dataFromIndHouseTable = $this->statementFetcher->getStatementData($indHouseId, $IndHouseStatementTableName)[0];
+        //echo "<pre>";
+        //var_dump($dataFromIndHouseTable);
+
+        $res->render("/statements/ind-house/main-layout.html", ["title" => $dataFromIndHouseTable['title'], "resources" => $dataFromIndHouseTable]);
     }
 
     public function sendRequiredResourcesToClient($req, $res, $routeInfo)

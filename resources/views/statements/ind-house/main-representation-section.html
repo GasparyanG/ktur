@@ -1,0 +1,21 @@
+<section id = "main-representation-section">
+    <link rel="stylesheet" href="/public/style/common/statements/main-representation-section.css">
+    {# 
+    <div id = "image-section">
+        js will include images into this element
+    </div> 
+    #}
+    <div id = "statement-title">
+        <h1>
+            {{resources.title}}
+        </h1>
+    </div>
+
+    {% include "/common-portions/statements/main-representation-section/image-section.html" %}
+    
+    <div id = "statement-description">
+        <div>
+            {{resources.statement_description}}
+        </div>
+    </div>
+</section>

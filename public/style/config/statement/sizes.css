@@ -1,0 +1,7 @@
+:root
+{
+    --image-box-padding: 1rem;
+    /*margin*/
+    --description-left-margin: 15%;
+    --description-box-width: 70%;
+}

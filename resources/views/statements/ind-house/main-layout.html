@@ -1,9 +1,43 @@
+{# 
+array(12) {
+  ["ind_house_id"]=>
+  string(1) "5"
+  ["username"]=>
+  string(9) "Gasparyan"
+  ["building_area"]=>
+  string(3) "100"
+  ["yard_area"]=>
+  string(3) "120"
+  ["location"]=>
+  string(14) "Kanaker-Zeytun"
+  ["option_over"]=>
+  string(4) "rent"
+  ["statement_description"]=>
+  string(20) "Great place to live!"
+  ["price"]=>
+  string(6) "500000"
+  ["amount_of_floors"]=>
+  string(1) "2"
+  ["statement_date"]=>
+  string(10) "2018-12-18"
+  ["title"]=>
+  string(26) "Independent house for rent"
+  ["statement_time"]=>
+  string(10) "1545159279"
+} 
+#}
 {% extends "/templates/main_components/layout.html" %}
 {% block resource %}
+<script src = "/public/js/services/statements/factory/ind-house-factory.js"></script>
 <script src = "/public/js/controllers/statements/ind-house/ind-house-statement-ctrl.js"></script>
-    <div ng-controller = "IndHouseStatementCtrl">
-        <h1>
-            Hello World
-        </h1>
+<link rel="stylesheet" href="/public/style/main-components/statement/ind-house-statement/main-layout.css">
+    <div ng-controller = "IndHouseStatementCtrl" id = "ind-house-statement">
+        <section id = "actions-over-statement">
+            comming soon
+        </section>
+        {% include "/statements/ind-house/main-representation-section.html" %}
+        <section id = "statement-metadata">
+            comming soon
+        </section>
     </div>
 {% endblock %}

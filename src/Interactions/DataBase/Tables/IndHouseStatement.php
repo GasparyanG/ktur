@@ -34,4 +34,11 @@ class IndHouseStatement implements TableInterface
     {
         return $this->tableName;
     }
+
+    public function getStatementDataFetchingStatement($foreignKey)
+    {
+        $statement = "SELECT * FROM $this->tableName WHERE ind_house_id = \"$foreignKey\"";
+
+        return $statement;
+    }
 }

@@ -1,0 +1,22 @@
+@import url(/public/style/config/statement/sizes.css);
+
+/* Whole page together */
+#main-representation-section > div
+{
+    margin-top: 1rem;
+}
+
+/* Statement Title #statement-title */
+#statement-title
+{
+    text-align: center;
+}
+
+/* Statement Description #statement-description */
+#statement-description
+{
+    display: flex;
+    width: var(--description-box-width);
+    margin-left: var(--description-left-margin);
+    font-family: inherit;
+}

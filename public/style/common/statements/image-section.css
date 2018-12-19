@@ -1,0 +1,18 @@
+@import url(/public/style/config/sizes/images.css);
+@import url(/public/style/config/statement/main-colors.css);
+@import url(/public/style/config/statement/sizes.css);
+
+#image-section > div > img
+{
+    max-width: var(--statement-page-image);
+}
+
+#image-section 
+{
+    padding : var(--image-box-padding);
+    border: var(--statement-image-border);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}

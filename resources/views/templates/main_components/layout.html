@@ -11,6 +11,7 @@
     <link href ="/public/style/main-components/layout.css" rel = "stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" 
     integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <title>{{title}}</title>
 </head>
 <body ng-app = "ktur">
     <header>
@@ -21,6 +22,7 @@
         <div class = "resource">
             {# this stylesheet is ment for this block extenders #}
             <link rel = "stylesheet" href = "/public/style/main-components/layout/main-content.css">
+            <script src = "/public/js/services/common-services/statements/view-population/image-inclusion.js"></script>
             <script src = "/public/js/services/browser-services/Redirector.js"></script>
             {% block resource %}
                 {# 
