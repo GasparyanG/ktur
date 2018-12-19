@@ -9,7 +9,23 @@
     "authors": [
         {
             "name": "Garnik Gasparyan",
-            "email": "gasp.garnik@gmail.com",
+            "email": "gasp.garnik@gmail.com"
         }
     ],
+
+    "autoload" : {
+        "psr-4": {
+            "DataBase\\" : "src/Interactions/DataBase",
+            "BusinessLogic\\" : "src/BusinessLogic",
+            "Interactions\\" : "src/Interactions",
+            "Middlewares\\" : "src/Middlewares",
+            "Augmention\\" : "src/Augmention",
+            "Validation\\" : "src/Validation",
+            "Security\\" : "src/Security",
+            "Response\\" : "src/Response",
+            "RESTfull\\" : "src/RESTfull",
+            "Cookie\\" : "src/Cookie",
+            "Psr\\" : "src/psr"
+        }
+    }
 }
