@@ -3,7 +3,7 @@ ktur.controller("IndHouseStatementCtrl", ['$scope', '$http', 'IndHouseFactory', 
         method : "GET",
         url : window.location.href + "/resources"
     }).then(function sucessCalback(response) {
-        IndHouseFactory.populateView(response.data);
+        IndHouseFactory.populateView(response.data, $scope);
         console.log(response.data);
     }, function errorCallback(response) {
         console.log("error");
