@@ -13,7 +13,7 @@ ktur.service("StarButton", ['$compile', function($compile) {
     }
 
     this.createElementForAtion = function(hreference, relation, parentElement, scope) {
-        var divElement = "<div class = '" + relation + "' ng-click = \"star('" + hreference + "')\"><i class='fas fa-star fa-2x'></i></div>"
+        var divElement = "<div class = '" + relation + ' ' + hreference + "' ng-click = \"star('" + hreference + "')\"><i class='fas fa-star fa-2x'></i></div>"
         angular.element(parentElement).append($compile(divElement)(scope));
     }
 }]);

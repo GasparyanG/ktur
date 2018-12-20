@@ -13,6 +13,7 @@ class Dispatcher
             'BusinessLogic\PostActions',
             'BusinessLogic\FileSystemManipulation',
             'BusinessLogic\IndependentHouseHandler',
+            'BusinessLogic\ActorOnStatement',
         ];
     }
 
