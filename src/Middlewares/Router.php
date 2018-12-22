@@ -30,7 +30,15 @@ class Router implements MiddlewareInterface
             $r->addRoute('GET', "/nav-bar", "NavBar, populateNavBar");
             $r->addRoute("GET", "/{user-name}", "User, getUser");
             $r->addRoute("GET", "/{user-name}/resources", "User, populateUser");
+            
+            // user page post actions
             $r->addRoute("GET", "/{user-name}/statement-addition", "PostActions, getStatementAddition");
+            
+            // user page get actions
+            $r->addRoute("GET", "/{user-name}/statements", "UserStatements, getUserStatements");
+            // XHR for resource return
+            $r->addRoute("GET", "/{user-name}/statements/statements-data", "UserStatements, getResources");
+
             $r->addRoute("POST", "/{user-name}/statement-addition", "PostActions, postAction");
             $r->addRoute("POST", "/{user-name}/statement-addition/add-statement-image", "FileSystemManipulation, addStatementImage");
             // get template creation important information

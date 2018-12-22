@@ -1,3 +1,10 @@
-<div>
-    hello from user-statements
+{% extends "/user/user.html" %}
+
+{% block mainActionSection %}
+<div ng-controller = "UserStatementsCtrl">
+    <script src = "/public/js/controllers/user-statements/user-statements-ctrl.js"></script>
+    <div>
+        hello from user-statements
+    </div>
 </div>
+{% endblock %}

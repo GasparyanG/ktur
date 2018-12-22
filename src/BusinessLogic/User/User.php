@@ -54,6 +54,10 @@ class User
         $jsonPreparedStatement = $jsonPrepareness->makeHrefRestfull($statementAdditionPath, "add-statement");
         $dataToSendToClient['user'][] = [$jsonPreparedStatement];
 
+        $seeStatementsPath = $hateSupporter->combinePathSegments(['actions', 'get-actions', 'statements'], $username, true);
+        $jsonPreparedStatement = $jsonPrepareness->makeHrefRestfull($seeStatementsPath, "statements");
+        $dataToSendToClient['user'][] = [$jsonPreparedStatement];
+
         echo $jsonConverter->convertArrayToJson($dataToSendToClient);
     }
 }

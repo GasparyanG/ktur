@@ -14,6 +14,7 @@ class Dispatcher
             'BusinessLogic\FileSystemManipulation',
             'BusinessLogic\IndependentHouseHandler',
             'BusinessLogic\ActorOnStatement',
+            'BusinessLogic\GetActions',
         ];
     }
 
