@@ -36,8 +36,8 @@ class Router implements MiddlewareInterface
             
             // user page get actions
             $r->addRoute("GET", "/{user-name}/statements", "UserStatements, getUserStatements");
-            // XHR for resource return
-            $r->addRoute("GET", "/{user-name}/statements/statements-data", "UserStatements, getResources");
+            // XHR for resource return, POST is needed to send data
+            $r->addRoute("POST", "/{user-name}/statements/statements-data", "UserStatements, getResources");
 
             $r->addRoute("POST", "/{user-name}/statement-addition", "PostActions, postAction");
             $r->addRoute("POST", "/{user-name}/statement-addition/add-statement-image", "FileSystemManipulation, addStatementImage");

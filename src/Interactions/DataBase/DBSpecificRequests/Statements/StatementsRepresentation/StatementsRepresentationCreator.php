@@ -30,7 +30,7 @@ class StatementsRepresentationCreator
 
         $this->changeStatementTypes($statementType);
         foreach($this->statementTypes as $typeName => $statementsInfoPreparerName) {
-            $offSetForCurrentStatementType = $this->getRequiredOffSet($offSetArray, $statementType);
+            $offSetForCurrentStatementType = $this->getRequiredOffSet($offSetArray, $typeName);
 
             $fullyQualifiedNamespace = $this->statementsInfoPreparerDirNamespace . $statementsInfoPreparerName;
             $statementsInfoPreparer = new $fullyQualifiedNamespace();

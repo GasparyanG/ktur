@@ -55,7 +55,7 @@ class IndHouseStatement implements TableInterface
     public function getStatement(int $offSetForCurrentStatementType, string $username, string $filter, int $amountOfRowsToBeReturned): string
     {
         $filterBasedMethodName = $this->getFilterBasedMethodName($filter);
-        return $this->$filterBasedMethodName($offSetForCurrentStatementType, $username);
+        return $this->$filterBasedMethodName($offSetForCurrentStatementType, $username, $amountOfRowsToBeReturned);
     }
 
     private function getFilterBasedMethodName(string $filter): string
@@ -73,8 +73,8 @@ class IndHouseStatement implements TableInterface
     {
         $statement = "SELECT ind_house_id, option_over, title, price 
         FROM $this->tableName 
-        WHERE username = \"$username\" 
-        LIMIT \"$offSetForCurrentStatementType\", \"$amountOfRowsToBeReturned\"";
+        WHERE username LIKE \"$username\" 
+        LIMIT $offSetForCurrentStatementType, $amountOfRowsToBeReturned";
 
         return $statement;
     }

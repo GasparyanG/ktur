@@ -2,7 +2,7 @@
 namespace DataBase\DBSpecificRequests\Statements\StatementsRepresentation\RepresentationCreators;
 
 use DataBase\Tables\IndHouseStatement as IndHouseStatement;
-use DataBase\Interactions\DBManipulator as DBManipulator;
+use DataBase\Implementations\DBManipulator as DBManipulator;
 use Interactions\Config\ConfigFetcher as ConfigFetcher;
 use RESTfull\SpecificImplementations\ActionsOverStatement\HATEOASReady as HATEOASReady;
 use DataBase\Tables\IndependentHousePhotos as IndependentHousePhotos;
@@ -44,11 +44,14 @@ class IndHouseRepresentationCreator
 
         $dataFromIndHouseStatementQuery = $this->dbmanipulator->read($startingPointStatement, "A");
 
+        $individualArray = [];
         foreach($dataFromIndHouseStatementQuery as $nestedArray) {
             $primaryKey = $nestedArray[$this->indHouseStatement->getPrimaryKey()];
-            $arrayToBeReturned[$refer] = $this->getReferences($primaryKey);
-            $arrayToBeReturned[$action] = $this->hready->getPreparedArray($this->indHouseStatement->getTableName(), $primaryKey);
-            $arrayToBeReturned[$data] = $nestedArray;
+            $individualArray[$refer] = $this->getReferences($primaryKey);
+            $individualArray[$action] = $this->hready->getPreparedArray($this->indHouseStatement->getTableName(), $primaryKey);
+            $individualArray[$data] = $nestedArray;
+
+            $arrayToBeReturned[] = $individualArray;
         }
 
         return $arrayToBeReturned;
@@ -61,6 +64,8 @@ class IndHouseRepresentationCreator
 
         $arrayOfRestfullReferences[] = $this->getImageReference($primaryKey);
         $arrayOfRestfullReferences[] = $this->getReferenceToSelf($primaryKey);
+
+        return $arrayOfRestfullReferences;
     }
 
     private function getImageReference($primaryKey): array
