@@ -15,12 +15,13 @@ class ConfigFetcher
          *      maped with it's path!
          */
         $this->appConf = [
-            "DATABASE_CONFIG"   => "/db/mapping.php",
-            "COOKIE_CONFIG"     => "/cookie/mapping.php",
-            "HASH_CONFIG"       => "/hashing/mapping.php",
-            "URI_CONFIG"        => "/uri/mapping.php",
-            "OPTIONS_CONFIG"    => "/options/mapping.php",
-            "FORM_CONFIG"       => "/form/mapping.php",
+            "DATABASE_CONFIG"       => "/db/mapping.php",
+            "COOKIE_CONFIG"         => "/cookie/mapping.php",
+            "HASH_CONFIG"           => "/hashing/mapping.php",
+            "URI_CONFIG"            => "/uri/mapping.php",
+            "OPTIONS_CONFIG"        => "/options/mapping.php",
+            "FORM_CONFIG"           => "/form/mapping.php",
+            "CLIENT_SERVER_CONFIG"  => "/clientServer/mapping.php",
         ];
     }
 

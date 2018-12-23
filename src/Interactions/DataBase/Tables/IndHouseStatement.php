@@ -8,6 +8,11 @@ class IndHouseStatement implements TableInterface
     public function __construct()
     {
         $this->tableName = "ind_house_statements";
+        $this->tablePrimaryKey = "ind_house_id";
+
+        $this->statementMethodsBasedOnFilter = [
+            "regular" => "getRegularStatement",
+        ];
     }
 
     public function getTableDef()
@@ -35,9 +40,41 @@ class IndHouseStatement implements TableInterface
         return $this->tableName;
     }
 
+    public function getPrimaryKey()
+    {
+        return $this->tablePrimaryKey;
+    }
+
     public function getStatementDataFetchingStatement($foreignKey)
     {
         $statement = "SELECT * FROM $this->tableName WHERE ind_house_id = \"$foreignKey\"";
+
+        return $statement;
+    }
+
+    public function getStatement(int $offSetForCurrentStatementType, string $username, string $filter, int $amountOfRowsToBeReturned): string
+    {
+        $filterBasedMethodName = $this->getFilterBasedMethodName($filter);
+        return $this->$filterBasedMethodName($offSetForCurrentStatementType, $username);
+    }
+
+    private function getFilterBasedMethodName(string $filter): string
+    {
+        $filterNameInLowerCase = strtolower($filter);
+
+        if (!isset($this->statementMethodsBasedOnFilter[$filter])) {
+            throw new \InvalidArgumentException("$filter is not defined!");
+        }
+
+        return $this->statementMethodsBasedOnFilter[$filter];
+    }
+
+    private function getRegularStatement(int $offSetForCurrentStatementType, string $username, int $amountOfRowsToBeReturned): string 
+    {
+        $statement = "SELECT ind_house_id, option_over, title, price 
+        FROM $this->tableName 
+        WHERE username = \"$username\" 
+        LIMIT \"$offSetForCurrentStatementType\", \"$amountOfRowsToBeReturned\"";
 
         return $statement;
     }
