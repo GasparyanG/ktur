@@ -14,4 +14,15 @@
     --used-tab-border: 3px solid lime;
     /*text color after hover*/
     --text-color-hover: rgba(0,0,0,0.9);
+    /*regular statement representation*/
+    --regular-statement-background-color: #ffffff;
+    --regular-statement-width: 250px;
+    --regular-statement-height: 400px;
+    --regular-statement-margin: 1rem;
+    --regular-statement-padding: 1rem;
+    --regular-statement-color: #252425;
+    --regular-statement-box-shadow: 0px 2.5px 2.5px #252425;
+    --regular-statement-row-gap: 1rem;
+    --regular-statement-border-radius: 0.4rem;
+    --regular-statement-font-size: 1.5rem;
 }

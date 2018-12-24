@@ -1,4 +1,5 @@
-ktur.controller("UserStatementsCtrl", ['$scope', '$http', function($scope, $http) {
+ktur.controller("UserStatementsCtrl", ['UserStatementsRendering', '$scope', '$http', 
+function(UserStatementsRendering, $scope, $http) {
     $http({
         method : "POST",
         url : window.location.href + "/statements-data",
@@ -15,6 +16,7 @@ ktur.controller("UserStatementsCtrl", ['$scope', '$http', function($scope, $http
         }
     }).then(function successCallback(response) {
         console.log(response.data);
+        UserStatementsRendering.renderUserStatements(response.data, $scope);
     }, function errorCallback(response) {
         console.log("error");
     });

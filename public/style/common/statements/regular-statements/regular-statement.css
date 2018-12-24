@@ -1,0 +1,65 @@
+@import url(/public/style/config/colors/main-colors.css);
+
+.regular-statement
+{
+    margin: var(--regular-statement-margin);
+    width: var(--regular-statement-width);
+    height: var(--regular-statement-height);
+    padding: var(--regular-statement-padding);
+    background-color: var(--regular-statement-background-color);
+    color: var(--regular-statement-color);
+    display: grid;
+    border-radius: var(--regular-statement-border-radius);
+    font-size: var(--regular-statement-font-size);
+    box-shadow: var(--regular-statement-box-shadow);
+    /*row*/
+    grid-template-rows: [first-row] 200px [second-row] 100px [third-row] 50px;
+    /*column*/
+    grid-template-columns: [first-column] 250px;
+    row-gap: var(--regular-statement-row-gap);
+}
+
+.regular-statement > .regular-photo
+{
+    grid-column-start: first-column;
+    grid-column-end: first-column;
+    grid-row-start: first-row;
+    grid-row-end: first-row;
+}
+
+.regular-statement > .regular-metadata
+{
+    grid-column-start: first-column;
+    grid-column-end: first-column;
+    grid-row-start: second-row;
+    grid-row-end: second-row;
+}
+
+
+.regular-statement > .regular-action
+{
+    justify-self: end;
+    align-self: end;
+    display: flex;
+    grid-column-start: first-column;
+    grid-column-end: first-column;
+    grid-row-start: third-row;
+    grid-row-end: third-row;
+}
+
+.regular-statement > .regular-action > div
+{
+    color: var(--text-color);
+}
+
+.regular-statement > .regular-action > div:hover
+{
+    cursor: pointer;
+    color: var(--text-color-hover);
+}
+
+
+.regular-statement > .regular-photo > div > img
+{
+    max-width: var(--regular-statement-width);
+}

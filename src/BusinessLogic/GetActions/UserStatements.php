@@ -26,6 +26,7 @@ class UserStatements
         $username = $routeInfo['user-name'];
 
         $decdedDataFromClient = $this->jsonConverter->jsonDecodeWithFileGetContents();
+       
         // this have to be defined in separate object!
         $arrayOfOffSets = $this->getArrayOfOffsets($decdedDataFromClient);
         $statementType = $this->getStatementType($decdedDataFromClient);

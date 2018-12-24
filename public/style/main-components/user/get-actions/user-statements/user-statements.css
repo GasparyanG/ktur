@@ -1,0 +1,16 @@
+#user-statements
+{
+    display: flex;
+    flex-direction: column;
+}
+
+#user-statements > h1
+{
+    text-align: center;
+}
+
+#user-statements > div
+{
+    flex-wrap: wrap;
+    display: flex;
+}

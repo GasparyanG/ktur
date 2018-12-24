@@ -1,10 +1,14 @@
 {% extends "/user/user.html" %}
 
 {% block mainActionSection %}
-<div ng-controller = "UserStatementsCtrl">
+<div ng-controller = "UserStatementsCtrl" id = "user-statements">
+    <link rel="stylesheet" href="/public/style/main-components/user/get-actions/user-statements/user-statements.css">
     <script src = "/public/js/controllers/user-statements/user-statements-ctrl.js"></script>
-    <div>
-        hello from user-statements
+    <h1>Independent Houses</h1>
+    <div id = "ind_house">
     </div>
+    {#<h1>Hotels</h1>
+    <div id = "hotels">
+    </div>#}
 </div>
 {% endblock %}

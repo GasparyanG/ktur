@@ -1,22 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    {# CDN #}
-    <script src = "https://ajax.googleapis.com/ajax/libs/angularjs/1.7.5/angular.min.js"></script>
-    <script data-main = "/public/js/requirejs/config" src = "https://requirejs.org/docs/release/2.3.6/comments/require.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
-    {# $interpolateProvider dependency of angularJS #}
-    <script src = "/public/js/angular_config/interpolateProvider.js"></script>
-    {# Star #}
-    <script src = "/public/js/services/super-services/star.js"></script>
-    <script src = "/public/js/controllers/super-controller/super-controller.js"></script>
-    <link href ="/public/style/main-components/layout.css" rel = "stylesheet">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" 
-    integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
-    <title>{{title}}</title>
-</head>
-<body ng-app = "ktur" ng-controller = "SuperController">
+    <head>
+        <meta charset="UTF-8">
+        {# CDN #}
+        <script src = "https://ajax.googleapis.com/ajax/libs/angularjs/1.7.5/angular.min.js"></script>
+        <script data-main = "/public/js/requirejs/config" src = "https://requirejs.org/docs/release/2.3.6/comments/require.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
+        {# $interpolateProvider dependency of angularJS #}
+        <script src = "/public/js/angular_config/interpolateProvider.js"></script>
+        {# Star #}
+        <script src = "/public/js/services/super-services/star.js"></script>
+        <script src = "/public/js/controllers/super-controller/super-controller.js"></script>
+        <link href ="/public/style/main-components/layout.css" rel = "stylesheet">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" 
+        integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+        <title>{{title}}</title>
+    </head>
+    <body ng-app = "ktur" ng-controller = "SuperController">
     <header>
         {% include "/templates/main_components/layout/nav-bar.html" %}
     </header>
@@ -24,11 +24,19 @@
     <div class = "main-content">
         <div class = "resource">
             {# this stylesheet is ment for this block extenders #}
+            <link rel="stylesheet" href="/public/style/common/statements/regular-statements/regular-statement.css">
             <link rel = "stylesheet" href = "/public/style/main-components/layout/main-content.css">
+            {# this will be used all overr the app #}
             <script src = "/public/js/services/common-services/statements/view-population/add-comment-button.js"></script>
             <script src = "/public/js/services/common-services/statements/view-population/add-basket-button.js"></script>
             <script src = "/public/js/services/common-services/statements/view-population/add-star-button.js"></script>
             <script src = "/public/js/services/common-services/statements/view-population/image-inclusion.js"></script>
+            <script src = "/public/js/services/common-services/statements/statements-rendering/statement-composer/composition/sections/metadata.js"></script>
+            <script src = "/public/js/services/common-services/statements/statements-rendering/user-statements/factories/factory.js"></script>
+            <script src = "/public/js/services/common-services/statements/statements-rendering/user-statements/factories/action-factory.js"></script>
+            <script src = "/public/js/services/common-services/statements/statements-rendering/statement-composer/component-data-fetching/fetcher.js"></script>
+            <script src = "/public/js/services/common-services/statements/statements-rendering/statement-composer/composition/statement-box-composer.js"></script>
+            <script src = "/public/js/services/common-services/statements/statements-rendering/user-statements/user-statement-rendering-products/ind-house-statement-rendering.js"></script>
             <script src = "/public/js/services/browser-services/Redirector.js"></script>
             {% block resource %}
                 {# 
