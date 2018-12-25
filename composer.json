@@ -16,6 +16,7 @@
     "autoload" : {
         "psr-4": {
             "DataBase\\" : "src/Interactions/DataBase",
+            "ClientSideGuru\\" : "src/ClientSideGuru",
             "BusinessLogic\\" : "src/BusinessLogic",
             "Interactions\\" : "src/Interactions",
             "Middlewares\\" : "src/Middlewares",

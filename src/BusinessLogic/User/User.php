@@ -40,7 +40,8 @@ class User
         $jsonPrepareness = new JsonPrepareness();
         $hateSupporter = new HateSupporter();
 
-
+        // this array i being hendled by /user/factory/factory.js
+        // products are defined in user-page-creation-products.js
         // add all data to this array to convert to json for client
         $dataToSendToClient = [];
 
@@ -56,6 +57,10 @@ class User
 
         $seeStatementsPath = $hateSupporter->combinePathSegments(['actions', 'get-actions', 'statements'], $username, true);
         $jsonPreparedStatement = $jsonPrepareness->makeHrefRestfull($seeStatementsPath, "statements");
+        $dataToSendToClient['user'][] = [$jsonPreparedStatement];
+
+        $seeStatementsPath = $hateSupporter->combinePathSegments(['actions', 'get-actions', 'basket'], $username, true);
+        $jsonPreparedStatement = $jsonPrepareness->makeHrefRestfull($seeStatementsPath, "basket");
         $dataToSendToClient['user'][] = [$jsonPreparedStatement];
 
         echo $jsonConverter->convertArrayToJson($dataToSendToClient);

@@ -8,6 +8,8 @@ use RESTfull\SpecificImplementations\ActionsOverStatement\HATEOASReady as HATEOA
 use DataBase\Tables\IndependentHousePhotos as IndependentHousePhotos;
 use RESTfull\HATEOSA\JsonPrepareness as JsonPrepareness;
 
+use DataBase\DBSpecificRequests\Statements\StatementsRepresentation\Common\RequiredDataStructureConstructor as RequiredDataStructureConstructor;
+
 class IndHouseRepresentationCreator
 {
     public function __construct()
@@ -18,6 +20,8 @@ class IndHouseRepresentationCreator
         $this->hready = new HATEOASReady();
         $this->indHousePhotos = new IndependentHousePhotos();
         $this->jsonPrepareness = new JsonPrepareness();
+
+        $this->requiredDataStructureConstructor = new RequiredDataStructureConstructor;
 
         // this is needed to limit amount of rows
         $this->amountOfRowsToBeReturnedFromTables = 10;
@@ -34,60 +38,11 @@ class IndHouseRepresentationCreator
      */
     public function prepareData(int $offSetForCurrentStatementType, string $username, string $filter): array
     {
-        $arrayToBeReturned = [];
-        $refer = $this->configFetcher->fetchConf("CLIENT_SERVER_CONFIG", ["statement_repr", "refer"]);
-        $action = $this->configFetcher->fetchConf("CLIENT_SERVER_CONFIG", ["statement_repr", "action"]);
-        $data = $this->configFetcher->fetchConf("CLIENT_SERVER_CONFIG", ["statement_repr", "data"]);
-
         // based on this statement other data will be fetched!
         $startingPointStatement = $this->indHouseStatement->getStatement($offSetForCurrentStatementType, $username, $filter, $this->amountOfRowsToBeReturnedFromTables);
-
+        
         $dataFromIndHouseStatementQuery = $this->dbmanipulator->read($startingPointStatement, "A");
 
-        $individualArray = [];
-        foreach($dataFromIndHouseStatementQuery as $nestedArray) {
-            $primaryKey = $nestedArray[$this->indHouseStatement->getPrimaryKey()];
-            $individualArray[$refer] = $this->getReferences($primaryKey);
-            $individualArray[$action] = $this->hready->getPreparedArray($this->indHouseStatement->getTableName(), $primaryKey);
-            $individualArray[$data] = $nestedArray;
-
-            $arrayToBeReturned[] = $individualArray;
-        }
-
-        return $arrayToBeReturned;
+        return $this->requiredDataStructureConstructor->constructDataStructure($dataFromIndHouseStatementQuery, "ind_house");
     }
-
-    // this need to be separated from this object !
-    private function getReferences($primaryKey): array
-    {
-        $arrayOfRestfullReferences = [];
-
-        $arrayOfRestfullReferences[] = $this->getImageReference($primaryKey);
-        $arrayOfRestfullReferences[] = $this->getReferenceToSelf($primaryKey);
-
-        return $arrayOfRestfullReferences;
-    }
-
-    private function getImageReference($primaryKey): array
-    {
-        $photoFileNameFetchingStatement = $this->indHousePhotos->getFileNamesFetchingStatement($primaryKey);
-        $assocArrayOfImageFileNames = $this->dbmanipulator->read($photoFileNameFetchingStatement, "O");
-
-        $fileName = $assocArrayOfImageFileNames["file_name"];
-
-        $photosDir = $this->configFetcher->fetchConf("URI_CONFIG", ["photos", "statement_photos", "directory"]);
-        $pathToResource = $photosDir . $fileName;
-
-        $preparedToBeConverted = $this->jsonPrepareness->makeHrefRestfull($pathToResource, "image");
-
-        return $preparedToBeConverted;
-    }
-
-    private function getReferenceToSelf($primaryKey): array
-    {
-        $pathToResource = $this->configFetcher->fetchConf("URI_CONFIG", ["uri_pathes", "ind-house-statement"]) . "/" . $primaryKey;
-        $preparedToBeConverted = $this->jsonPrepareness->makeHrefRestfull($pathToResource, "self");
-
-        return $preparedToBeConverted;
-    }
-}
+}    

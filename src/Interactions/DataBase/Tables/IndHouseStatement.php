@@ -78,4 +78,13 @@ class IndHouseStatement implements TableInterface
 
         return $statement;
     }
+
+    public function selectRow(int $indHouseId): string
+    {
+        $statement = "SELECT ind_house_id, option_over, title, price
+        FROM $this->tableName 
+        WHERE ind_house_id = $indHouseId";
+
+        return $statement;
+    }
 }

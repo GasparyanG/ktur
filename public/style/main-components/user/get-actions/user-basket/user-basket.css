@@ -1,0 +1,16 @@
+#user-basket
+{
+    display: flex;
+    flex-direction: column;
+}
+
+#user-basket > h1
+{
+    text-align: center;
+}
+
+#user-basket > div
+{
+    flex-wrap: wrap;
+    display: flex;
+}
