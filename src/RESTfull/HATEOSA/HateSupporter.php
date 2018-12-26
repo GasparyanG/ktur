@@ -22,7 +22,7 @@ class HateSupporter
         if ($reverced) {
             $pathSegment = $this->removeTrailingSlash($pathSegment);
 
-            $fullPath = $fileName . "/" . $pathSegment;
+            $fullPath = "/" . $fileName . "/" . $pathSegment;
             return $fullPath;
         }
 

@@ -17,6 +17,7 @@ class IndHouseStar implements TableInterface
         $indHouseTableName = $this->configFetcher->fetchConf("DATABASE_CONFIG", ["DB1", "tables", "ind_house_statements"]);
 
         $statement = "CREATE TABLE IF NOT EXISTS $this->tableName(
+            statement_owner VARCHAR(255) NOT NULL,
             username VARCHAR(255) NOT NULL,
             ind_house_id INT NOT NULL,
             star_date DATE NOT NULL,
@@ -33,12 +34,12 @@ class IndHouseStar implements TableInterface
         return $this->tableName;
     }
 
-    public function prepareInsertionStatement($username, $indHouseId): string
+    public function prepareInsertionStatement($statementOwner, $username, $indHouseId): string
     {
         $starDate = date("Y-m-d", time());
 
-        $statement = "INSERT INTO $this->tableName(username, ind_house_id, star_date)
-        VALUES(\"$username\", \"$indHouseId\", \"$starDate\")";
+        $statement = "INSERT INTO $this->tableName(statement_owner, username, ind_house_id, star_date)
+        VALUES(\"$statementOwner\", \"$username\", \"$indHouseId\", \"$starDate\")";
 
         return $statement;
     }

@@ -87,4 +87,11 @@ class IndHouseStatement implements TableInterface
 
         return $statement;
     }
+
+    public function getStatementsUserName(int $uniqueIdentifier): string
+    {
+        $statement = "SELECT username FROM $this->tableName WHERE ind_house_id = $uniqueIdentifier";
+
+        return $statement;
+    }
 }
