@@ -1,11 +1,12 @@
-ktur.service('Factory', ['UserImageInjector', 'AddStatementHref', 'StatementImageAddition', 'StatementHref', "BasketHref",
-function(UserImageInjector, AddStatementHref, StatementImageAddition, StatementHref, BasketHref) {
+ktur.service('Factory', ['UserImageInjector', 'AddStatementHref', 'StatementImageAddition', 'StatementHref', "BasketHref", "StarHref",
+function(UserImageInjector, AddStatementHref, StatementImageAddition, StatementHref, BasketHref, StarHref) {
     this.products = [
         UserImageInjector,
         AddStatementHref,
         StatementHref,
         StatementImageAddition,
-        BasketHref
+        BasketHref,
+        StarHref
     ];
 
     this.create = function(arrayOfRelAndHref, scope = undefined) {

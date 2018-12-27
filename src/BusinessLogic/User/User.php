@@ -59,8 +59,12 @@ class User
         $jsonPreparedStatement = $jsonPrepareness->makeHrefRestfull($seeStatementsPath, "statements");
         $dataToSendToClient['user'][] = [$jsonPreparedStatement];
 
-        $seeStatementsPath = $hateSupporter->combinePathSegments(['actions', 'get-actions', 'basket'], $username, true);
-        $jsonPreparedStatement = $jsonPrepareness->makeHrefRestfull($seeStatementsPath, "basket");
+        $userBasket = $hateSupporter->combinePathSegments(['actions', 'get-actions', 'basket'], $username, true);
+        $jsonPreparedStatement = $jsonPrepareness->makeHrefRestfull($userBasket, "basket");
+        $dataToSendToClient['user'][] = [$jsonPreparedStatement];
+
+        $statementsStars = $hateSupporter->combinePathSegments(['actions', 'get-actions', 'stars'], $username, true);
+        $jsonPreparedStatement = $jsonPrepareness->makeHrefRestfull($statementsStars, "stars");
         $dataToSendToClient['user'][] = [$jsonPreparedStatement];
 
         echo $jsonConverter->convertArrayToJson($dataToSendToClient);

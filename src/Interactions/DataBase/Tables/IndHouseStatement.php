@@ -94,4 +94,11 @@ class IndHouseStatement implements TableInterface
 
         return $statement;
     }
+
+    public function getStatementStarRequiredData($uniqueIdentifier)
+    {
+        $statement = "SELECT ind_house_id, title FROM $this->tableName WHERE ind_house_id = $uniqueIdentifier";
+
+        return $statement;
+    }
 }

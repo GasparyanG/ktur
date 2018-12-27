@@ -26,10 +26,16 @@ $URI_CONFIG = [
             "statements" => "statements/",
             "basket"    => "basket/",
             "stars"     => "stars/",
+        
         ],
-
+    
+        
         "post-actions"  => [
             "add-statement" => "statement-addition/",
         ],
+    ],
+        
+    "actions_over_statements" => [
+            "see-stars" => "/see-stars",
     ],
 ];
