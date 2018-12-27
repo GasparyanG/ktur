@@ -50,9 +50,8 @@ class UserStatementsStarsRepresentationCreator
             $arrayOfStatementsInfo[$typeName] = $this->prepareStatementTypeArray($arrayOfMetadata, $uniqueIdentifierKey);
         }
 
-        // its reamins to convert this to json and pass to server!
-        var_dump($arrayOfStatementsInfo);
-        exit;
+        
+        return $arrayOfStatementsInfo;
     }
 
     private function changeStatementTypes(string $statementType = null): void
@@ -140,8 +139,8 @@ class UserStatementsStarsRepresentationCreator
 
         $statementTypeArray = [];
 
-        $individualArray = [];
         foreach($arrayOfMetadata as $nestedArray) {
+            $individualArray = [];
             $individualArray[$data] = $nestedArray;
 
             $uniqueIdentifier = $nestedArray[$uniqueIdentifierKey];
@@ -181,7 +180,7 @@ class UserStatementsStarsRepresentationCreator
     {
         $uriPathPortion = $this->supporter->getSelfPointingUriSegment();
         $seeStarActionPathPortion = $this->configFetcher->fetchConf("URI_CONFIG", ["actions_over_statements", "see-stars"]);
-        $actionUri = $uriPathPortion . $seeStarActionPathPortion;
+        $actionUri = $uriPathPortion . "/" . $uniqueIdentifier . $seeStarActionPathPortion;
 
         return $this->jsonPrepareness->makeHrefRestfull($actionUri, "see-stars");
     }

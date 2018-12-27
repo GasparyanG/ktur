@@ -1,6 +1,7 @@
 <?php
 namespace BusinessLogic\GetActions;
 
+use Augmention\Convertion\JsonConverter as JsonConverter;
 use ClientSideGuru\Statement\ConstraintFetcher as ConstraintFetcher;
 use DataBase\DBSpecificRequests\Statements\StatementsRepresentation\UserStatementsStarsRepresentationCreator as UserStatementsStarsRepresentationCreator; 
 
@@ -8,6 +9,7 @@ class UserStars
 {
     public function __construct()
     {
+        $this->jsonConverter = new JsonConverter();
         $this->constraintFetcher = new ConstraintFetcher();
         $this->userStatementsStarsRepresentationCreator = new UserStatementsStarsRepresentationCreator();
 
