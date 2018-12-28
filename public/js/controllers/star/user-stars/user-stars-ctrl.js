@@ -1,5 +1,7 @@
-ktur.controller("UserStarsCtrl", ['$scope', '$http', 'StatementsStarsRepresentation', 
-function($scope, $http, StatementsStarsRepresentation) {
+ktur.controller("UserStarsCtrl", ['$scope', '$http', 'StatementsStarsRepresentation', 'SeeStars',
+function($scope, $http, StatementsStarsRepresentation, SeeStars) {
+    SeeStars.seeStars($scope);
+
     $http({
         method: "POST",
         url: window.location.href + "/user-statements-stars",

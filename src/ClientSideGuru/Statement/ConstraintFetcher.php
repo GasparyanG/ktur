@@ -16,7 +16,7 @@ class ConstraintFetcher
         return $decodedDataFromClient;
     }
 
-    public function getArrayOfOffsets(): array
+    public function getArrayOfOffsets()
     {
         $decodedDataFromClient = $this->getClientSideData();
 

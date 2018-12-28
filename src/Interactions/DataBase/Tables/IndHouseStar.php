@@ -70,4 +70,11 @@ class IndHouseStar implements TableInterface
         
         return $statement;
     }
+
+    public function getUsersBasedOnUniqueIdentifier($uniqueIdentifier, $offSet, $amountToBeReturned): string
+    {
+        $statement = "SELECT username FROM $this->tableName WHERE ind_house_id = $uniqueIdentifier LIMIT $offSet, $amountToBeReturned";
+
+        return $statement;
+    }
 }
