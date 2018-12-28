@@ -1,0 +1,9 @@
+#user-stars > h1
+{
+    text-align: center;
+}
+
+#user-stars > div 
+{
+    margin-left: 15%;
+}

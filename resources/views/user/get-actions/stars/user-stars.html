@@ -2,10 +2,19 @@
 
 {% block mainActionSection %}
     <div ng-controller = "UserStarsCtrl" id = "user-stars">
-        {#<link rel="stylesheet" href="/public/style/main-components/user/get-actions/user-basket/user-basket.css">#}
+        {# css #}
+        <link rel="stylesheet" href="/public/style/main-components/user/get-actions/user-stars/regular-star-repr.css">
+        <link rel="stylesheet" href="/public/style/main-components/user/get-actions/user-stars/star-repr.css">
+        {# script #}
+        <script src = "/public/js/controllers/star/star-representation/abstract-factories/ind-house-abstract-factory.js"></script>
+        <script src = "/public/js/controllers/star/star-representation/abstract-factory-products/regular-products/regular-element-creator.js"></script>
+        <script src = "/public/js/controllers/star/star-representation/facotries/abstract-factory-creator.js"></script>
+        <script src = "/public/js/controllers/star/star-representation/star-representation-data-fetcher/fetcher.js"></script>
+        <script src = "/public/js/controllers/star/star-representation/statements-stars-representation.js"></script>
         <script src = "/public/js/controllers/star/user-stars/user-stars-ctrl.js"></script>
-        <div>
-            Hello from User Stars
+        {# html #}
+        <h1>Independent Houses</h1>
+        <div id = "ind_house">
         </div>
         {#<h1>Hotels</h1>
         <div id = "hotels">

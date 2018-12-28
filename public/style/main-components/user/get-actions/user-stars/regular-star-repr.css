@@ -1,0 +1,42 @@
+@import url(/public/style/config/colors/main-colors.css);
+
+.regular-star-repr
+{
+    margin: 1rem;
+    border-radius: 0.2rem; 
+    padding: 1rem;
+    max-width: 70%;
+    box-shadow: var(--regular-statement-box-shadow);
+    display: flex;
+}
+
+.regular-star-repr > .regular-star-image > img
+{
+    max-width: 100px;
+}
+
+.regular-star-repr > .regular-star-metadata
+{
+    margin-left: 1rem;
+}
+
+.regular-star-repr > .regular-star-metadata > div
+{
+    margin-top: 1rem; 
+}
+
+.regular-star-repr > .regular-star-metadata > .regular-stars-amount
+{
+    color: var(--text-color);
+}
+
+.regular-star-repr > .regular-star-metadata > .regular-stars-amount > span
+{
+    padding-left: 0.5rem;
+}
+
+.regular-star-repr > .regular-star-metadata > .regular-stars-amount:hover 
+{
+    color: var(--text-color-hover);
+    cursor: pointer;
+}

@@ -1,4 +1,5 @@
-ktur.controller("UserStarsCtrl", ['$scope', '$http', function($scope, $http) {
+ktur.controller("UserStarsCtrl", ['$scope', '$http', 'StatementsStarsRepresentation', 
+function($scope, $http, StatementsStarsRepresentation) {
     $http({
         method: "POST",
         url: window.location.href + "/user-statements-stars",
@@ -16,6 +17,8 @@ ktur.controller("UserStarsCtrl", ['$scope', '$http', function($scope, $http) {
         }
     }).then(function successCallback(response) {
         console.log(response.data);
+        // scope will be used in '$compile' service
+        StatementsStarsRepresentation.render(response.data, $scope);
     }, function errorCallback(response) {
         console.log("error");
     });
