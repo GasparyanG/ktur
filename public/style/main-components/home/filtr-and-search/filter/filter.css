@@ -1,0 +1,12 @@
+@import url(/public/style/config/colors/main-colors.css);
+
+#filters-for-specific-statement > div
+{
+    color: var(--text-color);
+}
+
+#filters-for-specific-statement > div > span:hover
+{
+    color: var(--text-color-hover);
+    cursor: pointer;
+}

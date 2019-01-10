@@ -24,17 +24,18 @@ class StatementsRepresentationCreator
      * 
      * @return array
      */
-    public function getStatementsResources(array $offSetArray, string $username = null, string $statementType = null, string $filter): array
+    public function getStatementsResources(array $offSetArray, string $username = null, string $statementType = null, string $filter, array $arrayOfFilters = null): array
     {
         $arrayOfStatementsInfo = [];
 
         $this->changeStatementTypes($statementType);
         foreach($this->statementTypes as $typeName => $statementsInfoPreparerName) {
             $offSetForCurrentStatementType = $this->getRequiredOffSet($offSetArray, $typeName);
+            $username = $this->prepareUsernameForLikeConstraint($username);
 
             $fullyQualifiedNamespace = $this->statementsInfoPreparerDirNamespace . $statementsInfoPreparerName;
             $statementsInfoPreparer = new $fullyQualifiedNamespace();
-            $preparedData = $statementsInfoPreparer->prepareData($offSetForCurrentStatementType, $username, $filter);
+            $preparedData = $statementsInfoPreparer->prepareData($offSetForCurrentStatementType, $username, $filter, $arrayOfFilters);
             $arrayOfStatementsInfo[$typeName] = $preparedData;
         }
 

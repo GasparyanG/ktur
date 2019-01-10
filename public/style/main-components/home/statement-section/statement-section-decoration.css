@@ -1,0 +1,11 @@
+#statements-section > div
+{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+#statements-section > h1
+{
+    text-align: center;
+}

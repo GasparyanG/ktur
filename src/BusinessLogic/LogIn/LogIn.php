@@ -37,9 +37,7 @@ class LogIn
         $configFetcher = new ConfigFetcher();
         $cookieManipulator = new Cookie();
         
-        $parsedBodyFromAjaxCall = $req->getParsedBody();
-        $parsedBody = $jsonConverter->parsedBodyKeyConvertToAssocArray($parsedBodyFromAjaxCall);
-        
+        $parsedBody = $jsonConverter->jsonDecodeWithFileGetContents();
         $password = $parsedBody['password'];
         $username = $parsedBody['username'];
         $tableName = $configFetcher->fetchConf('DATABASE_CONFIG', ['DB1', 'tables', 'users']);

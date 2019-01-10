@@ -13,7 +13,8 @@ class DefaultErrorMessageSupporter
             "numeric" => "%s need to be only numbers",
             "alphanumeric" => "%s need to have only alpabetic or numeric characters",
             "notzero" => "%s need to be choosed",
-            "image-upload" => "%s need to be added"
+            "image-upload" => "%s need to be added",
+            "comparing" => "%d need to be smaller than %d"
         ];
     }
 
@@ -63,5 +64,10 @@ class DefaultErrorMessageSupporter
 
             throw new \InvalidArgumentException("$option for $fieldName don't have any error messages");
         }
+    }
+
+    public function getComparingErrorMessage(int $smallValue, int $bigValue): string
+    {
+        return sprintf($this->defaultMessages["comparing"], $smallValue, $bigValue);
     }
 }

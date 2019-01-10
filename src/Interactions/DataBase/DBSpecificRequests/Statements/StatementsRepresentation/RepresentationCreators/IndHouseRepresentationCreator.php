@@ -36,10 +36,10 @@ class IndHouseRepresentationCreator
      * 
      * @return array 
      */
-    public function prepareData(int $offSetForCurrentStatementType, string $username, string $filter): array
+    public function prepareData(int $offSetForCurrentStatementType, string $username, string $filter, array $arrayOfFilters = null): array
     {
         // based on this statement other data will be fetched!
-        $startingPointStatement = $this->indHouseStatement->getStatement($offSetForCurrentStatementType, $username, $filter, $this->amountOfRowsToBeReturnedFromTables);
+        $startingPointStatement = $this->indHouseStatement->getStatement($offSetForCurrentStatementType, $username, $filter, $this->amountOfRowsToBeReturnedFromTables, $arrayOfFilters);
         
         $dataFromIndHouseStatementQuery = $this->dbmanipulator->read($startingPointStatement, "A");
 

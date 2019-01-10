@@ -1,0 +1,27 @@
+@import url(/public/style/config/ready-elements/button.css);
+
+#advanced-searching > form > div
+{
+    margin-bottom: 0.3rem;
+}
+
+#advanced-searching .price > label
+{
+    display: block;
+}
+
+#advanced-searching select
+{
+    width: 80%;
+}
+
+#advanced-searching > form > .price
+{
+    display: flex;
+    flex-direction: column;
+}
+
+#advanced-searching > form > .price label
+{
+    display: block;
+}

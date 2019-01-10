@@ -18,11 +18,21 @@ class Router implements MiddlewareInterface
         $this->uri = ServerRequest::getUriFromGlobals();
         $this->response = new Response();
     }
-
+    
     public function process(ServerRequestInterface $request, $handler)
     {
         $dispatcher = FastRoute\simpleDispatcher(function(FastRoute\RouteCollector $r)
         {
+            // HOME
+            $r->addRoute("GET", "/home", "Home, getHomePage");
+            // hrefs
+            $r->addRoute("GET", "/home/hrefs", "Home, getPageSupportingHrefs");
+            // statements
+            $r->addRoute("GET", "/home/statement-resources", "Home, getStatementResources");
+            
+            // App supporting serrvices
+            $r->addRoute("GET", "/drop-down-lists", "DropDownLists, getLists");
+
             $r->addRoute("GET", "/sign-up", "SignUp, getPage");
             $r->addRoute("POST", "/sign-up", "SignUp, createAccount");
             $r->addRoute("GET", "/log-in", "LogIn, getPage");
@@ -65,6 +75,7 @@ class Router implements MiddlewareInterface
             $r->addRoute("POST", "/statements/{table-name}/{unique-identifier}/basket", "ActorOnStatement, basket");
             // get users who stared the statement
             $r->addRoute("POST", "/statements/{table-name}/{unique-identifier}/see-stars", "ActorOnStatement, seeStars");
+
         });
 
         $httpMethod = $request->getMethod();

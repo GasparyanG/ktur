@@ -5,8 +5,8 @@ use Interactions\Config\ConfigFetcher as ConfigFetcher;
 use Augmention\Convertion\JsonConverter as JsonConverter;
 use Validation\Validator as Validator;
 use BusinessLogic\PostActions\ValidationProductFactory\Factory as Factory;
-use Interactions\Container\Container as Container;
 use BusinessLogic\PostActions\TableCreation\Factory as TableCreationFactory;
+use BusinessLogic\StatementPortions\Supplier;
 
 class PostActions
 {
@@ -19,8 +19,8 @@ class PostActions
         $this->configFetcher = new ConfigFetcher();
         $this->jsonConverter = new JsonConverter();
         $this->factory = new Factory();
-        $this->container = new Container();
         $this->tableCreationFactory = new TableCreationFactory();
+        $this->supplier = new Supplier();
     }
 
     public function getStatementAddition($req, $res, $routeInfo)
@@ -30,29 +30,7 @@ class PostActions
 
     public function fetchStatementAdditionInfo($req, $res, $routeInfo)
     {
-        $assocArrayToPopulateTemplates = [];
-
-        // location need to be included!
-        /*  
-            sever:
-            1) create table which holdes all locations needed
-            2) insert locations into table (above mentioned)
-            3) get that data form db
-            4) add into $assocArrayToPopulateTemplates array with "location" key
-            
-            clinet:
-            1) use $scope.location to get all data relative to location
-            2) use ng-repeat to iterate over json's taken value and create select's options
-            
-         */
-
-        // options to choose from (for rent for sell)
-        $assocArrayToPopulateTemplates = $this->container->fetchData("houseoptions", $assocArrayToPopulateTemplates);
-        $assocArrayToPopulateTemplates = $this->container->fetchData("locations", $assocArrayToPopulateTemplates);
-
-        $templatePopulatorInJson = $this->jsonConverter->convertArrayToJson($assocArrayToPopulateTemplates);
-
-        echo $templatePopulatorInJson;
+        echo $this->supplier->fetchStatementAdditionInfo();
     }
 
     public function postAction($req, $res, $routeInfo)

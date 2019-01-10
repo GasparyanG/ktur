@@ -158,4 +158,13 @@ class Validator
             $this->errorMessages[$fieldName] = $defaultErrorMessageForFile;
         }
     }
+
+    public function greaterThan($smallValue, $bigValue)
+    {
+        if ($smallValue >= $bigValue) {
+            $defaultErrorMessageForComparing = $this->defaultErrorMessageSupporter->getComparingErrorMessage($smallValue, $bigValue);
+
+            $this->errorMessages["comparing"] = $defaultErrorMessageForComparing;
+        }
+    }
 }

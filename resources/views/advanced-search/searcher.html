@@ -1,0 +1,12 @@
+<div id = "advanced-searching">
+    <link rel="stylesheet" href="/public/style/main-components/home/filtr-and-search/search/search.css">
+    <form>
+        {% include "/templates/statement/inputs/drop-down-lists/location.html" %}
+        {% include "/templates/statement/inputs/drop-down-lists/rent-sell.html" %}
+        {% include "/templates/statement/inputs/regular-inputs/start-end-prices.html" %}
+        {# implement ng-click #}
+        <button class = "primary-btn" ng-click = "getStatements()">
+            Find
+        </button>
+    </form>
+</div>

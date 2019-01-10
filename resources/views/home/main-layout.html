@@ -1,0 +1,47 @@
+{% extends "templates/main_components/layout.html" %}
+
+{% block resource %}
+{# scripts #}
+<script src = "/public/js/controllers/home/home-controller.js"></script>
+<script src = "/public/js/controllers/home/services/href-supporter.js"></script>
+<script src = "/public/js/controllers/home/services/drop-down-prepareness.js"></script>
+<script src = "/public/js/controllers/home/services/statements-section/query-string/all-kind-of-statement-fetcher.js"></script>
+<script src = "/public/js/controllers/home/services/statements-section/query-string/resent-added.js"></script>
+<script src = "/public/js/controllers/home/services/statements-section/reseting/clean-statement-section.js"></script>
+<script src = "/public/js/controllers/home/services/statements-section/query-string/most-stared.js"></script>
+<script src = "/public/js/controllers/home/services/statements-section/query-string/advanced-search.js"></script>
+<script src = "/public/js/controllers/home/services/statements-section/query-string/query-string-preperer.js"></script>
+<script src = "/public/js/controllers/home/services/statements-section/showing/show-errors.js"></script>
+{# styles #}
+<link rel="stylesheet" href="/public/style/main-components/home/main-decorator.css">
+    <div id = "home-layout" ng-controller = "HomeCtrl">
+        <div id = "filtration-and-searching">
+            <link rel="stylesheet" href="/public/style/main-components/home/filtr-and-search/filtr-and-search-decoration.css">
+            {# filter section #}
+            <section>
+                <h3>Filter</h3>
+                {% include "home/filters/filters.html" %}
+            </section>
+            {# search section #}
+            <hr>
+            <section>
+                <h3>Advanced Search</h3>
+                {% include "advanced-search/searcher.html" %}
+            </section>
+        </div>
+        <div id = "statements-section">
+            <h1>
+                Indepandent Houses
+            </h1>
+            <link rel="stylesheet" href="/public/style/main-components/home/statement-section/statement-section-decoration.css">
+            <div id = "ind_house">
+                
+            </div>
+            {# other type of statement also need to be added #}
+        </div>
+        {# still under question #}
+        <div id = "more">
+
+        </div>
+    </div>
+{% endblock %}
