@@ -1,5 +1,11 @@
 {# ng-controller = "traverseDB" #}
 <link rel = "stylesheet" href = "/public/style/main-components/layout/nav-bar/searcher.css">
-<div class = "input-for-search">
-    <input type="input" placeholder = "Search" name = "finder" class = "input-area-for-search">
+<script src = "/public/js/controllers/nav-bar/search/search-controller.js"></script>
+<div class = "input-for-search" ng-controller = "SerachController">
+    <div class = "search-icon" ng-click = "searchForData()">
+        {% include "/icons/nav-bar/search.html" %}
+    </div>
+    <div>
+        <input type="input" placeholder = "Search" name = "finder" class = "input-area-for-search" ng-model = "searchKtur">
+    </div>
 </div>

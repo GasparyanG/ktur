@@ -1,7 +1,28 @@
 @import url("/public/style/config/layout/nav-bar.css");
 
-.input-for-searcher {
+.input-for-search 
+{
+    justify-content: center;
+    align-items: center;
     width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+.input-for-search > div
+{
+    margin-right: 1rem;
+}
+
+.input-for-search > .search-icon
+{
+    color: var(--search-area-color);
+}
+
+.input-for-search > .search-icon:hover
+{
+    color : white;
+    cursor: pointer;
 }
 
 .input-area-for-search

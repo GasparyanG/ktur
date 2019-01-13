@@ -1,0 +1,40 @@
+#user-drop-down
+{
+    color: white;
+}
+
+#user-relative-links
+{
+    text-align: center;
+    right: 1rem;
+    top: 50px;
+    display: none;
+    background-color: #ffffff;
+    position: absolute;
+    min-width: 160px;
+    z-index: 1;
+    border-radius: 0.4rem;
+    box-shadow: 0px 1px 1px #252425;
+}
+
+#user-relative-links > div
+{
+    padding: 0.3rem;
+}
+
+
+#user-relative-links > div > a
+{
+    text-decoration: none;
+    color: rgba(0,0,0,0.5);
+}
+
+#user-relative-links > div > a:hover
+{
+    color: rgba(0,0,0,0.9);
+}
+
+#user-drop-down .show
+{
+    display: block;
+}

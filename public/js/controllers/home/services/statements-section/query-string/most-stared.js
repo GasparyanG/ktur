@@ -5,7 +5,7 @@ ktur.service("MostStared", ["UserStatementsRendering", "Cleaner", function(UserS
             
             http({
                 method: "GET",
-                url: "home/statement-resources" + 
+                url: "/home/statement-resources" + 
                 "?ind-house-offset=0&filter=most-stared"
             }).then(function successCalllback(response) {
                 UserStatementsRendering.renderUserStatements(response.data, scope);

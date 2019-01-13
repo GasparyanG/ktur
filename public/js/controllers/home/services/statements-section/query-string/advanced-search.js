@@ -3,7 +3,7 @@ function(UserStatementsRendering, Cleaner, QueryStringPreparer, ErrorsDisplayer)
     this.setAdvancedSearch = function(scope, http) {
         scope.getStatements = function() {
             var queryString = QueryStringPreparer.prepareQueryString(scope);
-            var d_url = "home/statement-resources" + QueryStringPreparer.getDefaultQueryString() + queryString;
+            var d_url = "/home/statement-resources" + QueryStringPreparer.getDefaultQueryString() + queryString;
 
             Cleaner.cleanAll();
             // if any

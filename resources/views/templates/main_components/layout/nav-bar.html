@@ -2,6 +2,7 @@
 {# factory products #}
 {# authenticated #}
 <script src = "/public/js/controllers/nav-bar/nav-bar-creation-products/authenticated-case/nav-bar-user-image-injector.js"></script>
+<script src = "/public/js/controllers/nav-bar/nav-bar-creation-products/authenticated-case/user-relate-links-displayer.js"></script>
 
 {# un_authenticated #}
 <script src = "/public/js/controllers/nav-bar/nav-bar-creation-products/un-authenticated-case/log-in.js"></script>
@@ -25,13 +26,21 @@
         {# this will be included if user is authenticated #}
     </div>
     <div class = "authentication">
-            <div class = "authenticated-user">
+        <link rel="stylesheet" href="/public/style/main-components/layout/nav-bar/authentication/authenticated/authenticated.css">
+        <script src = "/public/js/controllers/authentication/authenticated/authenticated-user-ctrl.js"></script>
+            <div id = "authenticated-user-section" class = "authenticated-user" ng-controller = "AuthenticatedUserCtrl">
                 <div id = "nav-bar-user-image">
                     <link rel="stylesheet" href="/public/style/main-components/layout/nav-bar/authentication/authenticated/user-image-portion.css">
                     {# 
                         if element is empty then that will not be rendered: will be included in hierarchy but 
                         will not be considered as element
                     #}
+                </div>
+                <div id = "user-drop-down" ng-click = "showDropDown()">
+                    <i class="fa fa-caret-down"></i>
+                    <div id = "user-relative-links">
+                        <link rel="stylesheet" href="/public/style/main-components/layout/nav-bar/authentication/authenticated/user-links/drop-down.css">
+                    </div>
                 </div>
                 {# 
                     this portion will need also to render:

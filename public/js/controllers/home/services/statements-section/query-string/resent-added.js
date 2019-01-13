@@ -5,7 +5,7 @@ ktur.service("ResentAdded", ["UserStatementsRendering", "Cleaner", function(User
 
             http({
                 method: "GET",
-                url: "home/statement-resources" + 
+                url: "/home/statement-resources" + 
                 "?ind-house-offset=0&filter=resent-added"
             }).then(function successCallback(response) {
                 UserStatementsRendering.renderUserStatements(response.data, scope);

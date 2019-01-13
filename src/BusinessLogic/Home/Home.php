@@ -27,11 +27,23 @@ class Home
 
     public function getStatementResources($req, $res, $routeInfo)
     {
+        $arrayOfFilters = [];
+
         $username = $this->getUsername($routeInfo);
-
+        
         $queryParams = $req->getQueryParams();
+        if (isset($queryParams["statement-being-searched"])) {
+            $arrayOfFilters["statement-being-searched"] = urldecode($queryParams["statement-being-searched"]);
+        }
 
-        $arrayOfFilters = $this->validateFilters($queryParams);
+        else {
+            $arrayOfFilters = $this->validateFilters($queryParams);
+        }
+        
+        if ($this->validateMainSearch($queryParams)) {
+            $res->render("/home/main-layout.html", ["title" => "home"]);
+            exit;
+        }
 
         $queryParamsPreparer = new QueryParamsPreparer($queryParams);
         $offSetsArray = $queryParamsPreparer->getOffSetsArray();
@@ -68,5 +80,16 @@ class Home
 
         echo $this->jsonConverter->convertArrayToJson(["errors" => $errors]);
         exit;
+    }
+
+    private function validateMainSearch(array $queryParams): bool
+    {
+        if (isset($queryParams["search"])) {
+            return true;
+        }
+
+        else {
+            return false;
+        }
     }
 }

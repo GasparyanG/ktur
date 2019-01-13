@@ -1,4 +1,5 @@
-ktur.service('FactoryForNavBar', ['NavBarUserImageInjector', 'SignUp', 'LogIn', function(NavBarUserImageInjector, SignUp, LogIn) {
+ktur.service('FactoryForNavBar', ['NavBarUserImageInjector', 'UserLinks', 'SignUp', 'LogIn',
+function(NavBarUserImageInjector, UserLinks, SignUp, LogIn) {
     this.create = function(jsonForNavBar){
         if ("authenticated" in jsonForNavBar) {
             this.runAuthenticatedHandler(jsonForNavBar["authenticated"]);
@@ -15,6 +16,7 @@ ktur.service('FactoryForNavBar', ['NavBarUserImageInjector', 'SignUp', 'LogIn', 
     this.runAuthenticatedHandler = function(dataInJson) {
         products = [
             NavBarUserImageInjector,
+            UserLinks
         ];
 
         this.sendToFactory(products, dataInJson);
@@ -31,7 +33,7 @@ ktur.service('FactoryForNavBar', ['NavBarUserImageInjector', 'SignUp', 'LogIn', 
     this.traverseProducts = function(products, hrefAndRel){
         for (var i = 0; i < products.length; i++) {
             if (products[i].isValid(hrefAndRel["rel"])) {
-                products[i].execute(hrefAndRel["href"]);
+                products[i].execute(hrefAndRel["href"], hrefAndRel["rel"], hrefAndRel["data"]);
             }
         }
     }

@@ -1,0 +1,10 @@
+#authenticated-user-section
+{
+    float: right;
+    display: flex;
+}
+
+#authenticated-user-section > div
+{
+    padding: 0.2rem;
+}

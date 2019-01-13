@@ -3,11 +3,14 @@ ktur.service('NavBarUserImageInjector', [function() {
         return comparableObject === 'user_image';
     }
 
-    this.execute = function(hrefForElement) {
+    this.execute = function(hrefForElement, relate, data) {
         var imgDivElement = document.getElementById('nav-bar-user-image');
         var imgElement = this.createImageElementInside(hrefForElement);
 
-        imgDivElement.appendChild(imgElement);
+        var anchor = this.createAnchor(data);
+        anchor.appendChild(imgElement);
+
+        imgDivElement.appendChild(anchor);
     }
 
     this.createImageElementInside = function(hrefForElement) {
@@ -16,5 +19,12 @@ ktur.service('NavBarUserImageInjector', [function() {
         imgElement.src = hrefForElement;
 
         return imgElement;
+    }
+
+    this.createAnchor = function(href) {
+        var anchor = document.createElement("a");
+        anchor.href = href;
+
+        return anchor;
     }
 }]);

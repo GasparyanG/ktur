@@ -45,15 +45,35 @@ class NavBar
     private function getDataForAuthenticatedUser($userResourceCookieValue)
     {
         $dataForAuthenticatedUser = [];
-
+        
+        $userDir = "/$userResourceCookieValue";
+        
+        // drop down links preparing
+        // statements
+        $statementsUri = $this->hateSupporter->combinePathSegments(["actions", "get-actions", "statements"], $userResourceCookieValue, true);
+        $statementsHReady = $this->jsonPrepareness->makeHrefRestfull($statementsUri, "statements");
+        $dataForAuthenticatedUser['authenticated'][] = $statementsHReady;
+        // basket
+        $basketUri = $this->hateSupporter->combinePathSegments(["actions", "get-actions", "basket"], $userResourceCookieValue, true);
+        $basketHReady = $this->jsonPrepareness->makeHrefRestfull($basketUri, "basket");
+        $dataForAuthenticatedUser['authenticated'][] = $basketHReady;
+        // statement addtion
+        $statementAdditionUri = $this->hateSupporter->combinePathSegments(["actions", "post-actions", "add-statement"], $userResourceCookieValue, true);
+        $statementAdditionHReady = $this->jsonPrepareness->makeHrefRestfull($statementAdditionUri, "statement-addition");
+        $dataForAuthenticatedUser['authenticated'][] = $statementAdditionHReady;
+        // stars
+        $starsUri = $this->hateSupporter->combinePathSegments(["actions", "get-actions", "stars"], $userResourceCookieValue, true);
+        $starsHReady = $this->jsonPrepareness->makeHrefRestfull($starsUri, "stars");
+        $dataForAuthenticatedUser['authenticated'][] = $starsHReady;
+        
         $userImageFileName = $this->userDataFetcher->fetchImageFileName($userResourceCookieValue);
         $userDefaultImageServingPath = $this->hateSupporter->combinePathSegments(['photos', 'user', 'default'], $userImageFileName['user_image']);
 
-        $jsonPreparedHrefAndRel = $this->jsonPrepareness->makeHrefRestfull($userDefaultImageServingPath, "user_image");
+        $jsonPreparedHrefAndRel = $this->jsonPrepareness->makeHrefRestfull($userDefaultImageServingPath, "user_image", $userDir);
         // prepare links this way and pass to clinet side by including into $dataForAuthenticatedUser array and converting to json
         
         /**
-         * {authenticated:[0:[
+         * {authenticated:[0,:[
          *    href:"path/to/somewhere",
          *    rel:"relationship with sth"
          * ],

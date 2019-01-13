@@ -19,30 +19,17 @@
 {
     padding-left: 0.5rem;
     text-align: left;
-    flex-grow: 0.5;
-}
-
-.nav-bar > .researcher
-{
-    text-align: left;
-    flex-grow: 1;
+    flex-grow: 5;
 }
 
 .nav-bar > .searcher
 {
-
-    flex-grow: 5;
-}
-
-.nav-bar > .notification
-{
-    text-align: right;
-    flex-grow: 1;
+    flex-grow: 0.5;
 }
 
 .nav-bar > .authentication
 {
     padding-right: 0.5rem;
     text-align: right;
-    flex-grow: 0.5;
+    flex-grow: 0.2;
 }

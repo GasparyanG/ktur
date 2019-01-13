@@ -21,6 +21,7 @@ class IndHouseStatement implements TableInterface
             "resent-added" => "getResentAddedStatement",
             "most-stared" => "getMoreStaredStatement",
             "advanced-search" => "getAdvancedSearchStatement",
+            "string-based-search" => "getStringBasedStatement",
         ];
     }
 
@@ -170,6 +171,17 @@ class IndHouseStatement implements TableInterface
         $statement = "SELECT ind_house_id, option_over, title, price
         FROM $this->tableName
         WHERE location LIKE \"$location\" AND option_over LIKE \"$optionOver\" AND price >= $minPrice AND price <= $maxPrice";
+
+        return $statement;
+    }
+
+    public function getStringBasedStatement(int $offSetForCurrentStatementType, string $username, int $amountOfRowsToBeReturned, array $arrayOfFilters): string
+    {
+        $stringToSearchWith = $arrayOfFilters["statement-being-searched"];
+
+        $statement = "SELECT ind_house_id, option_over, title, price
+        FROM $this->tableName
+        WHERE location LIKE \"%$stringToSearchWith%\" OR title LIKE \"%$stringToSearchWith%\"";
 
         return $statement;
     }
