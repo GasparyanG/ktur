@@ -7,6 +7,9 @@ ktur.service("Basket", ["$http", function($http) {
             }).then(function sucessCallback(response) {
                 // this must be not outputed!
                 console.log(response.data);
+                if (response.data === "redirect") {
+                    window.location.href = "/sign-up";
+                }
             }, function errorCallback(response) {
                 console.log("error")
             })

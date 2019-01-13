@@ -88,4 +88,22 @@ class IndHouseStar implements TableInterface
 
         return $statement;
     }
+
+    public function checkUserStarState($uniqueIdentifier, string $username): string
+    {
+        $statement = "SELECT ind_house_id
+        FROM $this->tableName
+        WHERE username = \"$username\" AND ind_house_id = \"$uniqueIdentifier\"";
+
+        return $statement;
+    }
+
+    public function starsAmountStatement($uniqueIdentifier): string
+    {
+        $statement = "SELECT COUNT(ind_house_id) as amount_of_stars
+        FROM $this->tableName 
+        WHERE ind_house_id = $uniqueIdentifier";
+        
+        return $statement;
+    }
 }

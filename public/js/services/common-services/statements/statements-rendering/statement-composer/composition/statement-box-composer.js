@@ -50,9 +50,10 @@ function(ActionFactory, StatementDataFetcher, MetadataComposer) {
         // action section
         var actionSection = this.createDivWithGivenClassName(this.actionSectionNames.regular);
         var actions = StatementDataFetcher.fetchAction(arrayOfRequiredData);
-
+        
+        var metadata = StatementDataFetcher.fetchMetadata(arrayOfRequiredData);
         for (var index = 0; index < actions.length; index++) {
-            ActionFactory.renderActions(actions[index], actionSection, scope);
+            ActionFactory.renderActions(actions[index], actionSection, scope, arrayOfRequiredData);
         }
 
         statementBox.appendChild(photoSection);

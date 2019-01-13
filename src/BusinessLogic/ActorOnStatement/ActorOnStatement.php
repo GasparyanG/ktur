@@ -26,6 +26,8 @@ class ActorOnStatement
 
     public function star($req, $res, $routeInfo)
     {
+        $this->cutAction($req, $res);
+
         $username = $req->getCookieParams()['username'];
         $tableName = $routeInfo["table-name"];
         $uniqueIdentifier = $routeInfo["unique-identifier"];
@@ -35,6 +37,8 @@ class ActorOnStatement
 
     public function basket($req, $res, $routeInfo)
     {
+        $this->cutAction($req, $res);
+
         $username = $req->getCookieParams()['username'];
         $tableName = $routeInfo["table-name"];
         $uniqueIdentifier = $routeInfo['unique-identifier'];
@@ -63,5 +67,20 @@ class ActorOnStatement
         }
 
         echo $this->jsonConverter->convertArrayToJson($arrayToBeConverted);
+    }
+
+    private function cutAction($req, $res)
+    {
+        /*if (isset($req->getCookieParams()['username'])) {
+            if ($req->getCookieParams()['username'] === null) {
+                echo "redirect";
+                exit;
+            }
+        }*/
+
+        if(!isset($req->getCookieParams()['username'])) {
+            echo "redirect";
+            exit;
+        }
     }
 }

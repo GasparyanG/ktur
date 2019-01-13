@@ -103,4 +103,14 @@ ktur.service("StatementDataFetcher", [function() {
     this.fetchMetadata = function(arrayOfRequiredData) {
         return arrayOfRequiredData['metadata']
     }
+
+    this.fetchAmountOfStars = function(arrayOfRequiredData) {
+        var metadata = this.fetchMetadata(arrayOfRequiredData);
+        return metadata["stars_amount"];
+    }
+
+    this.fetchStared = function(arrayOfRequiredData) {
+        var metadata = this.fetchMetadata(arrayOfRequiredData);
+        return metadata["stared"];
+    }
 }]);

@@ -49,7 +49,22 @@
 
 .regular-statement > .regular-action > div
 {
+    margin-left: 0.5rem;
     color: var(--text-color);
+}
+
+.regular-statement > .regular-action > .already-stared
+{
+    color: lime;
+}
+
+.regular-statement > .regular-action > div > span
+{
+    color: aqua;
+    padding: 0.2rem;
+    background-color: red;
+    border-radius: 0.2rem;
+    width: 70px;
 }
 
 .regular-statement > .regular-action > div:hover

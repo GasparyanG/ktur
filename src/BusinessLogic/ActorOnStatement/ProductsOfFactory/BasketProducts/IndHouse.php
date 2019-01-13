@@ -21,6 +21,10 @@ class IndHouse
 
     public function execute(string $uniqueIdentifier, string $username): void
     {
+        if ($this->alreadyInBasket($uniqueIdentifier, $username)) {
+            return;
+        }
+
         // table creation
         $tableCreationStatement = $this->indHouseBasket->getTableDef();
         $this->dbmanipulator->create($tableCreationStatement, "T");
@@ -28,5 +32,17 @@ class IndHouse
         // row Insertion
         $rowInsertionStatement = $this->indHouseBasket->prepareInsertionStatement($uniqueIdentifier, $username);
         $this->dbmanipulator->create($rowInsertionStatement, "R");
+    }
+
+    private function alreadyInBasket(string $uniqueIdentifier, $username)
+    {
+        $statement = $this->indHouseBasket->checkUserBasketState($uniqueIdentifier, $username);
+        $userStaredStatement = $this->dbmanipulator->read($statement, "O");
+
+        if ($userStaredStatement) {
+            return true;
+        }
+
+        return false;
     }
 }

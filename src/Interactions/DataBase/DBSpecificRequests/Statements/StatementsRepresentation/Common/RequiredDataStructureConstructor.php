@@ -6,6 +6,7 @@ use RESTfull\SpecificImplementations\ActionsOverStatement\HATEOASReady as HATEOA
 use DataBase\Implementations\DBManipulator as DBManipulator;
 use RESTfull\HATEOSA\JsonPrepareness as JsonPrepareness;
 use DataBase\DBSpecificRequests\Statements\StatementsRepresentation\AbstractFactory\AbstractFactory as AbstractFactory;
+use DataBase\DBSpecificRequests\Statements\StatementsRepresentation\Common\FetchingStars\FetcherFactory;
 
 class RequiredDataStructureConstructor
 {
@@ -18,6 +19,7 @@ class RequiredDataStructureConstructor
         $this->hready = new HATEOASReady();
         $this->dbmanipulator = new DBManipulator();
         $this->jsonPrepareness = new JsonPrepareness();
+        $this->fetcherFactory = new FetcherFactory();
     }
 
     public function constructDataStructure(array $dataFromTableQuery, string $statementType): array
@@ -34,6 +36,8 @@ class RequiredDataStructureConstructor
             $uniqueIdentifier = $nestedArray[$this->supporter->getStatementInfoHoldingObject()->getPrimaryKey()];
             $individualArray[$refer] = $this->getReferences($uniqueIdentifier);
             $individualArray[$action] = $this->hready->getPreparedArray($this->supporter->getStatementInfoHoldingObject()->getTableName(), $uniqueIdentifier);
+            $nestedArray['stars_amount'] = $this->fetcherFactory->fetch($nestedArray, $statementType);
+            $nestedArray["stared"] = $this->fetcherFactory->fetch($nestedArray, $statementType, "liked");
             $individualArray[$data] = $nestedArray;
             $arrayToBeReturned[] = $individualArray;
         }

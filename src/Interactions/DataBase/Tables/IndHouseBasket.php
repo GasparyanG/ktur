@@ -80,4 +80,13 @@ class IndHouseBasket implements TableInterface
 
         return $statement;
     }
+
+    public function checkUserBasketState($uniqueIdentifier, string $username): string
+    {
+        $statement = "SELECT ind_house_id
+        FROM $this->tableName
+        WHERE username = \"$username\" AND ind_house_id = \"$uniqueIdentifier\"";
+
+        return $statement;
+    }
 }

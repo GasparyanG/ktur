@@ -30,6 +30,11 @@ class IndHouse
 
     public function execute(string $uniqueIdentifier, string $username)
     {
+        $alreadyStared = $this->alreadyStared($uniqueIdentifier, $username);
+        if ($alreadyStared) {
+            return;
+        }
+
         // statement owner
         $statementOwner = $this->usernameFetcher->getStatementOwnerUsername($uniqueIdentifier);
 
@@ -40,5 +45,17 @@ class IndHouse
         // row insertion
         $indHouseStarRowInsertionStatement = $this->indHouseStar->prepareInsertionStatement($statementOwner, $username, $uniqueIdentifier);
         $this->dbmanipulator->create($indHouseStarRowInsertionStatement, "R");
+    }
+
+    private function alreadyStared(string $uniqueIdentifier, string $username)
+    {
+        $statement = $this->indHouseStar->checkUserStarState($uniqueIdentifier, $username);
+        $userStaredStatement = $this->dbmanipulator->read($statement, "O");
+
+        if ($userStaredStatement) {
+            return true;
+        }
+
+        return false;
     }
 }

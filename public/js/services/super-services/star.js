@@ -6,6 +6,9 @@ ktur.service("Star", ['$http', function($http) {
                 url : url
             }).then(function successCallbck(response) {
                 console.log(response.data);
+                if (response.data === "redirect") {
+                    window.location.href = "/sign-up";
+                }
             }, function errorCallback(response) {
                 console.log("error");
             });
