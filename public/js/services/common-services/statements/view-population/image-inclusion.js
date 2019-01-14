@@ -10,7 +10,6 @@ ktur.service("StatementImageAdder", [function() {
 
         divElement.appendChild(imgElement);
         imageContainerBox.appendChild(divElement);
-
     }
 
     this.createImgElement = function(hreference) {

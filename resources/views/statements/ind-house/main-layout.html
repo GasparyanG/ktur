@@ -30,10 +30,30 @@ array(12) {
 {% block resource %}
 <script src = "/public/js/services/statements/factory/ind-house-factory.js"></script>
 <script src = "/public/js/controllers/statements/ind-house/ind-house-statement-ctrl.js"></script>
+<script src = "/public/js/controllers/statements/ind-house/similar-statements.js"></script>
+<script src = "/public/js/controllers/statements/ind-house/required-data-fetcher.js"></script>
 <link rel="stylesheet" href="/public/style/main-components/statement/ind-house-statement/main-layout.css">
     <div ng-controller = "IndHouseStatementCtrl" id = "ind-house-statement">
         {% include "/statements/ind-house/action-over-statement.html" %}
         {% include "/statements/ind-house/main-representation-section.html" %}
         {% include "/statements/ind-house/statement-metadata.html" %}
+    </div>
+    <div id = "informative">
+        <div id = "similar-statements">
+            <link rel="stylesheet" href="/public/style/main-components/statement/ind-house-statement/similar-statements.css">
+            <h2>
+                Similar Statements
+            </h2>
+            <div id = "ind_house">
+                
+            </div>
+        </div>
+    </div>
+    <div id = "comments">
+            <link rel="stylesheet" href="/public/style/main-components/statement/ind-house-statement/comments.css">
+        <link rel="stylesheet" href="">
+        <h2>
+            Comments
+        </h2>
     </div>
 {% endblock %}

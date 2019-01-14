@@ -7,6 +7,8 @@ use Interactions\Config\ConfigFetcher as ConfigFetcher;
 use RESTfull\HATEOSA\JsonPrepareness as JsonPrepareness;
 use Augmention\Convertion\JsonConverter as JsonConverter;
 use RESTfull\SpecificImplementations\ActionsOverStatement\HATEOASReady as HReady;
+use DataBase\Tables\IndHouseStatement;
+use DataBase\Implementations\DBManipulator;
 
 class IndependentHouse
 {
@@ -22,6 +24,8 @@ class IndependentHouse
         $this->configFetcher = new ConfigFetcher();
         $this->jsonConverter = new JsonConverter();
         $this->statementFetcher = new StatementFetcher();
+        $this->indHouseStatement = new IndHouseStatement();
+        $this->dbmanipulator = new DBManipulator();
     }
 
     public function getStatement($req, $res, $routeInfo)
@@ -55,6 +59,12 @@ class IndependentHouse
             }
         }
 
+        // requred data fetching
+        $requiredDataFetchingStatement = $this->indHouseStatement->getSimilarRequredStatement($indHouseId);
+        $requiredData = $this->dbmanipulator->read($requiredDataFetchingStatement, "O");
+
+        $restfullArray["requred_data"] = $requiredData;
+
         // actions over statemnt need to be populated with required href to perform desired functionality:
         // i.e. add star, comment to required table, add item to required basket!
         $indHouseStatementsTable = $this->configFetcher->fetchConf("DATABASE_CONFIG", ["DB1", "tables", "ind_house_statements"]);
@@ -64,7 +74,7 @@ class IndependentHouse
             $restfullArray[] = $nestArr;
         }
 
-        // other resources also needed to be included into restfullArry!
+        // other resources also needed to be included into restfullArray!
 
         echo $this->jsonConverter->convertArrayToJson($restfullArray);
     }

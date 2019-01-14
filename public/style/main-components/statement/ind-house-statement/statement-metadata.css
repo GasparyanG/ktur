@@ -9,7 +9,7 @@
 #statement-metadata > div
 {
     width: var(--metadata-box-width);
-    border: var(--statement-image-border);
+    box-shadow: 0px 1px 1px #252425;
     padding: 1rem;
     margin-top: 1rem;
     font-weight: 500;

@@ -168,7 +168,7 @@ class IndHouseStatement implements TableInterface
         $minPrice = $filtersValueGetter->getMinPrice();
         $maxPrice = $filtersValueGetter->getMaxPrice();
 
-        $statement = "SELECT ind_house_id, option_over, title, price
+        $statement = "SELECT ind_house_id, option_over, title, price, username
         FROM $this->tableName
         WHERE location LIKE \"$location\" AND option_over LIKE \"$optionOver\" AND price >= $minPrice AND price <= $maxPrice";
 
@@ -179,7 +179,7 @@ class IndHouseStatement implements TableInterface
     {
         $stringToSearchWith = $arrayOfFilters["statement-being-searched"];
 
-        $statement = "SELECT ind_house_id, option_over, title, price
+        $statement = "SELECT ind_house_id, option_over, title, price, username
         FROM $this->tableName
         WHERE location LIKE \"%$stringToSearchWith%\" OR title LIKE \"%$stringToSearchWith%\"";
 
@@ -191,6 +191,15 @@ class IndHouseStatement implements TableInterface
         $statement = "DELETE FROM $this->tableName
         WHERE ind_house_id = \"$uniqueIdentifier\"";
         
+        return $statement;
+    }
+
+    public function getSimilarRequredStatement($uniqueIdentifier): string
+    {
+        $statement = "SELECT ind_house_id, option_over, price, location
+        FROM $this->tableName
+        WHERE ind_house_id = \"$uniqueIdentifier\"";
+
         return $statement;
     }
 }
