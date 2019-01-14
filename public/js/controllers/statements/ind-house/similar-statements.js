@@ -9,7 +9,6 @@ function($http, DataFetcher, IndHouseStatementRendering) {
         }).then(function successCallback(response) {
             var arrayToFetchDataFrom = response.data["ind_house"];
             IndHouseStatementRendering.execute(arrayToFetchDataFrom, scope);
-            console.log(response.data)
         }, function errorCallback(response) {
             console.log("error");
         })
@@ -20,7 +19,7 @@ function($http, DataFetcher, IndHouseStatementRendering) {
         // urlPath
         fullUrl += "/home/statement-resources";
         // offsets
-        fullUrl += "?ind-house-offset=0";
+        fullUrl += "?ind-house-offset=0&filter=advanced-search";
         // filters
         // location
         var location = DataFetcher.fetchLocation(requiredData);
@@ -35,7 +34,6 @@ function($http, DataFetcher, IndHouseStatementRendering) {
         // maxPrice
         var maxPrice = this.calcMaxPrice(price);
         fullUrl += "&max_price=" + maxPrice;
-
         return fullUrl;
     }
 

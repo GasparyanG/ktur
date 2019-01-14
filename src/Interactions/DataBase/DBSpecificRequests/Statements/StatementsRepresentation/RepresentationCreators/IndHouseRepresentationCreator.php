@@ -40,7 +40,7 @@ class IndHouseRepresentationCreator
     {
         // based on this statement other data will be fetched!
         $startingPointStatement = $this->indHouseStatement->getStatement($offSetForCurrentStatementType, $username, $filter, $this->amountOfRowsToBeReturnedFromTables, $arrayOfFilters);
-        
+
         $dataFromIndHouseStatementQuery = $this->dbmanipulator->read($startingPointStatement, "A");
 
         return $this->requiredDataStructureConstructor->constructDataStructure($dataFromIndHouseStatementQuery, "ind_house");
