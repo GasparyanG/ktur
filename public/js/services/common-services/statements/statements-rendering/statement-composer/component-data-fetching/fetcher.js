@@ -113,4 +113,9 @@ ktur.service("StatementDataFetcher", [function() {
         var metadata = this.fetchMetadata(arrayOfRequiredData);
         return metadata["stared"];
     }
+
+    this.fetchStatementOwner = function(arrayOfRequiredData) {
+        var metadata = this.fetchMetadata(arrayOfRequiredData);
+        return metadata["statement_user"];
+    }
 }]);

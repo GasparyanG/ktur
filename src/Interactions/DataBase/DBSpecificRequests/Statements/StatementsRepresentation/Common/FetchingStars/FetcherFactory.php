@@ -22,7 +22,7 @@ class FetcherFactory
     public function fetch($nestedArray, $statementType, string $action = null)
     {
         $cookieParams = $this->request->getCookieParams();
-        $username = null;
+        $username = "%";
         if (isset($cookieParams["username"])) {
             $username = $cookieParams["username"];
         }

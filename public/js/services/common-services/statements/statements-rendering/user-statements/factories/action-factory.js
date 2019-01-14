@@ -1,9 +1,10 @@
-ktur.service('ActionFactory', ['StarButton', 'CommentButton', 'BasketButton', 
-function(StarButton, CommentButton, BasketButton) {
+ktur.service('ActionFactory', ['StarButton', 'CommentButton', 'BasketButton', "DeleteButton",
+function(StarButton, CommentButton, BasketButton, DeleteButton) {
     this.products = [
         StarButton,
         BasketButton,
-        CommentButton
+        CommentButton,
+        DeleteButton
     ];
 
     this.renderActions = function(hrefAndRel, parentElement, scope, arrayOfRequredData = null) {

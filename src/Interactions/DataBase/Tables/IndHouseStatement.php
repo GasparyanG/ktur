@@ -81,7 +81,7 @@ class IndHouseStatement implements TableInterface
 
     private function getRegularStatement(int $offSetForCurrentStatementType, string $username, int $amountOfRowsToBeReturned): string 
     {
-        $statement = "SELECT ind_house_id, option_over, title, price 
+        $statement = "SELECT ind_house_id, option_over, title, price, username
         FROM $this->tableName 
         WHERE username LIKE \"$username\" 
         LIMIT $offSetForCurrentStatementType, $amountOfRowsToBeReturned";
@@ -91,7 +91,7 @@ class IndHouseStatement implements TableInterface
 
     private function getResentAddedStatement(int $offSetForCurrentStatementType, string $username, int $amountOfRowsToBeReturned): string
     {
-        $statement = "SELECT ind_house_id, option_over, title, price
+        $statement = "SELECT ind_house_id, option_over, title, price, username
         FROM $this->tableName
         WHERE username LIKE \"$username\"
         ORDER BY statement_time DESC
@@ -106,7 +106,7 @@ class IndHouseStatement implements TableInterface
 
         $indHouseIdsInString = $this->getindHouseIdsInString($moreStaredStatementsStatement);
 
-        $statement = "SELECT ind_house_id, option_over, title, price
+        $statement = "SELECT ind_house_id, option_over, title, price, username
         FROM $this->tableName
         WHERE username LIKE \"$username\" AND
         ind_house_id IN " . "(" . $moreStaredStatementsStatement . ") " .
@@ -118,7 +118,7 @@ class IndHouseStatement implements TableInterface
 
     public function selectRow(int $indHouseId): string
     {
-        $statement = "SELECT ind_house_id, option_over, title, price
+        $statement = "SELECT ind_house_id, option_over, title, price, username
         FROM $this->tableName 
         WHERE ind_house_id = $indHouseId";
 
@@ -183,6 +183,14 @@ class IndHouseStatement implements TableInterface
         FROM $this->tableName
         WHERE location LIKE \"%$stringToSearchWith%\" OR title LIKE \"%$stringToSearchWith%\"";
 
+        return $statement;
+    }
+
+    public function getDeletionStatement($uniqueIdentifier): string
+    {
+        $statement = "DELETE FROM $this->tableName
+        WHERE ind_house_id = \"$uniqueIdentifier\"";
+        
         return $statement;
     }
 }

@@ -8,6 +8,7 @@ use BusinessLogic\ActorOnStatement\Factories\SeeStarsFactory as SeeStarsFactory;
 use DataBase\Implementations\DBManipulator as DBManipulator;
 use RESTfull\HATEOSA\JsonPrepareness as JsonPrepareness;
 use Augmention\Convertion\JsonConverter as JsonConverter;
+use BusinessLogic\ActorOnStatement\Factories\DeletionFactory;
 
 class ActorOnStatement
 {
@@ -20,6 +21,7 @@ class ActorOnStatement
         $this->dbmanipulator = new DBManipulator();
         $this->jsonPrepareness = new JsonPrepareness();
         $this->jsonConverter = new JsonConverter();
+        $this->deletionFactory = new DeletionFactory();
 
         $this->amountToBeReturned = 10;
     }
@@ -82,5 +84,13 @@ class ActorOnStatement
             echo "redirect";
             exit;
         }
+    }
+
+    public function delete($req, $res, $routeInfo)
+    {
+        $tableName = $routeInfo['table-name'];
+        $uniqueIdentifier = $routeInfo['unique-identifier'];
+
+        $this->deletionFactory->deleteStatement($tableName, $uniqueIdentifier);
     }
 }
