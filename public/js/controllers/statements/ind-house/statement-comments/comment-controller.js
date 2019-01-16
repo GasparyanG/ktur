@@ -16,11 +16,15 @@ function($scope, $http, NewCommentRepr, CommentSpecificFetcher) {
             if (CommentSpecificFetcher.fetchState(response.data)) {
                 state = CommentSpecificFetcher.fetchState(response.data);
             }
+
             if (state === "true") {
                 NewCommentRepr.repr(response.data);
             }
 
-            // imp redirection
+            else if (response.data = "redirect") {
+                window.location.href = "/sign-up";
+            }
+            
             console.log(response.data);
         }, function errorCallback(response) {
             console.log("error");
