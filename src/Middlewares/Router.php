@@ -76,7 +76,8 @@ class Router implements MiddlewareInterface
             $r->addRoute("POST", "/statements/{table-name}/{unique-identifier}/deletion", "ActorOnStatement, delete");
             // get users who stared the statement
             $r->addRoute("POST", "/statements/{table-name}/{unique-identifier}/see-stars", "ActorOnStatement, seeStars");
-
+            // COMMENTING
+            $r->addRoute("POST", "/statements/{table-name}/{unique-identifier}/comment", "ActorOnStatement, commentOnStatement");
         });
 
         $httpMethod = $request->getMethod();

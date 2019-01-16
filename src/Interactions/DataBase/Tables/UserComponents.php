@@ -24,4 +24,12 @@ class UserComponents implements TableInterface
     {
         return $this->tableName;
     }
+
+    public function getUserPhotoPreparingStatement($username)
+    {
+        $statement = "SELECT user_image FROM $this->tableName
+        WHERE username = \"$username\"";
+
+        return $statement;
+    }
 }

@@ -1,0 +1,56 @@
+#actual-comments > .individual-comments
+{
+    display: flex;
+    flex-direction: row;
+}
+
+#actual-comments > .individual-comments
+{
+    padding: 1rem;
+    margin-top: 1rem;
+}
+
+#actual-comments > .individual-comments:hover
+{
+    color: rgba(0,0,0,0.9);
+    background: #f8f9fa;
+}
+
+#actual-comments > .individual-comments > div
+{
+    margin-left: 1rem;
+}
+
+#actual-comments > .individual-comments > .user-repr > .image > img
+{
+    width: 80px;
+}
+
+#actual-comments > .individual-comments > .comment
+{
+    display: flex;
+    flex-direction: column;
+}
+
+
+#actual-comments > .individual-comments > .comment
+{
+    width: 100%;
+    color: rgba(0,0,0,0.5)
+}
+
+#actual-comments > .individual-comments > .comment > div
+{
+    margin-bottom: 1rem;
+}
+
+#actual-comments > .individual-comments > .comment > .username
+{
+    display: flex;
+}
+
+#actual-comments > .individual-comments > .comment > .username > div > span
+{
+    margin-left: 1rem;
+    font-size: 0.8rem;
+}

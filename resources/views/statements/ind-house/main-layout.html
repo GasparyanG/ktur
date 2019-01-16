@@ -32,6 +32,8 @@ array(12) {
 <script src = "/public/js/controllers/statements/ind-house/ind-house-statement-ctrl.js"></script>
 <script src = "/public/js/controllers/statements/ind-house/similar-statements.js"></script>
 <script src = "/public/js/controllers/statements/ind-house/required-data-fetcher.js"></script>
+<script src = "/public/js/controllers/statements/ind-house/statement-comments/services/fetcher.js"></script>
+<script src = "/public/js/controllers/statements/ind-house/statement-comments/services/rendering-new-comment.js"></script>
 <link rel="stylesheet" href="/public/style/main-components/statement/ind-house-statement/main-layout.css">
     <div ng-controller = "IndHouseStatementCtrl" id = "ind-house-statement">
         {% include "/statements/ind-house/action-over-statement.html" %}
@@ -49,11 +51,50 @@ array(12) {
             </div>
         </div>
     </div>
-    <div id = "comments">
-            <link rel="stylesheet" href="/public/style/main-components/statement/ind-house-statement/comments.css">
-        <link rel="stylesheet" href="">
+    <div id = "comments" ng-controller = "CommentController">
+        <script src = "/public/js/controllers/statements/ind-house/statement-comments/comment-controller.js"></script>
+        <link rel="stylesheet" href="/public/style/main-components/statement/ind-house-statement/comments/comments.css">
         <h2>
             Comments
         </h2>
+        <div id= "comment-imp-section">
+            <div id= "form-section">
+                <form>
+                    <div>
+                        <div>
+                            <textarea name="commenting-area" id="commenting-area" cols="100" rows="5" ng-model = "commentingArea" placeholder = "Comment what you think about this statement"></textarea>
+                        </div>
+                        <div>
+                            <input class = "primary-btn" type = "button" ng-click = "addComment()" value = "Add Comment">
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div id = "actual-comments">
+                <link rel="stylesheet" href="/public/style/main-components/statement/ind-house-statement/comments/actual-comment-section.css">
+                {% for comment in usersCommentsData %}
+                    <div class = "individual-comments">
+                        <div class = "user-repr">
+                            <div class = "image">
+                                <img src={{ "/public/photos/app-supporting-photos/user-default-photos/" ~ comment.user_image }}>
+                            </div>
+                        </div>
+                        <div class = "comment">
+                            <div class = "username">
+                                <div>
+                                    <a href={{"/" ~ comment.username }}>{{ comment.username }}</a>
+                                </div>
+                                <div class = "time">
+                                    <span>Added In: {{ comment.comment_time|date('Y/m/d H:i:s', '+00:00 GMT') }} </span>
+                                </div>
+                            </div>
+                            <div class = "actual-comment">
+                                {{ comment.comment }}
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
     </div>
 {% endblock %}

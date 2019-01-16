@@ -9,6 +9,8 @@ use Augmention\Convertion\JsonConverter as JsonConverter;
 use RESTfull\SpecificImplementations\ActionsOverStatement\HATEOASReady as HReady;
 use DataBase\Tables\IndHouseStatement;
 use DataBase\Implementations\DBManipulator;
+use DataBase\Tables\IndHouseComments;
+use DataBase\Tables\UserComponents;
 
 class IndependentHouse
 {
@@ -26,6 +28,8 @@ class IndependentHouse
         $this->statementFetcher = new StatementFetcher();
         $this->indHouseStatement = new IndHouseStatement();
         $this->dbmanipulator = new DBManipulator();
+        $this->indHouseComments = new IndHouseComments();
+        $this->userComponents = new UserComponents();
     }
 
     public function getStatement($req, $res, $routeInfo)
@@ -34,10 +38,13 @@ class IndependentHouse
         $IndHouseStatementTableName = $this->configFetcher->fetchConf("DATABASE_CONFIG", ['DB1', 'tables', 'ind_house_statements']);
         // because one row is required its obvious that it will be in placed in 0 index (thats why 0 is used at the end of below line)
         $dataFromIndHouseTable = $this->statementFetcher->getStatementData($indHouseId, $IndHouseStatementTableName)[0];
-        //echo "<pre>";
-        //var_dump($dataFromIndHouseTable);
 
-        $res->render("/statements/ind-house/main-layout.html", ["title" => $dataFromIndHouseTable['title'], "resources" => $dataFromIndHouseTable]);
+        // comments
+        $commentFetchingStatement = $this->indHouseComments->getCommentsOfStatement($indHouseId);
+        $comments = $this->dbmanipulator->read($commentFetchingStatement, "A");
+        $usersCommentsData = $this->addUsersImages($comments);
+
+        $res->render("/statements/ind-house/main-layout.html", ["title" => $dataFromIndHouseTable['title'], "resources" => $dataFromIndHouseTable, "usersCommentsData" => $usersCommentsData]);
     }
 
     public function sendRequiredResourcesToClient($req, $res, $routeInfo)
@@ -77,5 +84,27 @@ class IndependentHouse
         // other resources also needed to be included into restfullArray!
 
         echo $this->jsonConverter->convertArrayToJson($restfullArray);
+    }
+
+    private function addUsersImages($commentsArray): array
+    {
+        $arrayToReturn = [];
+
+        if (!$commentsArray) {
+            return $arrayToReturn;
+        }
+
+        else {
+            foreach($commentsArray as $commentArray) {
+                $username = $commentArray["username"];
+                // fetching iamge of user
+                $userPhotoPreapredStatement = $this->userComponents->getUserPhotoPreparingStatement($username);
+                $photo = $this->dbmanipulator->read($userPhotoPreapredStatement, "O");
+                $commentArray["user_image"] = $photo["user_image"];
+                $arrayToReturn[] = $commentArray;
+            }
+
+            return $arrayToReturn;
+        }
     }
 }
