@@ -27,4 +27,24 @@ class HATEOASReady
 
         return $preparedArrayForJson;
     }
+
+    public function getStar($tableName, $uniqueIdentifier)
+    {
+        return  $this->getUriPortion($tableName, $uniqueIdentifier) . "star";
+    }
+
+    public function getbasket($tableName, $uniqueIdentifier)
+    {
+        return $this->getUriPortion($tableName, $uniqueIdentifier) . "basket";
+    }
+
+    public function getComment($tableName, $uniqueIdentifier)
+    {
+        return $this->getUriPortion($tableName, $uniqueIdentifier) . "comment";
+    }
+
+    private function getUriPortion($tableName, $uniqueIdentifier) 
+    {
+        return "/statements/$tableName/$uniqueIdentifier/";
+    }
 }

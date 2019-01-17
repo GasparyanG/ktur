@@ -55,4 +55,23 @@ class IndHouseComments implements TableInterface
 
         return $statement;
     }
+
+    public function getAmountOfCommentsStatement($uniqueIdentifier): string
+    {
+        $statement = "SELECT count(comment) as amount_of_comments 
+        FROM $this->tableName
+        WHERE ind_house_id = \"$uniqueIdentifier\"";
+
+        return $statement;
+    }
+
+    public function userCommentStatement($uniqueIdentifier, $username): string
+    {
+        $statement = "SELECT comment_time 
+        FROM $this->tableName 
+        WHERE username = \"$username\" AND ind_house_id = \"$uniqueIdentifier\"
+        LIMIT 1";
+
+        return $statement;
+    }
 }

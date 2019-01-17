@@ -89,4 +89,13 @@ class IndHouseBasket implements TableInterface
 
         return $statement;
     }
+
+    public function getAmountOfForkedStatement($uniqueIdentifier): string
+    {
+        $statement = "SELECT count(ind_house_id) as amount_of_forks
+        FROM $this->tableName
+        WHERE ind_house_id = \"$uniqueIdentifier\"";
+
+        return $statement;
+    }
 }

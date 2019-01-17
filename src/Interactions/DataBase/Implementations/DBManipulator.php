@@ -3,6 +3,7 @@ namespace DataBase\Implementations;
 
 use DataBase\Interfaces\DBManipulatorInterface as DBManipulatorInterface;
 use DataBase\Config\Connection as Connection;
+use Interactions\Config\ConfigFetcher;
 
 class DBManipulator implements DBManipulatorInterface
 {
@@ -16,6 +17,8 @@ class DBManipulator implements DBManipulatorInterface
     public function __construct() 
     {
         $this->partOfNamespace = "DataBase\Implementations";
+
+        $this->configFetcher = new ConfigFetcher();
         
         $connector = new Connection();
         $this->conn = $connector->getConnection();
@@ -71,5 +74,19 @@ class DBManipulator implements DBManipulatorInterface
         $tableName = $tableManipulator->create($keyForStatement);
         
         return $tableName;
+    }
+
+    public function tableExists(string $tableName): bool
+    {
+        $dbname = $this->configFetcher->fetchConf("DATABASE_CONFIG", ["DB1", "dbName"]);
+
+        $statement = "SELECT * FROM information_schema.tables
+        WHERE table_schema = \"$dbname\" AND table_name = \"$tableName\"";
+
+        if ($this->read($statement, "O")) {
+            return true;
+        }
+
+        return false;
     }
 }

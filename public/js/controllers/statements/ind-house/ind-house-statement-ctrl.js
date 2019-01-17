@@ -1,5 +1,5 @@
-ktur.controller("IndHouseStatementCtrl", ['$scope', '$http', 'IndHouseFactory', 'SimilarStatements',
-function($scope, $http, IndHouseFactory, SimilarStatements) {
+ktur.controller("IndHouseStatementCtrl", ['$scope', '$http', 'IndHouseFactory', 'SimilarStatements', 'ActorsResourceAdder',
+function($scope, $http, IndHouseFactory, SimilarStatements, ActorsResourceAdder) {
     $http({
         method : "GET",
         url : window.location.href + "/resources"
@@ -9,5 +9,15 @@ function($scope, $http, IndHouseFactory, SimilarStatements) {
         console.log(response.data);
     }, function errorCallback(response) {
         console.log("error");
-    })
+    });
+
+    $http({
+        method: "GET",
+        url: window.location.href + "/action-resources"
+    }).then(function successCallback(response) {
+        ActorsResourceAdder.addRecources(response.data);
+        console.log(response.data);
+    }, function errorCallback(response) {
+        console.log("error");
+    });
 }]);

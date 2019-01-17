@@ -1,0 +1,20 @@
+#actions-over-statement .stared
+{
+    color: red;
+}
+
+#actions-over-statement .commented
+{
+    color: blue;
+}
+
+#actions-over-statement .forked
+{
+    color: orange;
+}
+
+#actions-over-statement span
+{
+    margin-left: 1rem;
+    font-size: 1.5rem;
+}

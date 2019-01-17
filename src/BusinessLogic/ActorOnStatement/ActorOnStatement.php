@@ -12,6 +12,7 @@ use BusinessLogic\ActorOnStatement\Factories\DeletionFactory;
 use BusinessLogic\PostActions\Comment\Factory\StatementCommentHandlerFactory;
 use DataBase\Tables\UserComponents;
 use RESTfull\HATEOSA\HateSupporter;
+use BusinessLogic\ActorOnStatement\Factories\ActionsResourcesHandlerFactory;
 
 class ActorOnStatement
 {
@@ -28,6 +29,7 @@ class ActorOnStatement
         $this->statementCommentHandlerFactory = new StatementCommentHandlerFactory();
         $this->userComponents = new UserComponents();
         $this->hsup = new HateSupporter();
+        $this->actionResFactory = new ActionsResourcesHandlerFactory();
 
         $this->amountToBeReturned = 10;
     }
@@ -146,5 +148,18 @@ class ActorOnStatement
         elseif (is_array($resultFromCommentAddition)) {
             echo $this->jsonConverter->convertArrayToJson($resultFromCommentAddition);
         }
+    }
+
+    public function getActionsResources($req, $res, $routeInfo)
+    {
+        $username = isset($req->getCookieParams()["username"]) ? $req->getCookieParams()["username"] : null;
+
+        $uniqueIdenitfier = $routeInfo["unique-identifier"];
+        $statementType = $routeInfo["statement-type"];
+
+        $actionsResHandler = $this->actionResFactory->create($statementType);
+        $arrayOfActionsResources = $actionsResHandler->getActionsResources($username, $uniqueIdenitfier);
+
+        echo $this->jsonConverter->convertArrayToJson($arrayOfActionsResources);
     }
 }
