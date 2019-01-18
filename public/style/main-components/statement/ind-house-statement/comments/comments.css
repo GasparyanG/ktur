@@ -18,9 +18,9 @@
 
 #form-section > form > div
 {
-    margin-left: 27%;
     display: flex;
     flex-direction: column;
+    align-items: center;
 }
 
 #commenting-area

@@ -19,7 +19,7 @@ class IndHouse
         return $tableName === $configuredNameOfTable;
     }
 
-    public function execute(string $uniqueIdentifier, string $username): void
+    public function execute(string $uniqueIdentifier, string $username)
     {
         if ($this->alreadyInBasket($uniqueIdentifier, $username)) {
             return;
@@ -32,6 +32,8 @@ class IndHouse
         // row Insertion
         $rowInsertionStatement = $this->indHouseBasket->prepareInsertionStatement($uniqueIdentifier, $username);
         $this->dbmanipulator->create($rowInsertionStatement, "R");
+
+        return "forked";
     }
 
     private function alreadyInBasket(string $uniqueIdentifier, $username)

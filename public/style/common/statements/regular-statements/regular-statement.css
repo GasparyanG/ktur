@@ -58,6 +58,11 @@
     color: lime;
 }
 
+.regular-statement > .regular-action > .forked
+{
+    color: red;
+}
+
 .regular-statement > .regular-action > div > span
 {
     color: aqua;

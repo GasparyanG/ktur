@@ -11,7 +11,7 @@ ktur.service("StatementImageAddition", ["FileNameGetter", "$compile", function(F
         divElement.appendChild(imgElement);
 
         imageHoldingElement.appendChild(divElement);
-        this.createDivSupportedByNg(hReference, divElement, scope);
+        // this.createDivSupportedByNg(hReference, divElement, scope);
     }
 
     this.createImgElement = function(hReference) {
@@ -33,7 +33,6 @@ ktur.service("StatementImageAddition", ["FileNameGetter", "$compile", function(F
     this.createDivSupportedByNg = function(hReference, parentElement, scope) {
         var fileName = this.getFileName(hReference);
         
-
         var divElement = "<div class = '" + fileName + "' ng-click = \"removeImage('" + fileName + "')\">Remove</div>"
         angular.element(parentElement).append($compile(divElement)(scope));
     }

@@ -18,14 +18,14 @@ class BasketFactory
         ];
     }
 
-    public function addStatementToBasket(string $tableName, string $uniqueIdentifier, string $username): void
+    public function addStatementToBasket(string $tableName, string $uniqueIdentifier, string $username)
     {
         foreach($this->productsNames as $productName) {
             $fullyQualifiedNamespace = $this->dirLvlNamespace . $productName;
             $product = new $fullyQualifiedNamespace($this->configFetcher, $this->dbmanipulator);
             
             if ($product->isUsed($tableName)) {
-                $product->execute($uniqueIdentifier, $username);
+                return $product->execute($uniqueIdentifier, $username);
             }
         }
     }

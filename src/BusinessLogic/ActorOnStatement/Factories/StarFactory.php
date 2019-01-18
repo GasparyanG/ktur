@@ -26,7 +26,7 @@ class StarFactory
             $product = new $fullyQualifiedNamespace($this->configFetcher, $this->dbmanipulator);
             
             if ($product->isUsed($tableName)) {
-                $product->execute($uniqueIdentifier, $username);
+                return $product->execute($uniqueIdentifier, $username);
             }
         }
     }

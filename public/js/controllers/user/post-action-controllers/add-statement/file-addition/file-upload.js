@@ -13,7 +13,7 @@ ktur.controller("ImageUpload", ['$scope', '$http', 'FilesStateManipulator', func
              url: window.location.href + "/add-statement-image",
              data: formData,
              headers: {
-                 // browser will automatically set required Contetn-Type for us
+                // browser will automatically set required Contetn-Type for us
                 'Content-Type': undefined
             }
         }).then(function successCallback(response) {

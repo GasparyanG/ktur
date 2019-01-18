@@ -42,7 +42,9 @@ class ActorOnStatement
         $tableName = $routeInfo["table-name"];
         $uniqueIdentifier = $routeInfo["unique-identifier"];
 
-        $this->starFactory->addStar($tableName, $uniqueIdentifier, $username);
+        if ($this->starFactory->addStar($tableName, $uniqueIdentifier, $username) === "stared") {
+            echo "stared";
+        };
     }
 
     public function basket($req, $res, $routeInfo)
@@ -53,7 +55,9 @@ class ActorOnStatement
         $tableName = $routeInfo["table-name"];
         $uniqueIdentifier = $routeInfo['unique-identifier'];
 
-        $this->basketFactory->addStatementToBasket($tableName, $uniqueIdentifier, $username);
+        if ($this->basketFactory->addStatementToBasket($tableName, $uniqueIdentifier, $username) === "forked") {
+            echo "forked";
+        }
     }
 
     public function seeStars($req, $res, $routeInfo)

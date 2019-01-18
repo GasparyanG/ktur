@@ -45,6 +45,9 @@ class IndHouse
         // row insertion
         $indHouseStarRowInsertionStatement = $this->indHouseStar->prepareInsertionStatement($statementOwner, $username, $uniqueIdentifier);
         $this->dbmanipulator->create($indHouseStarRowInsertionStatement, "R");
+
+        // to display action immediately
+        return "stared";
     }
 
     private function alreadyStared(string $uniqueIdentifier, string $username)
