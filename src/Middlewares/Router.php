@@ -23,6 +23,7 @@ class Router implements MiddlewareInterface
     {
         $dispatcher = FastRoute\simpleDispatcher(function(FastRoute\RouteCollector $r)
         {
+            $r->addRoute("GET", "/", "Home, redirectToHome");
             // HOME
             $r->addRoute("GET", "/home", "Home, getHomePage");
             // hrefs

@@ -15,6 +15,11 @@ class Home
         $this->filtersInQueryString = new FiltersInQueryString();
     }
 
+    public function redirectToHome($req, $res, $routeInfo)
+    {
+        $res->redirect("/home");
+    }
+
     public function getHomePage($req, $res, $routeInfo)
     {
         $res->render("home/main-layout.html", ["title" => "Home"]);
