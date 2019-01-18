@@ -11,11 +11,20 @@
 
 .statement-templates > div
 {
-    min-height: var(--min-height-of-statement-box);
+    height: var(--min-height-of-statement-box);
     position: absolute;
     width: 100%;
     background-color: var(--main-background-color);
 }
+
+/*<section class = "statement-templates">
+    <link rel="stylesheet" href="/public/style/main-components/user/post-actions/add-statement/statement-templates.css">
+    {% include "/templates/statement/statements/independent-house.html" %}
+    {% include "/templates/statement/statements/apartment.html" %}
+    {% include "/templates/statement/statements/hotel.html" %}
+    {% include "/templates/statement/statements/hostel.html" %}
+    {# include template for statement #}
+</section>*/
 
 /*{# ng-controller = "IndHouseCtrl" #}
 <div class = "independent-house" ng-controller = "IndHouseCtrl">

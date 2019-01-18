@@ -35,6 +35,14 @@
     grid-row-end: second-row;
 }
 
+.regular-statement > .regular-metadata > .title > a
+{
+    display: block;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
 
 .regular-statement > .regular-action
 {
