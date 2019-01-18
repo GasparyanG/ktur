@@ -7,9 +7,33 @@
     min-height: var(--nav-bar-height);
 }
 
-.separater
+.footer-content
 {
-    margin-left: 10rem;
-    margin-right: 10rem;
+    width: 50%;
+    margin-left: 25%;
     margin-top: 2rem;
+    border-top: 2px solid black;
+    padding-top: 1rem;
+}
+
+#author
+{
+    text-align: center;
+}
+
+#author > a
+{
+    padding: 1rem;
+    color: var(--text-color-hover);
+}
+
+#author > a:hover
+{
+    color: red;
+}
+
+#author > span
+{
+    padding: 0.2rem;
+    font-size: 1.5rem;
 }

@@ -6,10 +6,10 @@
 $DATABASE_CONFIG = [
     // first db of 'ktur'
     "DB1" => [
-        "userName"   => "root",
-        "password"   => "gg1122!!@@",
-        "dbName"     => "KturStorage",
-        "serverName" => "localhost",
+        "userName"   => "oGN9csM1dZ",
+        "password"   => "pVp3iV9JYH",
+        "dbName"     => "oGN9csM1dZ",
+        "serverName" => "remotemysql.com",
         "tables"     => [
             'users' => 'users',
             'user_components' => 'user_components',
