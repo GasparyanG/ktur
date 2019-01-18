@@ -2,22 +2,62 @@
 @import url(/public/style/config/statement/main-colors.css);
 @import url(/public/style/config/statement/sizes.css);
 
-#image-section > div > img
+#small-images > div > img
 {
     max-width: var(--statement-page-image);
 }
 
+#small-images > div
+{
+    margin: 1rem;
+}
+
+#image-section > section
+{
+    margin: 1rem;
+}
+
 #image-section
 {
-    padding : var(--image-box-padding);
     box-shadow: 0px 1px 1px #252425;
+}
+
+#image-section > #small-images
+{
+    padding : var(--image-box-padding);
     display: flex;
     flex-direction: row;
     justify-content: center;
     flex-wrap: wrap;
 }
 
-#image-section > div
+#enlarged-image 
 {
-    margin: 1rem;
+    padding : var(--image-box-padding);
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+#enlarged-image > #large-image > div > img
+{
+    width: 500px;
+}
+
+#enlarged-image .arrow
+{
+    color: var(--text-color);
+    margin-top: 100px; 
+    padding: 50px;
+}
+
+#enlarged-image .arrow > i:hover
+{
+    color: var(--text-color-hover);
+    cursor: pointer;
+}
+
+#enlarged-image .arrow > i:active
+{
+    color: lime;
 }

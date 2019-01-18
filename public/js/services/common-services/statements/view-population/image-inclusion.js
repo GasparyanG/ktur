@@ -4,7 +4,7 @@ ktur.service("StatementImageAdder", [function() {
     }
 
     this.execute = function(hreference, relation) {
-        var imageContainerBox = document.getElementById("image-section");
+        var imageContainerBox = document.getElementById("small-images");
         var divElement = document.createElement('div');
         var imgElement = this.createImgElement(hreference);
 
