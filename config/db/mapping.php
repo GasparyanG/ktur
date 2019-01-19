@@ -1,15 +1,28 @@
 <?php
 
+$envVars = require __DIR__ . '/../env.php';
+
+$host = $envVars['credentials']['db']['mysql']['host'] ?? null;
+$name = $envVars['credentials']['db']['mysql']['name'] ?? null;
+$user = $envVars['credentials']['db']['mysql']['user'] ?? null;
+$pass = $envVars['credentials']['db']['mysql']['pass'] ?? null;
+
+// TODO: Update with proper error handling
+if ($host === null || $name === null || $user === null || $pass === null) {
+    throw new RuntimeException('Environment Variables Not Properly Given!');
+}
+
+
 /**
  * @var mixed[] nested array meant for DRY principle
  */
 $DATABASE_CONFIG = [
     // first db of 'ktur'
     "DB1" => [
-        "userName"   => "oGN9csM1dZ",
-        "password"   => "pVp3iV9JYH",
-        "dbName"     => "oGN9csM1dZ",
-        "serverName" => "remotemysql.com",
+        "userName"   => $user,
+        "password"   => $pass,
+        "dbName"     => $name,
+        "serverName" => $host,
         "tables"     => [
             'users' => 'users',
             'user_components' => 'user_components',
